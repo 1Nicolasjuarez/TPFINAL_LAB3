@@ -1,6 +1,6 @@
 package producto;
 
-import java.util.Date;
+
 
 public class Mid_cup extends Sneaker {
 

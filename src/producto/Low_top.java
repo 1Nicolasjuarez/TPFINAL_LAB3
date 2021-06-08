@@ -1,6 +1,6 @@
 package producto;
 
-import java.util.Date;
+
 
 public class Low_top extends Sneaker {
 

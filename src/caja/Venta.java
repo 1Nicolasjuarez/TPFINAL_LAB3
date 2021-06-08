@@ -1,8 +1,9 @@
 package caja;
 
+
 import java.util.Date;
 
-import models.Cliente;
+import modelos.Cliente;
 
 public class Venta {
 

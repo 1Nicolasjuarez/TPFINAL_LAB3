@@ -3,7 +3,7 @@ package colecciones;
 import java.util.ArrayList;
 
 import interfaces.iColecciones;
-import models.Persona;
+import modelos.Persona;
 
 /*
  * 
@@ -18,11 +18,11 @@ public class Listado<P extends Persona> implements iColecciones<Persona> {
 		lista = new ArrayList<P>();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void agregar(Persona x) {
 
 		lista.add((P) x);
-
 	}
 
 	@Override

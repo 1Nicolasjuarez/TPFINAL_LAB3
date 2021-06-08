@@ -7,6 +7,7 @@ import producto.Sneaker;
 public class CarritoCompra {
 
 	private ArrayList<Sneaker> carrito;
+	@SuppressWarnings("unused")
 	private double totalCarrito;
 
 	public CarritoCompra() {

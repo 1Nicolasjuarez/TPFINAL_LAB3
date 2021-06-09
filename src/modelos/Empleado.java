@@ -69,5 +69,19 @@ public class Empleado extends Persona {
 
 	// TODO
 	// revisarStock()
+	
+	
+	public void registrarCuenta(String nombreUsuario, String pass)
+	{
+		
+	}
+	
+	
+	@Override
+	public String toString()
+	{
+		return "Nombre: " + getNombre() + " Apellido: " + getApellido() + " DNI: " + getDni() + " Teléfono: " + getTelefono() + " Domicilio: " + getDomicilio() + " Nombre de Usuario: " + getNombreUsuario() + " Puesto: " + getPuesto() + " Sueldo: " + getSueldo()	+ " Horas de trabajo: " + getHorasDeTrabajo();
+		
+	}
 
 }

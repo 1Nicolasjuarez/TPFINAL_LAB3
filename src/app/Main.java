@@ -5,8 +5,11 @@ import java.util.Date;
 import caja.Venta;
 import colecciones.CarritoCompra;
 import colecciones.Inventario;
+import colecciones.ListaEmpleados;
 import colecciones.ListadoVentas;
 import modelos.Cliente;
+import modelos.Empleado;
+import modelos.Persona;
 import producto.High_top;
 import producto.Low_top;
 
@@ -46,6 +49,13 @@ public class Main {
 		
 		System.out.println(listaVentas.listar());
 		
+		
+		Empleado e = new Empleado("Esteban", "Quito", 42015871, 2236571, "Algun Lugar", "EstebanQuito", "12345", "Gerente", 50000, 6);
+		ListaEmpleados lista = new ListaEmpleados();
+		
+		lista.agregarEmpleado(e);
+		lista.guardarArchivo();
+		System.out.println(lista.leerArchivo());
 		
 	}
 

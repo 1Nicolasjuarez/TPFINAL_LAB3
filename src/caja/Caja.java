@@ -14,7 +14,7 @@ public class Caja {
 	private double totalRecaudado;
 	private Empleado cajero;
 	
-	public Caja() {
+	public Caja(Empleado x) {
 
 		isAbierta=true;
 		fechaActual=new Date();
@@ -22,6 +22,10 @@ public class Caja {
 		totalRecaudado =0;
 	}
 	
-	
+
+	public void cerrarCaja()
+	{
+		
+	}
 	
 }

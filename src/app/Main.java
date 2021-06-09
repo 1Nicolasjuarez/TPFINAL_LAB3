@@ -54,6 +54,7 @@ public class Main {
 		ListaEmpleados lista = new ListaEmpleados();
 		
 		lista.agregarEmpleado(e);
+		System.out.println(lista.listarEmpleados());
 		lista.guardarArchivo();
 		System.out.println(lista.leerArchivo());
 		

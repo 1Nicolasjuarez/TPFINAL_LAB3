@@ -39,5 +39,12 @@ public class Inventario implements iColecciones<Sneaker> {
 	public int contar() {
 		return hash.size();
 	}
+	
+	
+	/*
+	 * TODO falta eliminar inventario y mostrar los que fueron vendidos
+	 */
+	
+	
 
 }

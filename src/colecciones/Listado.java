@@ -56,8 +56,18 @@ public class Listado<P extends Persona> implements iColecciones<Persona> {
 		return rta;
 	}
 
+	
+	/*
+	 * 
+	 * TODO tendria que devolver un objeto asi cuando el cliente ya compro antes, use su objeto.
+	 */
+	
+	
 	public String buscarYmostrarElementoPorDni(int dni) {
-
+		
+		
+		
+		
 		StringBuilder sb = new StringBuilder();
 
 		for (int i = 0; i < lista.size(); i++) {
@@ -72,6 +82,8 @@ public class Listado<P extends Persona> implements iColecciones<Persona> {
 		}
 
 		return sb.toString();
+		
+		
 	}
 
 	public String eliminarElementoPorDni(int dni) {

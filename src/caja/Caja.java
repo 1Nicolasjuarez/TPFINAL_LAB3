@@ -1,5 +1,27 @@
 package caja;
 
-public class Caja {
+import java.util.Date;
 
+import colecciones.ListadoVentas;
+import modelos.Empleado;
+
+public class Caja {
+	
+	
+	private boolean isAbierta;
+	private Date fechaActual;
+	private ListadoVentas listVentas;
+	private double totalRecaudado;
+	private Empleado cajero;
+	
+	public Caja() {
+
+		isAbierta=true;
+		fechaActual=new Date();
+		listVentas = new ListadoVentas();
+		totalRecaudado =0;
+	}
+	
+	
+	
 }

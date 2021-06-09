@@ -1,4 +1,4 @@
-package caja;
+package colecciones;
 
 import java.util.ArrayList;
 

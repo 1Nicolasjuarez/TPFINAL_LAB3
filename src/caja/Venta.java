@@ -3,9 +3,10 @@ package caja;
 
 import java.util.Date;
 
+import colecciones.CarritoCompra;
 import modelos.Cliente;
 
-public class Venta {
+public class Venta implements Comparable<Venta>{
 
 	private Date fechaVenta;
 	private Cliente cliente;
@@ -32,6 +33,12 @@ public class Venta {
 	public String toString() {
 		return "Venta [fechaVenta=" + fechaVenta + ", cliente=" + cliente.toString() + carrito + ", totalVenta="
 				+ totalVenta + "]";
+	}
+
+	@Override
+	public int compareTo(Venta o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

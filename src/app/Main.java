@@ -2,9 +2,10 @@ package app;
 
 import java.util.Date;
 
-import caja.CarritoCompra;
 import caja.Venta;
+import colecciones.CarritoCompra;
 import colecciones.Inventario;
+import colecciones.ListadoVentas;
 import modelos.Cliente;
 import producto.High_top;
 import producto.Low_top;
@@ -16,7 +17,7 @@ public class Main {
 		
 		
 		High_top z1 = new High_top(1, "nike" ,"", 32, 600);
-		High_top z2 = new High_top(2, "adidas","", 32, 600);
+		High_top z2 = new High_top(2, "adidas","", 32, 400);
 		High_top z3 = new High_top(3, "reekon","", 32, 600);
 		High_top z4 = new High_top(4, "fila","", 32, 600);
 		
@@ -35,7 +36,15 @@ public class Main {
 		
 		
 		Venta venta = new Venta(new Date(), cl, carrito);
-		System.out.println(venta.toString());
+		///System.out.println(venta.toString());
+		
+		
+		ListadoVentas listaVentas = new ListadoVentas();
+		
+		listaVentas.agregar(venta);
+		
+		
+		System.out.println(listaVentas.listar());
 		
 		
 	}

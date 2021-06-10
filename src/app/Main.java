@@ -2,19 +2,22 @@ package app;
 
 import java.util.Date;
 
+import archivos.archivoClientes;
 import caja.Venta;
 import colecciones.CarritoCompra;
 import colecciones.Inventario;
-import colecciones.ListadoVentas;
+import listas.ListadoClientes;
+import listas.ListadoVentas;
 import modelos.Cliente;
 import producto.High_top;
 import producto.Low_top;
 
+@SuppressWarnings("unused")
 public class Main {
 
 	public static void main(String[] args) {
 		
-		
+		/*
 		
 		High_top z1 = new High_top(1, "nike" ,"", 32, 600);
 		High_top z2 = new High_top(2, "adidas","", 32, 400);
@@ -45,6 +48,22 @@ public class Main {
 		
 		
 		System.out.println(listaVentas.listar());
+		*/
+		
+		Cliente c1 = new Cliente("luis", "tools", 2185122, 223504523, "chaco 332");
+		Cliente c2= new Cliente("luis", "tools", 2185122, 223504523, "chaco 332");
+		Cliente c3 = new Cliente("luis", "tools", 2185122, 223504523, "chaco 332");
+		
+		ListadoClientes listaCliente = new ListadoClientes();
+		
+		listaCliente.agregarCliente(c1);
+		listaCliente.agregarCliente(c2);
+		listaCliente.agregarCliente(c3);
+		
+		//System.out.println(listaCliente.listarClientes());
+		
+		archivoClientes.grabarClientes(listaCliente);
+		
 		
 		
 	}

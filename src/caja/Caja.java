@@ -2,7 +2,7 @@ package caja;
 
 import java.util.Date;
 
-import colecciones.ListadoVentas;
+import listas.ListadoVentas;
 import modelos.Empleado;
 
 public class Caja {

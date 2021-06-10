@@ -1,4 +1,4 @@
-package colecciones;
+package listas;
 
 import java.util.Iterator;
 import java.util.TreeSet;

@@ -1,9 +1,14 @@
 package modelos;
 
-public abstract class Persona {
+import java.io.Serializable;
+
+
+
+public abstract class Persona implements Serializable{
 
 	
-
+	private static final long serialVersionUID = 1L;
+	
 	private String nombre;
 	private String apellido;
 	private int dni;
@@ -67,6 +72,29 @@ public abstract class Persona {
 	public String toString() {
 		return "Persona [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", telefono=" + telefono
 				+ ", domicilio=" + domicilio + "]";
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + dni;
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Persona other = (Persona) obj;
+		if (dni != other.dni)
+			return false;
+		return true;
 	}
 
 }

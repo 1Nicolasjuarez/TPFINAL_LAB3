@@ -6,7 +6,7 @@ import java.util.Iterator;
 import interfaces.iColecciones;
 import producto.Sneaker;
 
-public class Inventario implements iColecciones<Sneaker> {
+public class Inventario  {
 
 	private HashSet<Sneaker> hash;
 
@@ -14,13 +14,13 @@ public class Inventario implements iColecciones<Sneaker> {
 		hash = new HashSet<Sneaker>();
 	}
 
-	@Override
+	
 	public void agregar(Sneaker x) {
 		hash.add(x);
 
 	}
 
-	@Override
+	
 	public String listar() {
 
 		StringBuilder sb = new StringBuilder();
@@ -35,9 +35,27 @@ public class Inventario implements iColecciones<Sneaker> {
 		return sb.toString();
 	}
 
-	@Override
+	
 	public int contar() {
 		return hash.size();
+	}
+
+	
+	public void agregarElemento(Sneaker x) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	public int contarElementos() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
+	public String listarElementos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

@@ -4,7 +4,7 @@ package producto;
 
 public abstract class Sneaker {
 
-	private int claveProducto;
+	private String codigo;
 	private String marca;
 	private String modelo;
 	private double talle;
@@ -15,9 +15,9 @@ public abstract class Sneaker {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Sneaker(int claveProducto, String marca, String modelo, double talle, double precio) {
+	public Sneaker(String codigo, String marca, String modelo, double talle, double precio) {
 
-		this.claveProducto = claveProducto;
+		this.codigo = codigo;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.talle = talle;
@@ -25,12 +25,12 @@ public abstract class Sneaker {
 		this.isDisponible = true;
 	}
 
-	public int getClaveProducto() {
-		return claveProducto;
+	public String getCodigo() {
+		return codigo;
 	}
 
-	public void setClaveProducto(int claveProducto) {
-		this.claveProducto = claveProducto;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getMarca() {
@@ -75,7 +75,7 @@ public abstract class Sneaker {
 
 	@Override
 	public String toString() {
-		return "Sneaker [claveProducto=" + claveProducto + ", marca=" + marca + ", modelo=" + modelo + ", talle="
+		return "Sneaker [codigo=" + codigo + ", marca=" + marca + ", modelo=" + modelo + ", talle="
 				+ talle + ", precio=" + precio + ", isDisponible=" + isDisponible + "]";
 	}
 
@@ -88,7 +88,7 @@ public abstract class Sneaker {
 		if (getClass() != obj.getClass())
 			return false;
 		Sneaker other = (Sneaker) obj;
-		if (claveProducto != other.claveProducto)
+		if (codigo != other.codigo)
 			return false;
 		return true;
 	}

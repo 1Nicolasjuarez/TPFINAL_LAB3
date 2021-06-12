@@ -13,8 +13,8 @@ public class High_top extends Sneaker {
 		this.tipoDeSneaker = TIPO_SNEAKER;
 	}
 
-	public High_top(int claveProducto, String marca, String modelo, double talle, double precio) {
-		super(claveProducto, marca, modelo, talle, precio);
+	public High_top(String codigo, String marca, String modelo, double talle, double precio) {
+		super(codigo, marca, modelo, talle, precio);
 		this.tipoDeSneaker = TIPO_SNEAKER;
 	}
 

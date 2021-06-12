@@ -13,8 +13,8 @@ public class Mid_cup extends Sneaker {
 		this.tipoDeSneaker = TIPO_SNEAKER;
 	}
 
-	public Mid_cup(int claveProducto, String marca, String modelo, double talle, double precio) {
-		super(claveProducto, marca, modelo, talle, precio);
+	public Mid_cup(String codigo, String marca, String modelo, double talle, double precio) {
+		super(codigo, marca, modelo, talle, precio);
 		this.tipoDeSneaker = TIPO_SNEAKER;
 	}
 

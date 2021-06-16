@@ -22,7 +22,7 @@ public class Empleado extends Persona {
 		horasDeTrabajo = 0;
 	}
 
-	public Empleado(String nombre, String apellido, int dni, int telefono, String domicilio, String nombreUsuario,
+	public Empleado(String nombre, String apellido, String dni, int telefono, String domicilio, String nombreUsuario,
 			String pass, String puesto, double sueldo, int horasDeTrabajo) {
 		super(nombre, apellido, dni, telefono, domicilio);
 		this.nombreUsuario = nombreUsuario;

@@ -4,6 +4,11 @@ package producto;
 
 public class Mid_cup extends Sneaker {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private static String TIPO_SNEAKER = "mid cup";
 
 	private String tipoDeSneaker;
@@ -13,8 +18,8 @@ public class Mid_cup extends Sneaker {
 		this.tipoDeSneaker = TIPO_SNEAKER;
 	}
 
-	public Mid_cup(String codigo, String marca, String modelo, double talle, double precio) {
-		super(codigo, marca, modelo, talle, precio);
+	public Mid_cup(String numeroSerie, String marca, String modelo, double talle, double precio) {
+		super(numeroSerie, marca, modelo, talle, precio);
 		this.tipoDeSneaker = TIPO_SNEAKER;
 	}
 
@@ -29,5 +34,11 @@ public class Mid_cup extends Sneaker {
 	@Override
 	public String toString() {
 		return "Mid_cup [tipoDeSneaker=" + tipoDeSneaker + "]" + super.toString();
+	}
+
+	@Override
+	public String getTipoDeSneakerAbs() {
+		
+		return getTipoDeSneaker();
 	}
 }

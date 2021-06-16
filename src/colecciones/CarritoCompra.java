@@ -18,7 +18,7 @@ public class CarritoCompra {
 
 	public void agregarAlCarrito(Sneaker x) {
 		carrito.add(x);
-		x.cambiarDisponibilidad();
+		//x.cambiarDisponibilidad();
 	}
 
 	public String mostrarCarrito() {
@@ -29,6 +29,8 @@ public class CarritoCompra {
 		}
 		return sb.toString();
 	}
+	
+	
 	
 	/*
 	

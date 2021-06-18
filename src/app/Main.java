@@ -3,14 +3,20 @@ package app;
 import java.util.Date;
 
 import archivos.archivoClientes;
+import archivos.archivoEmpleados;
 import caja.Venta;
 import colecciones.CarritoCompra;
 import colecciones.Inventario;
+import colecciones.ListaEmpleados;
+import excepciones.UserException;
 import listas.ListadoClientes;
+import listas.ListadoEmpleados;
 import listas.ListadoVentas;
 import modelos.Cliente;
+import modelos.Empleado;
 import producto.High_top;
 import producto.Low_top;
+import java.util.Scanner;
 
 @SuppressWarnings("unused")
 public class Main {
@@ -63,6 +69,65 @@ public class Main {
 		//System.out.println(listaCliente.listarClientes());
 		
 		archivoClientes.grabarClientes(listaCliente);
+		
+		ListadoEmpleados listaEmpleado = new ListadoEmpleados();
+		Scanner scan = new Scanner(System.in);
+		
+		Empleado e1 = new Empleado("Esteban", "Quito", 123, 321, "ABC 123", "EstebanQuito", "12345", "Gerente", 40000, 6);
+		Empleado e2 = new Empleado("Armando", "Casas", 456, 654, "CBA 321", "ArmandoCasas", "12345", "Vendedor", 30000, 8);
+		Empleado e = new Empleado();
+		listaEmpleado.agregarEmpleado(e1);
+		listaEmpleado.agregarEmpleado(e2);
+		
+		archivoEmpleados.grabarEmpleados(listaEmpleado);
+		archivoEmpleados.leerEmpleados();
+		System.out.println(listaEmpleado.listarEmpleados());
+		
+		System.out.println("Ingrese el DNI del empleado");
+		e.setDni(scan.nextInt());
+		
+		scan.nextLine();
+		System.out.println("Ingrese el nombre del empleado");
+		e.setNombre(scan.nextLine());
+		
+		System.out.println("Ingrese el apellido del empleado");
+		e.setApellido(scan.nextLine());
+		
+		System.out.println("Ingrese el número de teléfono");
+		e.setTelefono(scan.nextInt());
+		
+		
+		scan.nextLine();
+		System.out.println("Ingrese el domicilio");
+		e.setDomicilio(scan.nextLine());
+		
+		System.out.println("Ingrese el nombre de usuario");
+		e.setNombreUsuario(scan.nextLine());
+		
+		System.out.println("Ingrese la contraseña");
+		e.setPass(scan.nextLine());
+		
+		System.out.println("Ingrese el puesto que ocupa");
+		e.setPuesto(scan.nextLine());
+		
+		
+		System.out.println("Ingrese el sueldo");
+		e.setSueldo(scan.nextDouble());
+		
+		System.out.println("Ingrese la cantidad de horas que trabaja");
+		e.setHorasDeTrabajo(scan.nextInt());
+		
+		scan.close();
+		
+		listaEmpleado.agregarEmpleado(e);
+		try
+		{
+			e.registrarCuenta(e, listaEmpleado);
+		} 
+		catch (UserException ex) {
+			
+			System.out.println(ex.getMensaje());
+		}
 		
 		
 		

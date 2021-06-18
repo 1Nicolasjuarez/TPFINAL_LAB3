@@ -12,6 +12,7 @@ public class ListadoEmpleados implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Listado<Empleado> empleados;
+	private ArrayList<Empleado> lista;
 	
 	public ListadoEmpleados() {
 		empleados = new Listado<Empleado>();
@@ -23,6 +24,11 @@ public class ListadoEmpleados implements Serializable{
 		this.agregarListaDeEmpleados(listaEmpleados.devolverEmpleados()); 
 	}
 	
+	
+	public ArrayList<Empleado> getEmpleados() {
+		return lista;
+	}
+
 	public boolean agregarEmpleado(Empleado elemento) {
 		return empleados.agregarElemento(elemento);
 	}
@@ -68,6 +74,5 @@ public class ListadoEmpleados implements Serializable{
 			this.empleados.agregarElemento(empleado);
 		}
 	}	
-	
 	
 }

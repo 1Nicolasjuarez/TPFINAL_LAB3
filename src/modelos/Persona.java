@@ -68,6 +68,10 @@ public abstract class Persona implements Serializable{
 		return dni;
 	}
 	
+	public void setDni(int dni) {
+		this.dni = dni;
+	}
+
 	@Override
 	public String toString() {
 		return "Persona [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", telefono=" + telefono

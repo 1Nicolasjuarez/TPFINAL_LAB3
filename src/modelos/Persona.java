@@ -67,10 +67,6 @@ public abstract class Persona implements Serializable{
 	public String getDni() {
 		return dni;
 	}
-	
-	public void setDni(int dni) {
-		this.dni = dni;
-	}
 
 	@Override
 	public String toString() {

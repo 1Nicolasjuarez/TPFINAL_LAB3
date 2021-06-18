@@ -7,7 +7,7 @@ import java.util.Scanner;
 import archivos.archivoClientes;
 import caja.Venta;
 import colecciones.CarritoCompra;
-
+import excepciones.UserException;
 import listas.ListadoClientes;
 import listas.ListadoEmpleados;
 import listas.ListadoSneakers;
@@ -166,6 +166,7 @@ public class Main {
 		//Local local = new Local(listacliente,listaempleados);
 		//local.guardarDatosLocal();
 		
+		/*
 		try {
 			
 			Menu menu = new Menu();
@@ -177,7 +178,16 @@ public class Main {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		*/
 		
+		Menu menu = new Menu();
+		try {
+			menu.registrarEmpleado();
+			
+		} catch (UserException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMensaje());
+		}
 		
 		
 		/*

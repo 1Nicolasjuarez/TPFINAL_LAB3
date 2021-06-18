@@ -1,6 +1,7 @@
 package archivos;
 
 import java.io.EOFException;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,7 +9,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-import genericos.Listado;
+
+import listas.ListadoSneakers;
 
 
 
@@ -20,7 +22,7 @@ public class archivoProductos implements Serializable {
 	private static String archivoDePersonas = "productos.dat";
 	
 	
-	public static void grabarProductos(Listado productos) 
+	public static void grabarProductos(ListadoSneakers productos) 
 	{	
 		
 		FileOutputStream fileOutputStream = null;
@@ -44,18 +46,18 @@ public class archivoProductos implements Serializable {
 	
 	
 	
-	public static Listado leerProductos() {
+	public static ListadoSneakers leerProductos() {
 		
 		FileInputStream fileInputStream = null;
 		ObjectInputStream objectInputStream = null;
-		Listado aux = new Listado();
+		ListadoSneakers aux = new ListadoSneakers();
 		
 		
 		try {
 			fileInputStream = new FileInputStream(archivoDePersonas);
 			objectInputStream = new ObjectInputStream(fileInputStream);
 			
-			aux = (Listado) objectInputStream.readObject();
+			aux = (ListadoSneakers) objectInputStream.readObject();
 			
 		}
 		catch (ClassNotFoundException e) {

@@ -1,27 +1,33 @@
 package app;
 
+import java.util.ArrayList;
 import java.util.Date;
-
-import archivos.archivoClientes;
-import archivos.archivoEmpleados;
-import caja.Venta;
-import colecciones.CarritoCompra;
-import colecciones.Inventario;
-import colecciones.ListaEmpleados;
-import excepciones.UserException;
-import listas.ListadoClientes;
-import listas.ListadoEmpleados;
-import listas.ListadoVentas;
-import modelos.Cliente;
-import modelos.Empleado;
-import producto.High_top;
-import producto.Low_top;
 import java.util.Scanner;
 
-@SuppressWarnings("unused")
+import archivos.archivoClientes;
+import caja.Venta;
+import colecciones.CarritoCompra;
+
+import listas.ListadoClientes;
+import listas.ListadoEmpleados;
+import listas.ListadoSneakers;
+import listas.ListadoVentas;
+import local.Local;
+import menus.Menu;
+import modelos.Cajero;
+import modelos.Cliente;
+import modelos.Empleado;
+import modelos.Gerente;
+import modelos.Vendedor;
+import producto.High_top;
+import producto.Low_top;
+
+
 public class Main {
 
 	public static void main(String[] args) {
+		
+		
 		
 		/*
 		
@@ -56,6 +62,8 @@ public class Main {
 		System.out.println(listaVentas.listar());
 		*/
 		
+		/*
+		
 		Cliente c1 = new Cliente("luis", "tools", 2185122, 223504523, "chaco 332");
 		Cliente c2= new Cliente("luis", "tools", 2185122, 223504523, "chaco 332");
 		Cliente c3 = new Cliente("luis", "tools", 2185122, 223504523, "chaco 332");
@@ -69,68 +77,132 @@ public class Main {
 		//System.out.println(listaCliente.listarClientes());
 		
 		archivoClientes.grabarClientes(listaCliente);
+		*/
 		
-		ListadoEmpleados listaEmpleado = new ListadoEmpleados();
-		Scanner scan = new Scanner(System.in);
+		/*
 		
-		Empleado e1 = new Empleado("Esteban", "Quito", 123, 321, "ABC 123", "EstebanQuito", "12345", "Gerente", 40000, 6);
-		Empleado e2 = new Empleado("Armando", "Casas", 456, 654, "CBA 321", "ArmandoCasas", "12345", "Vendedor", 30000, 8);
-		Empleado e = new Empleado();
-		listaEmpleado.agregarEmpleado(e1);
-		listaEmpleado.agregarEmpleado(e2);
-		
-		archivoEmpleados.grabarEmpleados(listaEmpleado);
-		archivoEmpleados.leerEmpleados();
-		System.out.println(listaEmpleado.listarEmpleados());
-		
-		System.out.println("Ingrese el DNI del empleado");
-		e.setDni(scan.nextInt());
-		
-		scan.nextLine();
-		System.out.println("Ingrese el nombre del empleado");
-		e.setNombre(scan.nextLine());
-		
-		System.out.println("Ingrese el apellido del empleado");
-		e.setApellido(scan.nextLine());
-		
-		System.out.println("Ingrese el número de teléfono");
-		e.setTelefono(scan.nextInt());
+		High_top z1 = new High_top("1111", "nike" ,"force", 32, 600);
+		High_top z2 = new High_top("2222", "adidas","garache", 33, 400);
+		High_top z3 = new High_top("3333", "reekon","sport", 33, 600);
+		High_top z4 = new High_top("4444", "adidas","runner", 32, 600);
 		
 		
-		scan.nextLine();
-		System.out.println("Ingrese el domicilio");
-		e.setDomicilio(scan.nextLine());
+		ListadoSneakers  lista = new ListadoSneakers();
 		
-		System.out.println("Ingrese el nombre de usuario");
-		e.setNombreUsuario(scan.nextLine());
+		lista.agregarSneaker(z1);
+		lista.agregarSneaker(z2);
+		lista.agregarSneaker(z3);
+		lista.agregarSneaker(z4);
 		
-		System.out.println("Ingrese la contraseña");
-		e.setPass(scan.nextLine());
+		//lista.agregarSneaker("2", z2);
+		//lista.agregarSneaker("1", z3);
+		//lista.agregarSneaker("1", z4);
+
+		System.out.println(lista.listarSneakers());
 		
-		System.out.println("Ingrese el puesto que ocupa");
-		e.setPuesto(scan.nextLine());
+	
 		
 		
-		System.out.println("Ingrese el sueldo");
-		e.setSueldo(scan.nextDouble());
+		//System.out.println(lista.devolverSneakersConSuCodigoYTalle(32));
 		
-		System.out.println("Ingrese la cantidad de horas que trabaja");
-		e.setHorasDeTrabajo(scan.nextInt());
+		//System.out.println(lista.devolverSneakersConSuCodigoYMarca("adidas"));
+		  
+		 Vendedor v1 = new Vendedor();
+		Vendedor v2 = new Vendedor();
 		
-		scan.close();
+		High_top z1 = new High_top("1111", "nike" ,"force", 32, 600);
+		High_top z2 = new High_top("2222", "adidas","garache", 33, 400);
+		Cliente c1 = new Cliente("luis", "tools", "2185122", 223504523, "chaco 332");
+		Cliente c2= new Cliente("luis", "tools", "2185122", 223504523, "chaco 332");
 		
-		listaEmpleado.agregarEmpleado(e);
-		try
-		{
-			e.registrarCuenta(e, listaEmpleado);
-		} 
-		catch (UserException ex) {
+		
+		CarritoCompra carri = new CarritoCompra();
+		carri.agregarAlCarrito(z2);
+		carri.agregarAlCarrito(z1);
+		
+		
+		Venta venta1 = new Venta(new Date(), c1, v1, carri);
+		
+		Venta venta2 = new Venta(new Date(), c2, v2, carri);
+		
+		ListadoVentas listaVentas = new ListadoVentas();
+		listaVentas.agregarVenta(venta1);
+		listaVentas.agregarVenta(venta2);
+		
+		
+		System.out.println(listaVentas.listarVentas());
+		
+		
+		
+		Cliente c2= new Cliente("luis", "tools", "2185122", 223504523, "chaco 332");
+		
+		Local local = new Local();
+		
+		//local.agregarCliente(c2);
+		
+		
+		
+		
+		System.out.println(local.listarClientes());
+		
+		
+		local.guardarDatosLocal();
+		
+		*/
+		//Cliente c1 = new Cliente("luis", "tools", "2185122", 223504523, "chaco 332");
+		
+		//ListadoClientes listcli = new ListadoClientes();
+		
+		//listcli.agregarCliente(c1);
+		
+		
+		
+		ListadoClientes listacliente = new ListadoClientes();
+		ListadoEmpleados listaempleados = new  ListadoEmpleados();
+		
+		
+		
+		
+		//Local local = new Local(listacliente,listaempleados);
+		//local.guardarDatosLocal();
+		
+		try {
 			
-			System.out.println(ex.getMensaje());
+			Menu menu = new Menu();
+			
+			//menu.registrarEmpleado();
+			
+			menu.menuGerente();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 		
 		
 		
+		/*
+		Empleado emp1 = new Vendedor("nico","jua","123123",124123,"luro123","nick","asda",32,5);
+		Empleado emp2 = new Vendedor("raul","jua","33333",124123,"luro123","nick","asda",32,5);
+		Empleado emp3 = new Gerente("sergio","jua","22222",124123,"luro123","nick","asda",32,5);
+		
+		
+		ListadoEmpleados lista = new ListadoEmpleados();
+		lista.agregarEmpleado(emp1);
+		lista.agregarEmpleado(emp2);
+		lista.agregarEmpleado(emp3);
+		
+		System.out.println(lista.listarEmpleados());
+		
+		System.out.println(lista.devolverVendedores());
+		System.out.println(lista.devolverCajeros());
+		System.out.println(lista.devolverGerentes());
+		
+		
+		
+		//
+		
+		//System.out.println(array.toString());
+		
+		*/
 	}
-
 }

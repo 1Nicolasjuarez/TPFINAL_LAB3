@@ -1,28 +1,72 @@
 package caja;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
 import colecciones.CarritoCompra;
 import modelos.Cliente;
+import modelos.Vendedor;
 
-public class Venta implements Comparable<Venta>{
-
+public class Venta implements Serializable, Comparable<Venta>{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int id=0;
 	private Date fechaVenta;
 	private Cliente cliente;
+	private Vendedor vendedor;
 	private CarritoCompra carrito;
 	private double totalVenta;
 
-	public Venta() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Venta(Date fechaVenta, Cliente cliente, CarritoCompra carrito) {
-		super();
+	
+	public Venta(Date fechaVenta, Cliente cliente,Vendedor vendedor ,CarritoCompra carrito) {
+		this.id=0;
 		this.fechaVenta = fechaVenta;
 		this.cliente = cliente;
+		this.vendedor=vendedor;
 		this.carrito = carrito;
 		this.totalVenta = carrito.calcularTotalCarrito();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
+
+	public Date getFechaVenta() {
+		return fechaVenta;
+	}
+
+	public void setFechaVenta(Date fechaVenta) {
+		this.fechaVenta = fechaVenta;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Vendedor getVendedor() {
+		return vendedor;
+	}
+
+	public void setVendedor(Vendedor vendedor) {
+		this.vendedor = vendedor;
+	}
+
+	public void setTotalVenta(double totalVenta) {
+		this.totalVenta = totalVenta;
 	}
 
 	public double getTotalVenta() {
@@ -31,7 +75,7 @@ public class Venta implements Comparable<Venta>{
 
 	@Override
 	public String toString() {
-		return "Venta [fechaVenta=" + fechaVenta + ", cliente=" + cliente.toString() + carrito + ", totalVenta="
+		return "Venta [" +"id venta:" +getId() + "  fechaVenta=" + fechaVenta + ", cliente=" + cliente.toString() + carrito + ", totalVenta="
 				+ totalVenta + "]";
 	}
 

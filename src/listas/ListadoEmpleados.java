@@ -3,8 +3,12 @@ package listas;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import excepciones.ErrorDeBusquedaExcepcion;
 import genericos.Listado;
+import modelos.Cajero;
 import modelos.Empleado;
+import modelos.Gerente;
+import modelos.Vendedor;
 
 public class ListadoEmpleados implements Serializable{
 
@@ -33,16 +37,8 @@ public class ListadoEmpleados implements Serializable{
 		return empleados.agregarElemento(elemento);
 	}
 	
-	public boolean eliminarEmpleado(Empleado elemento)
-	{
-		return empleados.agregarElemento(elemento);
-	}
 	
-	public boolean eliminarEmpleadoObj(Empleado elemento) {
-		return empleados.eliminarElementoObj(elemento);
-	}
-	
-	public Empleado eliminarEmpleadoIndex(int  index) {
+	public Empleado buscarEmpleadoIndex(int  index) {
 		return empleados.buscarElemento(index);
 	}
 	
@@ -54,6 +50,8 @@ public class ListadoEmpleados implements Serializable{
 		return empleados.contarElementos();
 	}
 	
+	
+	// no me sirve
 	public boolean existeEmpleado(Empleado empleado) {
 		return empleados.existeElemento(empleado);
 	}
@@ -67,6 +65,122 @@ public class ListadoEmpleados implements Serializable{
 		
 		return listaDeEmpleados;
 	} 
+	
+	public boolean eliminarEmpleado(String dni)
+	{
+		boolean rta=false;
+		//Empleado empleado = null;
+		
+		for (int i = 0; i < empleados.contarElementos(); i++) 
+		{
+			if(empleados.buscarElemento(i).getDni().equals(dni))
+			{
+				empleados.eliminarElementoIndice(i);
+				rta=true;		
+			}		
+		}	
+		return rta;
+	}
+	
+	public int modificarEmpleado(String dni)
+	{
+		int borrar = -1;
+		
+		boolean rta=false;
+		//Empleado empleado = null;
+		
+		for (int i = 0; i < empleados.contarElementos(); i++) 
+		{
+			if(empleados.buscarElemento(i).getDni().equals(dni))
+			{
+				borrar=i;	
+			}		
+		}	
+		return borrar;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	public String devolverVendedores()
+	{
+		StringBuilder builder = new StringBuilder();
+		ArrayList<Empleado> arrayEmpleados = devolverEmpleados();
+		
+		for (Empleado empleado : arrayEmpleados) 
+		{
+			if(empleado instanceof Vendedor)
+			{
+				builder.append(empleado.toString());
+			}
+			
+		}
+		if(builder.isEmpty())
+		{
+			builder.append("El archivo esta vacio.");
+		}
+		return builder.toString();
+		
+	}
+	
+	public String devolverCajeros()
+	{
+		StringBuilder builder = new StringBuilder();
+		ArrayList<Empleado> arrayEmpleados = devolverEmpleados();
+		
+		for (Empleado empleado : arrayEmpleados) 
+		{
+			if(empleado instanceof Cajero)
+			{
+				builder.append(empleado.toString());
+			}
+			
+		}
+		
+		if(builder.isEmpty())
+		{
+			builder.append("El archivo esta vacio.");
+		}
+		return builder.toString();
+		
+	}
+	
+	public String devolverGerentes()
+	{
+		StringBuilder builder = new StringBuilder();
+		ArrayList<Empleado> arrayEmpleados = devolverEmpleados();
+		
+		for (Empleado empleado : arrayEmpleados) 
+		{
+			if(empleado instanceof Gerente)
+			{
+				builder.append(empleado.toString());
+			}
+			
+		}
+		if(builder.isEmpty())
+		{
+			builder.append("El archivo esta vacio.");
+		}
+		return builder.toString();
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
+	 * ESTO GUARDA EN EL ARCHIVO 
+	 */
 	
 	public void agregarListaDeEmpleados(ArrayList<Empleado> listaDeEmpleado) {
 		

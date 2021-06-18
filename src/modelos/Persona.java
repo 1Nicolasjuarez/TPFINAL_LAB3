@@ -11,7 +11,7 @@ public abstract class Persona implements Serializable{
 	
 	private String nombre;
 	private String apellido;
-	private int dni;
+	private String dni;
 	private int telefono;
 	private String domicilio;
 
@@ -19,12 +19,12 @@ public abstract class Persona implements Serializable{
 		super();
 		nombre = "";
 		apellido = "";
-		dni = 0;
+		dni = "";
 		telefono = 0;
 		domicilio = "";
 	}
 
-	public Persona(String nombre, String apellido, int dni, int telefono, String domicilio) {
+	public Persona(String nombre, String apellido, String dni, int telefono, String domicilio) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
@@ -64,7 +64,7 @@ public abstract class Persona implements Serializable{
 		this.telefono = telefono;
 	}
 
-	public int getDni() {
+	public String getDni() {
 		return dni;
 	}
 	
@@ -78,14 +78,16 @@ public abstract class Persona implements Serializable{
 				+ ", domicilio=" + domicilio + "]";
 	}
 	
+	
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + dni;
+		result = prime * result + ((dni == null) ? 0 : dni.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -96,7 +98,10 @@ public abstract class Persona implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Persona other = (Persona) obj;
-		if (dni != other.dni)
+		if (dni == null) {
+			if (other.dni != null)
+				return false;
+		} else if (!dni.equals(other.dni))
 			return false;
 		return true;
 	}

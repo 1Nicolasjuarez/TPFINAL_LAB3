@@ -1,10 +1,14 @@
 package producto;
 
+import java.io.Serializable;
 
+public abstract class Sneaker implements Serializable{
 
-public abstract class Sneaker {
-
-	private String codigo;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String numeroSerie;
 	private String marca;
 	private String modelo;
 	private double talle;
@@ -15,9 +19,9 @@ public abstract class Sneaker {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Sneaker(String codigo, String marca, String modelo, double talle, double precio) {
+	public Sneaker(String numeroSerie, String marca, String modelo, double talle, double precio) {
 
-		this.codigo = codigo;
+		this.numeroSerie = numeroSerie;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.talle = talle;
@@ -25,12 +29,12 @@ public abstract class Sneaker {
 		this.isDisponible = true;
 	}
 
-	public String getCodigo() {
-		return codigo;
+	public String getNumeroSerie() {
+		return numeroSerie;
 	}
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setNumeroSerie(String numeroSerie) {
+		this.numeroSerie = numeroSerie;
 	}
 
 	public String getMarca() {
@@ -72,10 +76,15 @@ public abstract class Sneaker {
 	public void setDisponible(boolean isDisponible) {
 		this.isDisponible = isDisponible;
 	}
+	
+	public abstract String getTipoDeSneakerAbs();
+	
+	
+	
 
 	@Override
 	public String toString() {
-		return "Sneaker [codigo=" + codigo + ", marca=" + marca + ", modelo=" + modelo + ", talle="
+		return "Sneaker [numeroSerie=" + numeroSerie + ", marca=" + marca + ", modelo=" + modelo + ", talle="
 				+ talle + ", precio=" + precio + ", isDisponible=" + isDisponible + "]";
 	}
 
@@ -88,7 +97,7 @@ public abstract class Sneaker {
 		if (getClass() != obj.getClass())
 			return false;
 		Sneaker other = (Sneaker) obj;
-		if (codigo != other.codigo)
+		if (numeroSerie != other.numeroSerie)
 			return false;
 		return true;
 	}

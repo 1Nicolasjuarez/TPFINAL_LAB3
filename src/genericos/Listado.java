@@ -1,17 +1,17 @@
 package genericos;
 
 import java.io.Serializable;
+
 import java.util.ArrayList;
 
-import interfaces.iColecciones;
-import modelos.Persona;
+
 
 /*
  * 
  * CLASE GENERICA
  */
 
-public class Listado<P extends Persona> implements iColecciones<Persona>,Serializable {
+public class Listado<P> implements Serializable {
 
 	
 
@@ -23,11 +23,11 @@ public class Listado<P extends Persona> implements iColecciones<Persona>,Seriali
 		contenedor = new ArrayList<P>();
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public boolean agregarElemento(Persona x) {
+	
+	
+	public boolean agregarElemento(P x) {
 
-		return contenedor.add((P) x);
+		return contenedor.add( x);
 	}
 	
 	public P eliminarElementoIndice(int indice) {
@@ -39,14 +39,14 @@ public class Listado<P extends Persona> implements iColecciones<Persona>,Seriali
 			return contenedor.remove(p);
 	}
 	
-	@Override
+	
 	public int contarElementos() {
 
 		return contenedor.size();
 	}
 	
 
-	@Override
+	
 	public String listarElementos() {
 		StringBuilder sb = new StringBuilder();
 
@@ -64,7 +64,43 @@ public class Listado<P extends Persona> implements iColecciones<Persona>,Seriali
 		return contenedor.contains(elemento);
 	}
 	
+	/*
+	private boolean buscarElementoPorDni(String dni) {
+
+		boolean rta = false;
+
+		for (int i = 0; i < contenedor.size(); i++) {
+			if (contenedor.get(i).getDni() == dni) {
+
+				rta = true;
+			}
+
+		}
+
+		return rta;
+	}
 	
+	public String eliminarElementoPorDni(int dni) {
+		String msj = "El elemento no se ha borrado, ya que no se encuentra en la lista";
+
+		boolean rta = buscarElementoPorDni(dni);
+
+		if (rta) {
+			for (int i = 0; i < contenedor.size(); i++) {
+				if (contenedor.get(i).getDni() == dni) {
+
+					contenedor.remove(i);
+					msj = "elemento eliminado correctamente";
+				}
+
+			}
+
+		}
+
+		return msj;
+	}
+	
+	*/
 	
 	/*
 	

@@ -1,46 +1,157 @@
 package listas;
 
-import java.util.Iterator;
-import java.util.TreeSet;
+import java.io.Serializable;
+import java.util.ArrayList;
+
 
 import caja.Venta;
+import excepciones.ErrorDeBusquedaExcepcion;
+import genericos.Listado;
 
-public class ListadoVentas {
+public class ListadoVentas implements Serializable{
 
-	private TreeSet<Venta> listadoVentas;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public static int id=0;
+	
+	private Listado<Venta> ventas;
 
 	public ListadoVentas() {
 
-		listadoVentas = new TreeSet<Venta>();
+		ventas = new Listado<Venta>();
 	}
+	
+	public ListadoVentas(ListadoVentas listaVentas) {
 
-	public void agregar(Venta x) {
-
-		listadoVentas.add(x);
-
+		ventas = new Listado<Venta>();
+		this.agregarListaDeVentas(listaVentas.devolverVentas());
 	}
-
-	public String listar() {
-		StringBuilder sb = new StringBuilder();
-
-		@SuppressWarnings("rawtypes")
-		Iterator it = listadoVentas.iterator();
-
-		while (it.hasNext()) {
-			sb.append(it.next());
+	
+	public boolean agregarVenta(Venta venta) {
+		venta.setId(id++);
+		return ventas.agregarElemento(venta);
+	}
+	
+	public boolean eliminarVentaObj(Venta venta) {
+		return ventas.eliminarElementoObj(venta);
+	}
+	
+	public Venta eliminarVentaIndex(int index) {
+		return ventas.buscarElemento(index);
+	}
+	
+	public String listarVentas() {
+		return ventas.listarElementos();
+	}
+	
+	public int cantidadDeVentas() {
+		return ventas.contarElementos();
+	}
+	
+	
+	public void agregarListaDeVentas(ArrayList<Venta> listaDeVentas) {
+		
+		for(Venta venta : listaDeVentas) {
+			this.ventas.agregarElemento(venta);
 		}
-
-		return sb.toString();
 	}
+	
 
-	public int contar() {
+	public ArrayList<Venta> devolverVentas() {
+		ArrayList<Venta> listaDeVentas = new ArrayList<Venta>();
+		
+		for(int i = 0 ; i < ventas.contarElementos() ; i++) {
+			listaDeVentas.add(ventas.buscarElemento(i));
+		}
+		
+		return listaDeVentas;
+	} 
+	
+	public String listarVentasDeUnVendedor(String dni) {
+		StringBuilder builder = new StringBuilder();
+		
+		ArrayList<Venta> arrayVentas = devolverVentas();
 
-		return listadoVentas.size();
-
+		for(Venta v : arrayVentas) {
+			if(v.getVendedor().getDni().equals(dni)) {
+				builder.append(v.toString()+"\n");
+			}
+		}
+		
+		String ventas = builder.toString();
+		if(ventas.isEmpty()) {
+			ventas = "No hay ventas registradas";
+		}
+		
+		return ventas;
 	}
+	
 
-	public void eliminar(Venta x) {
-		listadoVentas.remove(x);
+	
+	public String listarVentasDeUnCliente(String dni) {
+		
+		StringBuilder builder = new StringBuilder();
+		
+		ArrayList<Venta> arrayVentas = devolverVentas();
 
+		for(Venta v : arrayVentas) {
+			if(v.getCliente().getDni().equals(dni)) {
+				builder.append(v.toString()+"\n");
+			}
+		}
+		
+		String ventas = builder.toString();
+		if(ventas.isEmpty()) {
+			ventas = "No hay ventas registradas";
+		}
+		
+		return ventas;
 	}
+	
+	
+	public Venta buscarVentaPorID(int id) throws ErrorDeBusquedaExcepcion {
+		
+		Venta venta = null;
+		boolean existe = false;
+	
+		ArrayList<Venta> arrayVentas = devolverVentas();
+		
+		for(Venta v : arrayVentas) {
+			if(v.getId() == id) {
+				venta = v;
+				existe = true;
+				break;
+			}	
+		}
+		if(!existe) {
+			throw new ErrorDeBusquedaExcepcion("Venta no encontrada");
+		}
+		
+		return venta;
+	}
+	
+	
+	public String listarVentasConIdVendedorClineteYFecha() {
+		StringBuilder builder = new StringBuilder();
+		
+		ArrayList<Venta> arrayVentas = devolverVentas();
+		
+		for(Venta v : arrayVentas) {
+			builder.append("ID: "+v.getId()+" - Cliente: "+v.getCliente().getNombre()+" "+v.getCliente().getApellido()
+					+" - Vendedor: "+v.getVendedor().getNombre()+" "+v.getVendedor().getApellido()+" - Fecha: "+v.getFechaVenta()+"\n");
+			
+		}
+		
+		return builder.toString();
+	}
+	
+	public boolean existeVenta(Venta venta) {
+		return ventas.existeElemento(venta);
+	}
+	
+	
+	
+	
 }

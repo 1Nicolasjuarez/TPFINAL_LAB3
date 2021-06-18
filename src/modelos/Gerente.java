@@ -1,5 +1,7 @@
 package modelos;
 
+
+
 public class Gerente extends Empleado {
 
 
@@ -10,23 +12,20 @@ public class Gerente extends Empleado {
 	
 	private static String PUESTO="gerente";
 	
-	private String puesto;
-	
-	
 	public Gerente() {
 		super();
-		this.puesto=PUESTO;
+		
 	}
 
-	public Gerente(String nombre, String apellido, int dni, int telefono, String domicilio, String nombreUsuario,
-			String pass, String puesto, double sueldo, int horasDeTrabajo) {
-		super(nombre, apellido, dni, telefono, domicilio, nombreUsuario, pass, puesto, sueldo, horasDeTrabajo);
-		this.puesto=PUESTO;
+	public Gerente(String nombre, String apellido, String dni, int telefono, String domicilio, String nombreUsuario,
+			String pass, double sueldo, int horasDeTrabajo) {
+		super(nombre, apellido, dni, telefono, domicilio, nombreUsuario, pass, PUESTO, sueldo, horasDeTrabajo);
+		
 	}
 	
 	@Override
 	public String toString() {
-		return "Gerente [puesto=" + puesto + "]"+super.toString()+"\n";
+		return "Gerente"+super.toString()+"\n";
 	}
 	
 	

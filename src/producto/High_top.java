@@ -4,6 +4,11 @@ package producto;
 
 public class High_top extends Sneaker {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private static String TIPO_SNEAKER = "high top";
 
 	private String tipoDeSneaker;
@@ -13,8 +18,8 @@ public class High_top extends Sneaker {
 		this.tipoDeSneaker = TIPO_SNEAKER;
 	}
 
-	public High_top(String codigo, String marca, String modelo, double talle, double precio) {
-		super(codigo, marca, modelo, talle, precio);
+	public High_top(String numeroSerie, String marca, String modelo, double talle, double precio) {
+		super(numeroSerie, marca, modelo, talle, precio);
 		this.tipoDeSneaker = TIPO_SNEAKER;
 	}
 
@@ -29,6 +34,12 @@ public class High_top extends Sneaker {
 	@Override
 	public String toString() {
 		return "High_top [tipoDeSneaker=" + tipoDeSneaker + "]" + super.toString();
+	}
+
+	@Override
+	public String getTipoDeSneakerAbs() {
+		
+		return getTipoDeSneaker();
 	}
 
 }

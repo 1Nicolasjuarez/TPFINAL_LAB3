@@ -4,13 +4,10 @@ import java.util.Date;
 import java.util.Scanner;
 
 
-import archivos.archivoEmpleados;
-
 
 import caja.Venta;
 import colecciones.CarritoCompra;
-import excepciones.ErrorDeBusquedaExcepcion;
-import listas.ListadoVentas;
+
 
 import local.Local;
 import modelos.Cajero;
@@ -675,7 +672,7 @@ public class Menu
 		return local.exixteClaveSnk(clave);
 	}
 	
-	//TODO falta hacer coasa con la exp 
+	
 	public void menuABMstock()
 	{
 		try {
@@ -951,51 +948,6 @@ public class Menu
 	
 	
 	
-	/*
-	public void menuNuevaVenta()
-	{
-		try {
-			
-			String principalMenu = "\n\n=> MENU VENTA \n1.NUEVO CLIENTE\n2.CLIENTE EXISTENTE  \n0.SALIR, VOLVER AL MENU ANTERIOR";
-			String cont= "s";
-			int secondSelect=0;
-			System.out.println(principalMenu);
-			System.out.print("Seleccione: ");
-			
-			while(cont.equals("s")||cont.equals("S"))
-			{
-				secondSelect= scanner.nextInt();
-				
-				switch (secondSelect) {
-				case 1:
-					
-					break;
-				case 2:
-					
-					break;
-				case 3:
-					
-					break;
-
-				default:
-					break;
-				}
-			}
-			
-			
-			
-			
-			
-			
-			
-			
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-	}
-	
-	*/
 	
 	
 	
@@ -1176,7 +1128,7 @@ public class Menu
 		
 		try {
 			
-			String principalMenu = "\n\n=> MENU CAJERO\n1.NUEVA VENTA \n2.LISTAR VENTAS \n3.ELIMINAR VENTA \n4.AGREGAR CLIENTE \n0.SALIR, VOLVER AL MENU ANTERIOR";
+			String principalMenu = "\n\n=> MENU CAJERO\n1.NUEVA VENTA \n2.LISTAR VENTAS \n3.ELIMINAR VENTA \n4.AGREGAR CLIENTE \n5.LISTAR HISTORIAL DE COMPRAS DE UN CLIENTE\n0.SALIR, VOLVER AL MENU ANTERIOR";
 
 			int secondSelect=0;
 			System.out.println(principalMenu);
@@ -1211,6 +1163,11 @@ public class Menu
 				case 4:
 						agregarClienteCajero();
 					break;
+				case 5:
+						System.out.println("ingrese dni del cliente");
+						String dni=scanner.next();
+						System.out.println(local.listarComprasDeClienteDni(dni));
+				break;
 				case (0): 
 					System.out.println("Volviendo al menu anterior");
 					menuPrincipal();
@@ -1279,7 +1236,7 @@ public class Menu
 	{
 		
 		try {
-			String principalMenu = "\n\n=> MENU PRINCIPAL\n1.MENU GERENTE\n2.MENU CAJERO \n3.MENU VENDEDOR \n4.GUARDAR DATOS  \n0.SALIR DEL SISTEMA";
+			String principalMenu = "\n\n=> MENU PRINCIPAL\n1.MENU GERENTE\n2.MENU CAJERO \n3.MENU VENDEDOR \n4.GUARDAR DATOS  \n5.LEER DATOS JSON VENTAS \n0.SALIR DEL SISTEMA";
 			int secondSelect=0;
 			System.out.println(principalMenu);
 			System.out.print("Seleccione: ");
@@ -1293,19 +1250,29 @@ public class Menu
 							
 				break;
 			case 3: //menuVendedor donde ve sus ventas
+					System.out.println("ingrese dni del vendedor");
+					String dni = scanner.next();
+					
+					System.out.println(local.listarVentasDeVendedorDni(dni));
 				
 				break;
 			case 4:// guardar datos
 					local.guardarDatosLocal();
 					menuPrincipal();
 				break;
-			case 5:// guardar datos GUARDAR EL JSON CON LAS VENTAS
+			case 5:// guardar datos GUARDAR EL JSON CON LAS VENTAS 
+					
+					local.mostrarJsonVentas();
+					menuPrincipal();
+					// VER EL JSON DE VENTAS
 				
+						//local.guardarVentasJson();
 			break;
 			
 			case (0): 
-				System.exit(0);
 				System.out.println("SALIENDO DEL SISTEMA, VUELVA PRONTOS");
+				System.exit(0);
+				
 				break;
 
 			default:

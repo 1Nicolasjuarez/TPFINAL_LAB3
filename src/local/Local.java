@@ -2,6 +2,8 @@ package local;
 
 
 
+import org.json.JSONException;
+
 import archivos.archivoClientes;
 import archivos.archivoEmpleados;
 import archivos.archivoProductos;
@@ -16,6 +18,7 @@ import modelos.Cliente;
 import modelos.Empleado;
 import modelos.Vendedor;
 import producto.Sneaker;
+import utilidades.JsonUtiles;
 
 public class Local  {
 
@@ -471,23 +474,54 @@ public class Local  {
 	
 	
 	
+	public String listarVentasDeVendedorDni(String dni)
+	{
+		return listaVentas.listarVentasDeUnVendedor(dni);
+	}
+	
+	public String listarComprasDeClienteDni(String dni)
+	{
+		return listaVentas.listarComprasDeUnCliente(dni);
+		
+	}
 	
 	
 	
 	
+	public void guardarVentasJson()
+	{
+		try {
+			JsonUtiles.grabar(listaVentas.toJSONarray());
+		} catch (JSONException e) {
+			System.out.println(e.getMessage());
+		}
+	}
 	
-	
-	
-	
+	public void mostrarJsonVentas()
+	{
+		try {
+			String msg= JsonUtiles.leer();
+			listaVentas.JSONtoJava(msg);
+		} catch (JSONException e) {
+			System.out.println(e.getMessage());
+		}	
+	}
 	
 	
 	
 	public void guardarDatosLocal()
 	{
-		archivoClientes.grabarClientes(listaClientes);
-		archivoEmpleados.grabarEmpleados(listaEmpleados);
-		archivoProductos.grabarProductos(listaSneakers);
-		archivoVentas.grabarVentas(listaVentas);
+		try {
+			
+			archivoClientes.grabarClientes(listaClientes);
+			archivoEmpleados.grabarEmpleados(listaEmpleados);
+			archivoProductos.grabarProductos(listaSneakers);
+			archivoVentas.grabarVentas(listaVentas);
+			JsonUtiles.grabar(listaVentas.toJSONarray());
+		} catch (JSONException e) {
+			System.out.println(e.getMessage());
+		}
+	
 	}
 	
 	

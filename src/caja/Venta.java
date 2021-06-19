@@ -4,6 +4,9 @@ package caja;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import colecciones.CarritoCompra;
 import modelos.Cliente;
 import modelos.Vendedor;
@@ -106,6 +109,23 @@ public class Venta implements Serializable, Comparable<Venta>{
 			return false;
 		return true;
 	}
+	
+	public JSONObject toJSONObject () throws JSONException
+	{
+		
+		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("ID", getId());
+		jsonObj.put("FECHA", getFechaVenta());
+		jsonObj.put("CLIENTE", cliente.getDni());
+		jsonObj.put("VENDEDOR", vendedor.getDni());
+		jsonObj.put("CARRITO", carrito.mostrarCarrito());
+		jsonObj.put("MONTO", getTotalVenta());
+		
+		return jsonObj;
+		
+		
+	}
+	
 	
 	
 

@@ -53,6 +53,10 @@ public class Listado<P> implements Serializable {
 		for (int i = 0; i < contenedor.size(); i++) {
 			sb.append(contenedor.get(i).toString());
 		}
+		if(sb.isEmpty())
+		{
+			sb.append("vacio");
+		}
 		return sb.toString();
 	}
 	

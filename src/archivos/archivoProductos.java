@@ -14,7 +14,7 @@ import listas.ListadoSneakers;
 
 
 
-public class archivoProductos implements Serializable {
+public class archivoProductos  {
 	
 	
 	private static final long serialVersionUID = 1L;

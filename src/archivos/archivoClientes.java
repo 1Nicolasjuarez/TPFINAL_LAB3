@@ -11,10 +11,10 @@ import java.io.Serializable;
 
 import listas.ListadoClientes;
 
-public class archivoClientes implements Serializable{
+public class archivoClientes {
 	
 	
-	private static final long serialVersionUID = 1L;
+	
 
 	private static String archivoDeClientes = "clientes.dat";
 

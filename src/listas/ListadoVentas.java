@@ -3,6 +3,9 @@ package listas;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import caja.Venta;
 import excepciones.ErrorDeBusquedaExcepcion;
@@ -90,7 +93,7 @@ public class ListadoVentas implements Serializable{
 	
 
 	
-	public String listarVentasDeUnCliente(String dni) {
+	public String listarComprasDeUnCliente(String dni) {
 		
 		StringBuilder builder = new StringBuilder();
 		
@@ -143,6 +146,11 @@ public class ListadoVentas implements Serializable{
 					+" - Vendedor: "+v.getVendedor().getNombre()+" "+v.getVendedor().getApellido()+" - Fecha: "+v.getFechaVenta()+"\n");
 			
 		}
+		if(builder.isEmpty())
+		{
+			builder.append("No se encontraron registros.");
+		}
+		
 		
 		return builder.toString();
 	}
@@ -151,7 +159,75 @@ public class ListadoVentas implements Serializable{
 		return ventas.existeElemento(venta);
 	}
 	
+	public boolean eliminarVenta(int idVenta)throws ErrorDeBusquedaExcepcion
+	{
+		boolean rta=false;
+		
+		//Integer num =indice;
+		
+		for (int i = 0; i < ventas.contarElementos(); i++) 
+		{
+			if(ventas.buscarElemento(i).getId()==idVenta)
+			{
+				ventas.eliminarElementoIndice(i);
+				rta=true;
+			}
+		}
+		
+		if(!rta)
+		{
+			throw new ErrorDeBusquedaExcepcion("Venta no encontrado");
+		}
+		return rta;
+	}
 	
 	
+	
+	public JSONArray toJSONarray () throws JSONException
+	{
+		JSONArray jsonArray = new JSONArray();
+		
+		for (int i = 0; i < ventas.contarElementos(); i++)
+		{
+			
+			jsonArray.put(ventas.buscarElemento(i).toJSONObject());
+			
+		}
+		return jsonArray;
+	}
+	
+	
+	public String toJSONarray2 () throws JSONException
+	{
+		JSONArray jsonArray = new JSONArray();
+		
+		for (int i = 0; i < ventas.contarElementos(); i++)
+		{
+			
+			jsonArray.put(ventas.buscarElemento(i).toJSONObject());
+			
+		}
+		return jsonArray.toString();
+	}
+	
+	
+	public void JSONtoJava(String json) throws JSONException
+	{
+		JSONArray jsonObjPadre = new JSONArray(json);
+
+		for (int i = 0; i < jsonObjPadre.length(); i++)
+		{
+			JSONObject jsonObj =jsonObjPadre.getJSONObject(i); 
+			System.out.println("\n----------------------------\n");
+			System.out.println("Id de venta: "+jsonObj.get("ID"));
+			System.out.println("fecha: "+jsonObj.get("FECHA"));
+			System.out.println("Cliente: "+jsonObj.get("CLIENTE"));
+			System.out.println("Vendedor: "+jsonObj.get("VENDEDOR"));
+			System.out.println("Carrito de compra: "+jsonObj.get("CARRITO"));
+			System.out.println("Total de la venta: "+jsonObj.get("MONTO"));
+			System.out.println("\n----------------------------\n");
+		}
+		
+	}
 	
 }

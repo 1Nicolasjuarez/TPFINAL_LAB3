@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
+import org.json.JSONException;
+
 import archivos.archivoClientes;
 import caja.Venta;
 import colecciones.CarritoCompra;
-import excepciones.UserException;
+
 import listas.ListadoClientes;
 import listas.ListadoEmpleados;
 import listas.ListadoSneakers;
@@ -21,6 +23,7 @@ import modelos.Gerente;
 import modelos.Vendedor;
 import producto.High_top;
 import producto.Low_top;
+import utilidades.JsonUtiles;
 
 
 public class Main {
@@ -61,6 +64,46 @@ public class Main {
 		
 		System.out.println(listaVentas.listar());
 		*/
+		
+		
+		/* TODO  EL QUE ESTOY USANDO PARA VER EL JSON
+		
+		ListadoVentas listaVentas = new ListadoVentas();
+		Cliente c1 = new Cliente("luis", "tools", "2185122", 223504523, "chaco 332");
+		Cliente c2 = new Cliente("nico", "perez", "11111", 223504523, "luro 332");
+		
+		Vendedor emp1 = new Vendedor("nico","jua","123123",124123,"luro123","nick","asda",32,5);
+		High_top z1 = new High_top("1111", "nike" ,"force", 32, 600);
+		High_top z2 = new High_top("2222", "adidas","garache", 33, 400);
+
+		CarritoCompra carri = new CarritoCompra();
+		carri.agregarAlCarrito(z2);
+		carri.agregarAlCarrito(z1);
+		
+		Venta venta = new Venta(new Date(), c1, emp1, carri);
+		Venta venta2 = new Venta(new Date(), c2, emp1, carri);
+
+		System.out.println(venta.toString());
+	
+		listaVentas.agregarVenta(venta);
+		listaVentas.agregarVenta(venta2);
+
+		try {
+			String msg= listaVentas.toJSONarray2();
+			
+			//System.out.println(msg);
+			
+			JsonUtiles.grabar(listaVentas.toJSONarray());
+			
+			listaVentas.JSONtoJava(msg);
+		
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		/*
+		
 		
 		/*
 		
@@ -157,37 +200,23 @@ public class Main {
 		
 		
 		
-		ListadoClientes listacliente = new ListadoClientes();
-		ListadoEmpleados listaempleados = new  ListadoEmpleados();
-		
+		//ListadoClientes listacliente = new ListadoClientes();
+		//ListadoEmpleados listaempleados = new  ListadoEmpleados();
 		
 		
 		
 		//Local local = new Local(listacliente,listaempleados);
 		//local.guardarDatosLocal();
 		
-		/*
-		try {
-			
+		
 			Menu menu = new Menu();
 			
 			//menu.registrarEmpleado();
 			
-			menu.menuGerente();
+		menu.menuPrincipal();
 			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		*/
 		
-		Menu menu = new Menu();
-		try {
-			menu.registrarEmpleado();
-			
-		} catch (UserException e) {
-			// TODO Auto-generated catch block
-			System.out.println(e.getMensaje());
-		}
+		
 		
 		
 		/*

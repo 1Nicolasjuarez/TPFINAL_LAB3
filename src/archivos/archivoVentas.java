@@ -16,7 +16,7 @@ import listas.ListadoVentas;
 
 
 
-public class archivoVentas implements Serializable {
+public class archivoVentas {
 
 	private static final long serialVersionUID = 1L;
 

@@ -1,16 +1,20 @@
 package utilidades;
 
 import java.io.FileWriter;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
  
 import org.json.JSONArray;
+
 import org.json.JSONObject;
+
+
  
 public class JsonUtiles 
 {
-    private final static String nombreArchivo = "test.json";
+    private final static String nombreArchivo = "ventas.json";
     
     public static void grabar(JSONArray array) {
         try {
@@ -49,4 +53,10 @@ public class JsonUtiles
         }
         return contenido;
     }
+    
+    
+    
+    
+    
+    
 }

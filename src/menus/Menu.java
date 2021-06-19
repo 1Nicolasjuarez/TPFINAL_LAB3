@@ -40,79 +40,127 @@ public class Menu
 			String domicilio;
 			String user;
 			String pass;
-			double sueldo;
+			Double sueldo;
 			int horas;
 			
 			String registro = "REGISTRO DE USUARIO\n\n";
 			String puestoEmpleado = "\n\n=> PUESTO DEL EMPLEADO \n 1. VENDEDOR \n 2. CAJERO \n 3. GERENTE \n 0. SALIR";
-			String cont= "s";
 			
 			int secondSelect = 0;
 			
 			
 			System.out.println(registro);
+		
 			
-			System.out.println("Ingrese el nombre del empleado:");
-			nombre = scanner.next();	
-			
-			if(nombre.equalsIgnoreCase(""))
+			do
 			{
-				throw new UserException("El nombre está vacio ");
-			}
+				System.out.println("Ingrese el nombre del empleado:");
+				nombre = scanner.next();	
+				
+				if(nombre.equalsIgnoreCase(""))
+				{
+					throw new UserException("El nombre está vacio. Intente nuevamente");
+				}
+				
+			}while(nombre.equalsIgnoreCase(""));
 			
-			System.out.println("Ingrese el apellido del empleado:");
-			apellido = scanner.next();		
 			
-			if(apellido.equalsIgnoreCase(""))
+			do
 			{
-				throw new UserException("El apellido está vacio ");
-			}
+				System.out.println("Ingrese el apellido del empleado:");
+				apellido = scanner.next();		
+				
+				if(apellido.equalsIgnoreCase(""))
+				{
+					throw new UserException("El apellido está vacio. Intente nuevamente");
+				}	
+			}while(apellido.equalsIgnoreCase(""));
 			
-			System.out.println("Ingrese DNI:");
-			dni = scanner.next();
 			
-			System.out.println("Ingrese número de teléfono:");
-			telefono=scanner.nextInt();
-			
-			System.out.println("Ingrese domicilio:");
-			domicilio = scanner.next();
-			
-			System.out.println("Ingrese nombre de usuario:");
-			user = scanner.next();
-			
-			if(user.equalsIgnoreCase(""))
+			do
 			{
-				throw new UserException("El nombre de usuario está vacio ");
-			}
-			else if(user.length() < 5)
+				
+				System.out.println("Ingrese DNI:");
+				dni = scanner.next();
+				
+				if(dni.equalsIgnoreCase(""))
+				{
+					throw new UserException("El DNI está vacío. Intente nuevamente");
+				}
+				else if(dni.length() < 8)
+				{
+					throw new UserException("La cantidad de digitos del DNI es menor a 8. Intente nuevamente");
+				}
+				
+			}while(dni.equalsIgnoreCase("") && dni.length() < 8);
+			
+			
+				System.out.println("Ingrese número de teléfono:");
+				telefono=scanner.nextInt();		
+			
+			do
 			{
-				throw new UserException("El nombre de usuario debe tener al menos cinco caracteres");
-			}
+				System.out.println("Ingrese domicilio:");
+				domicilio = scanner.next();
+				
+				if(domicilio.equalsIgnoreCase(""))
+				{
+					throw new UserException("El domicilio está vacío. Intente nuevamente");
+				}
+				
+			}while(domicilio.equalsIgnoreCase(""));
 			
-			System.out.println("Ingrese contraseña:");
-			pass = scanner.next();
-			
-			if(pass.equalsIgnoreCase(""))
+			do
 			{
-				throw new UserException("La contraseña está vacía ");
-			}
+				
+				System.out.println("Ingrese nombre de usuario:");
+				user = scanner.next();
+				
+				if(user.equalsIgnoreCase(""))
+				{
+					throw new UserException("El nombre de usuario está vacio. Intente nuevamente ");
+				}
+				else if(user.length() < 5)
+				{
+					throw new UserException("El nombre de usuario debe tener al menos cinco caracteres. Intente nuevamente");
+				}
+				
+			}while(user.equalsIgnoreCase("") && user.length() < 5);
 			
-			if(pass.length() < 8)
+			
+			do
 			{
-				throw new UserException("La contraseña debe tener al menos ocho caracteres");
-			}
+				System.out.println("Ingrese contraseña:");
+				pass = scanner.next();
+				
+				if(pass.equalsIgnoreCase(""))
+				{
+					throw new UserException("La contraseña está vacía. Intente nuevamente ");
+				}
+				
+				if(pass.length() < 8)
+				{
+					throw new UserException("La contraseña debe tener al menos ocho caracteres. Intente nuevamente");
+				}
+				
+			}while(pass.equalsIgnoreCase("") && pass.length() < 8);
 			
-			
-			System.out.println("Ingrese sueldo:");
-			sueldo = scanner.nextDouble();
+				
+				System.out.println("Ingrese sueldo:");
+				sueldo = scanner.nextDouble();
+				
 			
 			System.out.println("Ingrese horas de trabajo:");
 			horas = scanner.nextInt();
 			
 			System.out.println(puestoEmpleado);
 			
+			do
+			{
 			System.out.print("Seleccione: ");
 			secondSelect = scanner.nextInt();
+			
+			}while(secondSelect != 1 && secondSelect != 2 && secondSelect != 3);
 			
 				switch (secondSelect)
 				{

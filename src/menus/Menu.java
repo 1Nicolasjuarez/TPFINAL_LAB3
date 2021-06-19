@@ -46,10 +46,7 @@ public class Menu
 			String pass;
 			double sueldo;
 			int horas;
-			
-
-		
-			
+					
 			String principalMenu = "\n\n=> MENU REGISTRO\n1.REGISTRO VENDEDOR\n2.REGISTRO CAJERO \n3.REGISTRO GERENTE \n0.SALIR,VOLVER AL MENU ANTERIOR";
 			
 			int secondSelect=0;
@@ -63,28 +60,86 @@ public class Menu
 				{
 				case 1: 
 					
+					System.out.println("\nIngrese nombre:");
+					nombre = scanner.next();
+					System.out.println("\nIngrese apellido :");
+					apellido = scanner.next();
+					System.out.println("\nIngrese dni:");
+					dni = scanner.next();
+					System.out.println("\nIngrese telefono:");
+					telefono= scanner.nextInt();
+					System.out.println("\nIngrese domicilio:");
+					domicilio = scanner.next();
+					System.out.println("\nIngrese usuario:");
+					user = scanner.next();
+					System.out.println("\nIngrese pass:");
+					pass = scanner.next();
+					System.out.println("\nIngrese sueldo:");
+					sueldo = scanner.nextDouble();
+					System.out.println("\nIngrese horas de trabajo:");
+					horas= scanner.nextInt();
 					
-
+					Empleado vendedor = new Vendedor(nombre, apellido, dni, telefono, domicilio, user, pass, sueldo, horas);
+					
+					boolean rta = local.agregarEmpleado(vendedor);
+					verificacionAgregar(rta);
+					menuABMempleado();
 					
 					break;
 					
 				case 2:
+					System.out.println("\nIngrese nombre:");
+					nombre = scanner.next();
+					System.out.println("\nIngrese apellido :");
+					apellido = scanner.next();
+					System.out.println("\nIngrese dni:");
+					dni = scanner.next();
+					System.out.println("\nIngrese telefono:");
+					telefono= scanner.nextInt();
+					System.out.println("\nIngrese domicilio:");
+					domicilio = scanner.next();
+					System.out.println("\nIngrese usuario:");
+					user = scanner.next();
+					System.out.println("\nIngrese pass:");
+					pass = scanner.next();
+					System.out.println("\nIngrese sueldo:");
+					sueldo = scanner.nextDouble();
+					System.out.println("\nIngrese horas de trabajo:");
+					horas= scanner.nextInt();
 					
-
-				
+					Empleado cajero = new Cajero(nombre, apellido, dni, telefono, domicilio, user, pass, sueldo, horas);
+					
+					boolean rta2 = local.agregarEmpleado(cajero);
+					verificacionAgregar(rta2);
 					menuABMempleado();
 					
 					break;
 				
 				case 3:
-					 
+					System.out.println("\nIngrese nombre:");
+					nombre = scanner.next();
+					System.out.println("\nIngrese apellido :");
+					apellido = scanner.next();
+					System.out.println("\nIngrese dni:");
+					dni = scanner.next();
+					System.out.println("\nIngrese telefono:");
+					telefono= scanner.nextInt();
+					System.out.println("\nIngrese domicilio:");
+					domicilio = scanner.next();
+					System.out.println("\nIngrese usuario:");
+					user = scanner.next();
+					System.out.println("\nIngrese pass:");
+					pass = scanner.next();
+					System.out.println("\nIngrese sueldo:");
+					sueldo = scanner.nextDouble();
+					System.out.println("\nIngrese horas de trabajo:");
+					horas= scanner.nextInt();
 					
-
-					//menuGerente();
+					Empleado gerente = new Gerente(nombre, apellido, dni, telefono, domicilio, user, pass, sueldo, horas);
 					
-
+					boolean rta3 = local.agregarEmpleado(gerente);
+					verificacionAgregar(rta3);
 					menuABMempleado();
-					//TODO aca tendria que ir a algun menu
 
 					break;
 					
@@ -114,7 +169,7 @@ public class Menu
 	
 	public void listarEmpleados()
 	{
-		String opcion = null;
+		
 		try {
 			
 

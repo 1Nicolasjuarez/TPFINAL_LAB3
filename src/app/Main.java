@@ -166,17 +166,14 @@ public class Main {
 		//Local local = new Local(listacliente,listaempleados);
 		//local.guardarDatosLocal();
 		
-		try {
-			
+		
 			Menu menu = new Menu();
 			
 			//menu.registrarEmpleado();
 			
-			menu.menuGerente();
+			menu.menuPrincipal();
 			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+		
 		
 		
 		

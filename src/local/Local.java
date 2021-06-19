@@ -6,6 +6,7 @@ import archivos.archivoClientes;
 import archivos.archivoEmpleados;
 import archivos.archivoProductos;
 import archivos.archivoVentas;
+import caja.Venta;
 import excepciones.ErrorDeBusquedaExcepcion;
 import listas.ListadoClientes;
 import listas.ListadoEmpleados;
@@ -13,6 +14,8 @@ import listas.ListadoSneakers;
 import listas.ListadoVentas;
 import modelos.Cliente;
 import modelos.Empleado;
+import modelos.Vendedor;
+import producto.Sneaker;
 
 public class Local  {
 
@@ -22,13 +25,23 @@ public class Local  {
 	private ListadoSneakers listaSneakers;
 	private ListadoVentas listaVentas;
 	
+	public static void iniciarSistemaArchivos()
+	{
+		ListadoClientes listacliente = new ListadoClientes();
+		ListadoEmpleados listaempleados = new  ListadoEmpleados();
+		ListadoSneakers listaSnk = new ListadoSneakers();
+		ListadoVentas listaventas = new ListadoVentas();
+		Local local = new Local(listacliente,listaempleados,listaSnk,listaventas);
+		local.guardarDatosLocal();
+	}
+	
 	
 	public Local() {
 		
 		listaClientes = new ListadoClientes(archivoClientes.leerClientes());
 		listaEmpleados = new ListadoEmpleados(archivoEmpleados.leerEmpleados());
-		//listaSneakers = new ListadoSneakers(archivoProductos.leerProductos());
-		//listaVentas = new ListadoVentas(archivoVentas.leerVentas());
+		listaSneakers = new ListadoSneakers(archivoProductos.leerProductos());
+		listaVentas = new ListadoVentas(archivoVentas.leerVentas());
 		
 	}
 	
@@ -36,12 +49,12 @@ public class Local  {
 	 * ,ListadoEmpleados empleados,ListadoSneakers sneakers ,ListadoVentas ventas
 	 */
 
-	public Local(ListadoClientes clientes,ListadoEmpleados empleados)
+	public Local(ListadoClientes clientes,ListadoEmpleados empleados,ListadoSneakers sneakers,ListadoVentas ventas)
 	{
 		this.listaClientes = clientes;
 		this.listaEmpleados= empleados;
-		//this.listaSneakers = sneakers;
-		//this.listaVentas= ventas;
+		this.listaSneakers = sneakers;
+		this.listaVentas= ventas;
 		
 	}
 	
@@ -52,7 +65,119 @@ public class Local  {
 	
 	public String listarClientes()
 	{
-		return listaClientes.listarClientes();
+		return listaClientes.listarClientes1();
+	}
+	
+	public boolean eliminarCliente(String dni)
+	{
+		boolean rta=false;
+		
+		try {
+			rta=listaClientes.eliminarCliente(dni);
+		} catch (ErrorDeBusquedaExcepcion e) {
+			System.out.println(e.getMessage());
+		}
+		return rta;
+	}
+	
+	public boolean modificarClienteDNI(int indice ,String n_dni)
+	{
+			Cliente cliente=null;
+			boolean rta = false;
+			
+			if(indice<=0)
+			{
+				cliente=listaClientes.buscarClienteIndex(indice);
+				cliente.setDni(n_dni);
+				rta=true;
+			}
+			
+			return rta;	
+	}
+	
+	public boolean modificarClienteNombre(int indice ,String n_nombre)
+	{
+			Cliente cliente=null;
+			boolean rta = false;
+			
+			if(indice<=0)
+			{
+				cliente=listaClientes.buscarClienteIndex(indice);
+				cliente.setNombre(n_nombre);
+				rta=true;
+			}
+			
+			return rta;	
+	}
+	
+	public boolean modificarClienteApellido(int indice ,String n_apellido)
+	{
+			Cliente cliente=null;
+			boolean rta = false;
+			
+			if(indice<=0)
+			{
+				cliente=listaClientes.buscarClienteIndex(indice);
+				cliente.setApellido(n_apellido);
+				rta=true;
+			}
+			
+			return rta;	
+	}
+	
+	public boolean modificarClienteTel(int indice ,int n_tel)
+	{
+			Cliente cliente=null;
+			boolean rta = false;
+			
+			if(indice<=0)
+			{
+				cliente=listaClientes.buscarClienteIndex(indice);
+				cliente.setTelefono(n_tel);
+				rta=true;
+			}
+			
+			return rta;	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	public int existeDniCliente(String dni)
+	{	
+		int i=-2;
+		
+		try {
+			
+			i = listaClientes.existeCliente(dni);
+			
+		} catch (ErrorDeBusquedaExcepcion e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return i;
+		
+	}
+	
+	public Cliente retornarCliente(int i)
+	{
+		return listaClientes.buscarClienteIndex(i);
+	}
+	
+	
+	
+	//TODO inicio de abm empleado
+	
+	
+	
+	public  boolean agregarEmpleado(Empleado empleado)
+	{
+		return listaEmpleados.agregarEmpleado(empleado);
+		
 	}
 	
 	public String listarVendedores()
@@ -70,121 +195,285 @@ public class Local  {
 		return listaEmpleados.devolverGerentes();
 	}
 	
-	
-	public  boolean agregarEmpleado(Empleado empleado)
-	{
-		return listaEmpleados.agregarEmpleado(empleado);
-		
-	}
-	
-	
-	public boolean  eliminarEmple(String dni)
+	public boolean  eliminarEmpleado(String dni)
 	{	
 		boolean rta=false;
 		
-			 rta=listaEmpleados.eliminarEmpleado(dni);
+			 try {
+				rta=listaEmpleados.eliminarEmpleado(dni);
+			} catch (ErrorDeBusquedaExcepcion e) {
+				
+				System.out.println(e.getMessage());
+			}
 		return rta;
 	}
 	
 	
-	public void modificarEmpleadoNombre(String dni,String n_nombre)
+	public boolean eliminarCliente2(String dni)
 	{
-		Empleado empleado=null;
-		int i=listaEmpleados.modificarEmpleado(dni);
-		if(i!=-1)
-		{
-			empleado=listaEmpleados.buscarEmpleadoIndex(i);
-			empleado.setNombre(n_nombre);
+		boolean rta=false;
+		
+		try {
+			rta=listaClientes.eliminarCliente(dni);
+		} catch (ErrorDeBusquedaExcepcion e) {
+			System.out.println(e.getMessage());
 		}
+		return rta;
 	}
-	public void modificarEmpleadoApellido(String dni,String n_apellido)
+	
+	public boolean modificarEmpleadoNombre(int indice ,String n_nombre)
 	{
+			Empleado empleado=null;
+			boolean rta = false;
+			
+			if(indice<=0)
+			{
+				empleado=listaEmpleados.buscarEmpleadoIndex(indice);
+				empleado.setNombre(n_nombre);
+				rta=true;
+			}
+			
+			return rta;	
+	}
+	
+	public boolean modificarEmpleadoApellido(int indice,String n_apellido)throws ErrorDeBusquedaExcepcion
+	{	
+		boolean rta = false;
 		Empleado empleado=null;
-		int i=listaEmpleados.modificarEmpleado(dni);
-		if(i!=-1)
+		if(indice<=0)
 		{
-			empleado=listaEmpleados.buscarEmpleadoIndex(i);
+			empleado=listaEmpleados.buscarEmpleadoIndex(indice);
 			empleado.setApellido(n_apellido);
+			rta=true;
 		}
+		return rta;
 	}
 	
-	public void modificarEmpleadoDni(String dni,String n_dni)
+	public boolean modificarEmpleadoDni(int indice,String n_dni)
 	{
+		boolean rta = false;
 		Empleado empleado=null;
-		int i=listaEmpleados.modificarEmpleado(dni);
-		if(i!=-1)
+		if(indice<=0)
 		{
-			empleado=listaEmpleados.buscarEmpleadoIndex(i);
-			empleado.setApellido(n_dni);
+			empleado=listaEmpleados.buscarEmpleadoIndex(indice);
+			empleado.setDni(n_dni);
+			rta=true;
 		}
+		return rta;
 	}
 	
-	public void modificarEmpleadoUser(String dni,String n_user)
+	public boolean modificarEmpleadoUser(int indice,String n_user)
 	{
+		boolean rta = false;
 		Empleado empleado=null;
-		int i=listaEmpleados.modificarEmpleado(dni);
-		if(i!=-1)
+		if(indice<=0)
 		{
-			empleado=listaEmpleados.buscarEmpleadoIndex(i);
+			empleado=listaEmpleados.buscarEmpleadoIndex(indice);
 			empleado.setNombreUsuario(n_user);
+			rta=true;
 		}
+		return rta;
 	}
 	
-	public void modificarEmpleadoPass(String dni,String n_pass)
+	public boolean modificarEmpleadoPass(int indice,String n_pass)
 	{
+		boolean rta = false;
 		Empleado empleado=null;
-		int i=listaEmpleados.modificarEmpleado(dni);
-		if(i!=-1)
+		if(indice<=0)
 		{
-			empleado=listaEmpleados.buscarEmpleadoIndex(i);
+			empleado=listaEmpleados.buscarEmpleadoIndex(indice);
 			empleado.setPass(n_pass);
+			rta=true;
 		}
+		return rta;
 	}
 	
-	public void modificarEmpleadoDomicilio (String dni,String n_domi)
+	public boolean modificarEmpleadoDomicilio (int indice,String n_domi)
 	{
+		boolean rta = false;
 		Empleado empleado=null;
-		int i=listaEmpleados.modificarEmpleado(dni);
-		if(i!=-1)
+		if(indice<=0)
 		{
-			empleado=listaEmpleados.buscarEmpleadoIndex(i);
+			empleado=listaEmpleados.buscarEmpleadoIndex(indice);
 			empleado.setDomicilio(n_domi);
+			rta=true;
 		}
+		return rta;
 	}
 	
 	
-	public void modificarEmpleadoSueldo(String dni,double n_sueldo)
-	{
+	public boolean modificarEmpleadoSueldo(int indice,double n_sueldo)
+	{	
+		boolean rta = false;
 		Empleado empleado=null;
-		int i=listaEmpleados.modificarEmpleado(dni);
-		if(i!=-1)
+		if(indice<=0)
 		{
-			empleado=listaEmpleados.buscarEmpleadoIndex(i);
+			empleado=listaEmpleados.buscarEmpleadoIndex(indice);
 			empleado.setSueldo(n_sueldo);
+			rta=true;
 		}
+		return rta;
 	}
 	
-	public void modificarEmpleadoHorasDeTrabajo(String dni,int n_horas)
+	public boolean modificarEmpleadoHorasDeTrabajo(int indice,int n_horas)
 	{
+		boolean rta = false;
 		Empleado empleado=null;
-		int i=listaEmpleados.modificarEmpleado(dni);
-		if(i!=-1)
+		if(indice<=0)
 		{
-			empleado=listaEmpleados.buscarEmpleadoIndex(i);
+			empleado=listaEmpleados.buscarEmpleadoIndex(indice);
 			empleado.setHorasDeTrabajo(n_horas);
+			rta=true;
 		}
+		return rta;
 	}
 	
-	public void modificarEmpleadoTelefono(String dni,int n_tel)
+	public boolean modificarEmpleadoTelefono(int indice,int n_tel)
 	{
+		boolean rta = false;
 		Empleado empleado=null;
-		int i=listaEmpleados.modificarEmpleado(dni);
-		if(i!=-1)
+		if(indice<=0)
 		{
-			empleado=listaEmpleados.buscarEmpleadoIndex(i);
+			empleado=listaEmpleados.buscarEmpleadoIndex(indice);
 			empleado.setTelefono(n_tel);
+			rta=true;
 		}
+		return rta;
 	}
+	
+	public int  exixteDniEmpleado(String dni)
+	{	
+		
+		int i=-2;
+		
+		try {
+			
+			i = listaEmpleados.existeEmpleado(dni);
+			
+			
+		} catch (ErrorDeBusquedaExcepcion e) {
+			
+
+			System.out.println(e.getMessage());
+		}
+		
+		return i;
+	}
+	
+	public Vendedor retornarVendedor(int i)
+	{
+		return (Vendedor) listaEmpleados.buscarEmpleadoIndex(i);
+	}
+	//TODO fin de abm EMPLEADO
+	
+	//TODO inicio de abm SNEAKER
+	
+	public boolean agregarSneaker(Sneaker snks)
+	{
+		return listaSneakers.agregarSneaker(snks);
+	}
+	
+	public String listarHightop()
+	{
+		return listaSneakers.devolverSneakersHighTop();
+	}
+	
+	public String listarLowTop()
+	{
+		return listaSneakers.devolverSneakersLowTop();
+	}
+	
+	public String listarMidCup()
+	{
+		return listaSneakers.devolverSneakersMidCup();
+	}
+	
+	public boolean eliminarSneaker(String cod)
+	{
+		boolean rta=false;
+		
+		 try {
+			rta=listaSneakers.eliminarSneaker(cod);
+		} catch (ErrorDeBusquedaExcepcion e) {
+			
+			System.out.println(e.getMessage());
+		}
+	return rta;
+	}
+	
+	public boolean modificarSneakerPrecio(String clave,double pre)
+	{
+		return listaSneakers.modificarSneakerPrecio(clave, pre);
+	}
+	
+	public boolean modificarSneakerTalle(String clave,double talle)
+	{
+		return listaSneakers.modificarSneakerTalle(clave, talle);
+	}
+	
+	public boolean modificarSneakerMarca(String clave,String marca)
+	{
+		return listaSneakers.modificarSneakerMarca(clave, marca);
+	}
+	
+	public boolean exixteClaveSnk(String clave)
+	{	
+		boolean rta=false;
+		try {
+			rta= listaSneakers.existeSneaker(clave);
+		} catch (ErrorDeBusquedaExcepcion e) {
+			
+			System.err.println(e.getMessage());
+		}
+		
+		return rta;
+	}
+	
+	
+	public Sneaker devolverSneaker(String num)
+	{	Sneaker sk =null;
+		try {
+			 sk = listaSneakers.buscarSneaker(num);
+		} catch (ErrorDeBusquedaExcepcion e) {
+			
+			System.out.println(e.getMessage());
+		}
+		return sk;
+		
+	}
+	
+	//TODO FIN de abm SNEAKER
+	
+	//TODO inicio de abm SNEAKER
+	
+	public boolean agregarVenta(Venta venta)
+	{
+		return listaVentas.agregarVenta(venta);
+	}
+	
+	public String listarVentas()
+	{
+		return listaVentas.listarVentas();
+	}
+	
+	public boolean eliminarVenta(int id)
+	{
+		boolean rta=false;
+		
+		 try {
+			 rta=listaVentas.eliminarVenta(id);
+		 } catch (ErrorDeBusquedaExcepcion e) {
+				
+				System.out.println(e.getMessage());
+			}
+		return rta;
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -197,6 +486,8 @@ public class Local  {
 	{
 		archivoClientes.grabarClientes(listaClientes);
 		archivoEmpleados.grabarEmpleados(listaEmpleados);
+		archivoProductos.grabarProductos(listaSneakers);
+		archivoVentas.grabarVentas(listaVentas);
 	}
 	
 	

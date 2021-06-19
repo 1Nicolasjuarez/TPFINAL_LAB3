@@ -143,6 +143,11 @@ public class ListadoVentas implements Serializable{
 					+" - Vendedor: "+v.getVendedor().getNombre()+" "+v.getVendedor().getApellido()+" - Fecha: "+v.getFechaVenta()+"\n");
 			
 		}
+		if(builder.isEmpty())
+		{
+			builder.append("No se encontraron registros.");
+		}
+		
 		
 		return builder.toString();
 	}
@@ -151,6 +156,27 @@ public class ListadoVentas implements Serializable{
 		return ventas.existeElemento(venta);
 	}
 	
+	public boolean eliminarVenta(int idVenta)throws ErrorDeBusquedaExcepcion
+	{
+		boolean rta=false;
+		
+		//Integer num =indice;
+		
+		for (int i = 0; i < ventas.contarElementos(); i++) 
+		{
+			if(ventas.buscarElemento(i).getId()==idVenta)
+			{
+				ventas.eliminarElementoIndice(i);
+				rta=true;
+			}
+		}
+		
+		if(!rta)
+		{
+			throw new ErrorDeBusquedaExcepcion("Venta no encontrado");
+		}
+		return rta;
+	}
 	
 	
 	

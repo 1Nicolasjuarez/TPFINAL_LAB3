@@ -50,6 +50,31 @@ public class ListadoEmpleados implements Serializable{
 		return empleados.existeElemento(empleado);
 	}
 	
+	public int existeEmpleado(String dni) throws ErrorDeBusquedaExcepcion
+	{
+		int resp=-1;	
+		boolean existe=false;
+				
+
+			for (int i = 0; i < empleados.contarElementos(); i++) 
+			{
+				if(empleados.buscarElemento(i).getDni().equals(dni))
+				{	
+					resp=i;
+					existe=true;
+					
+				}		
+			}	
+			
+			if(!existe)
+			{
+				throw new ErrorDeBusquedaExcepcion("Empleado no encontrado");
+			}
+						
+			return resp;
+			
+	}
+	
 	public ArrayList<Empleado> devolverEmpleados() {
 		ArrayList<Empleado> listaDeEmpleados = new ArrayList<Empleado>();
 		
@@ -60,21 +85,31 @@ public class ListadoEmpleados implements Serializable{
 		return listaDeEmpleados;
 	} 
 	
-	public boolean eliminarEmpleado(String dni)
+	
+	
+	public boolean eliminarEmpleado(String dni)throws ErrorDeBusquedaExcepcion
 	{
 		boolean rta=false;
-		//Empleado empleado = null;
 		
 		for (int i = 0; i < empleados.contarElementos(); i++) 
 		{
 			if(empleados.buscarElemento(i).getDni().equals(dni))
 			{
 				empleados.eliminarElementoIndice(i);
-				rta=true;		
-			}		
-		}	
+				rta=true;
+			}
+		}
+		
+		if(!rta)
+		{
+			throw new ErrorDeBusquedaExcepcion("Cliente no encontrado");
+		}
+		
 		return rta;
+		
 	}
+	
+	
 	
 	public int modificarEmpleado(String dni)
 	{

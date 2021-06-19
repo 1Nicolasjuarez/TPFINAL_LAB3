@@ -100,6 +100,58 @@ public class ListadoEmpleados implements Serializable{
 	}
 	
 	
+	public boolean buscarEmpleadoPorNombreDeUsuario(String nombreUsuario)
+	{
+		boolean encontrado = false;
+		
+		
+		for (int i = 0; i < empleados.contarElementos(); i++) 
+		{
+			if(empleados.buscarElemento(i).getNombreUsuario().equals(nombreUsuario))
+			{
+				encontrado = true;	
+			}		
+		}	
+		return encontrado;
+	}
+	
+	
+	public boolean buscarEmpleadoPorNombreDeUsuarioYContrasenya(String nombreUsuario, String pass)
+	{
+		
+		boolean encontrado = false;
+		
+		
+		for (int i = 0; i < empleados.contarElementos(); i++) 
+		{
+			if(empleados.buscarElemento(i).getNombreUsuario().equals(nombreUsuario))
+			{
+				if(empleados.buscarElemento(i).getPass().equals(pass))	
+				{
+					encontrado = true;
+				}
+			}		
+		}	
+		return encontrado;
+	}
+	
+	
+	public Empleado devolverEmpleado(String nombreUsuario)
+	{
+		Empleado empleado = null;
+		
+		for (int i = 0; i < empleados.contarElementos(); i++) 
+		{
+			if(empleados.buscarElemento(i).getNombreUsuario().equals(nombreUsuario))
+			{
+				empleado = empleados.buscarElemento(i);	
+			}		
+		}	
+		
+		return empleado;
+	}
+
+	
 	
 	
 	

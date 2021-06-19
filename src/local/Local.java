@@ -25,7 +25,7 @@ public class Local  {
 	
 	private ListadoClientes listaClientes;
 	private  ListadoEmpleados listaEmpleados;
-	private ListadoSneakers listaSneakers;
+	private ListadoSneakers listaSneakers=new ListadoSneakers();
 	private ListadoVentas listaVentas;
 	
 	public static void iniciarSistemaArchivos()
@@ -43,10 +43,11 @@ public class Local  {
 		
 		listaClientes = new ListadoClientes(archivoClientes.leerClientes());
 		listaEmpleados = new ListadoEmpleados(archivoEmpleados.leerEmpleados());
-		listaSneakers = new ListadoSneakers(archivoProductos.leerProductos());
+		listaSneakers = archivoProductos.leerProductos();
 		listaVentas = new ListadoVentas(archivoVentas.leerVentas());
 		
 	}
+	
 	
 	/*
 	 * ,ListadoEmpleados empleados,ListadoSneakers sneakers ,ListadoVentas ventas
@@ -59,6 +60,15 @@ public class Local  {
 		this.listaSneakers = sneakers;
 		this.listaVentas= ventas;
 		
+	}
+		
+	
+	//TODO ver si funciona para modificar las coasas 
+	
+	public  void LEER()
+	{
+		//ListadoSneakers lista = archivoProductos.leerProductos();
+		System.out.println(listaSneakers.devolverSneakersConSuCodigo());
 	}
 	
 	public boolean agregarCliente(Cliente cliente)
@@ -375,6 +385,8 @@ public class Local  {
 	{
 		return listaSneakers.agregarSneaker(snks);
 	}
+	
+	//TODO arreglar esta cosa por dios
 	
 	public String listarHightop()
 	{

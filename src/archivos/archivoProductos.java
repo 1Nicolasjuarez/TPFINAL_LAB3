@@ -14,12 +14,12 @@ import listas.ListadoSneakers;
 
 
 
-public class archivoProductos  {
+public class archivoProductos implements Serializable {
 	
 	
 	private static final long serialVersionUID = 1L;
 	
-	private static String archivoDePersonas = "productos.dat";
+	private static String archivoDeProductos = "productos.dat";
 	
 	
 	public static void grabarProductos(ListadoSneakers productos) 
@@ -30,7 +30,7 @@ public class archivoProductos  {
 		
 		try {
 			
-			fileOutputStream = new FileOutputStream(archivoDePersonas);
+			fileOutputStream = new FileOutputStream(archivoDeProductos);
 			objectOutputStream = new ObjectOutputStream(fileOutputStream);
 		
 			objectOutputStream.writeObject(productos);
@@ -54,7 +54,7 @@ public class archivoProductos  {
 		
 		
 		try {
-			fileInputStream = new FileInputStream(archivoDePersonas);
+			fileInputStream = new FileInputStream(archivoDeProductos);
 			objectInputStream = new ObjectInputStream(fileInputStream);
 			
 			aux = (ListadoSneakers) objectInputStream.readObject();

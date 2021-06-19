@@ -7,6 +7,7 @@ import java.util.Scanner;
 import org.json.JSONException;
 
 import archivos.archivoClientes;
+import archivos.archivoProductos;
 import caja.Venta;
 import colecciones.CarritoCompra;
 
@@ -208,11 +209,18 @@ public class Main {
 		//Local local = new Local(listacliente,listaempleados);
 		//local.guardarDatosLocal();
 		
-		
+		//Local.iniciarSistemaArchivos();
 			Menu menu = new Menu();
 			
 			//menu.registrarEmpleado();
+		
+		//Local local = new Local();
 			
+		//ListadoSneakers lista = archivoProductos.leerProductos();
+			
+		//System.out.println(lista.devolverSneakersConSuCodigo());
+		
+		
 		menu.menuPrincipal();
 			
 		

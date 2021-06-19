@@ -1305,6 +1305,7 @@ public class Menu
 			
 			case (0): 
 				System.exit(0);
+				System.out.println("SALIENDO DEL SISTEMA, VUELVA PRONTOS");
 				break;
 
 			default:

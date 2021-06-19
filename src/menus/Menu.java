@@ -18,131 +18,10 @@ public class Menu
 	Local local = new Local();
 	
 	
-	public void menuPrincipal()
-	{
-		int opcion = 0;
-		
-		switch(opcion)
-		{
-			case 1:
-				menuComprar();
-				
-			break;
-			
-			case 2:
-			try
-			{
-				menuLogin();
-			} 
-			
-			catch (UserException e)
-			{
-				
-				System.out.println(e.getMensaje());
-			}
-			
-			break;
-			
-			case 3:
-			try 
-			{
-				registrarEmpleado();
-			} 
-			
-			catch (UserException e) 
-			{
-				
-				System.out.println(e.getMensaje());
-			}
-				
-			break;	
-		}
-	}
 
-	
-	public void menuComprar()
-	{
-		int opcion = -1;
-		
-		System.out.println("\\n\\n=> MENÚ DE COMPRAS \\n 1. High Top \\n 2. Low Top \\n 3. Mid Top \\n 0. SALIR");
-		
-		switch(opcion)
-		{
-			case 1:
-				//Agrega el modelo High Top a su lista de compras
-			break;
-			
-			case 2:
-				//Agrega el modelo Low Top a su lista de compras
-			break;
-			
-			case 3:
-				//Agrega el modelo Mid Top a su lista de compras
-			break;
-			
-			case(0):
-			menuPrincipal();	
-			break;
-			
-		}
-		
-	}
-	
-	public void menuLogin() throws UserException
-	{
-		String nombreUsuario = "";
-		String pass = "";
-		boolean checkUser;
-		boolean checkPass;
-		Empleado empleado = null;
-		String puesto;
-		
-		System.out.println("Ingrese el nombre de usuario");
-		nombreUsuario = scanner.nextLine();
-		
-		checkUser = local.buscarEmpleadoUser(nombreUsuario);
-		
-		empleado = local.devolverEmpleadoUser(nombreUsuario);
-		
-		if(checkUser == true)
-		{
-			
-			System.out.println("Ingrese la contraseña");
-			pass = scanner.nextLine();
-			
-			checkPass = local.buscarEmpleadoUserPass(nombreUsuario, pass);
-			
-			if(checkPass == true)
-			{
-				puesto = empleado.getPuesto();
-				
-				if(puesto.equalsIgnoreCase("vendedor"))
-				{
-					//menuVendedor();
-				}
-				else if(puesto.equalsIgnoreCase("cajero"))
-				{
-					//menuCajero();
-				}
-				else if(puesto.equalsIgnoreCase("gerente"))
-				{
-					menuGerente();
-				}
-			}
-			
-			else
-			{
-				throw new UserException("La contraseña es incorrecta");
-			}
-		}
-		
-		
-	}
-	
 	public void registrarEmpleado() throws UserException
 	{
 		Empleado emp = new Empleado();
-		
 		try {
 			
 			String nombre;
@@ -154,8 +33,6 @@ public class Menu
 			String pass;
 			double sueldo;
 			int horas;
-			
-			boolean check;
 			
 			String registro = "REGISTRO DE USUARIO\n\n";
 			String puestoEmpleado = "\n\n=> PUESTO DEL EMPLEADO \n 1. VENDEDOR \n 2. CAJERO \n 3. GERENTE \n 0. SALIR";
@@ -201,13 +78,6 @@ public class Menu
 			else if(user.length() < 5)
 			{
 				throw new UserException("El nombre de usuario debe tener al menos cinco caracteres");
-			}
-			
-			check = local.buscarEmpleadoUser(user);
-			
-			if(check == true)
-			{
-				throw new UserException("El nombre de usuario ya está en uso");
 			}
 			
 			System.out.println("Ingrese contraseña:");
@@ -594,25 +464,19 @@ public class Menu
 			{
 				secondSelect= scanner.nextInt();
 				
-				switch (secondSelect) 
-				{
-				case 1:
-					registrarEmpleado();
+				switch (secondSelect) {
+				case 1:registrarEmpleado();
 					
 					break;
-				case 2:
-					listarEmpleados();
+				case 2:listarEmpleados();
 										
 					break;
 				case 3:
 						menuModificar();
 					break;
-					
-				case 4: 
-					eliminarEmpleado();
+				case 4: eliminarEmpleado();
 						
 					break;
-					
 				case 5:
 						
 					break;

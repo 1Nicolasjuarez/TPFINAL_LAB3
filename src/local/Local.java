@@ -187,34 +187,11 @@ public class Local  {
 	}
 	
 	
-	public boolean buscarEmpleadoUser(String nombreUsuario)
-	{
-		boolean encontrado = false;
-		
-		encontrado = listaEmpleados.buscarEmpleadoPorNombreDeUsuario(nombreUsuario);
-					
-		return encontrado;
-	}
 	
 	
-	public boolean buscarEmpleadoUserPass(String nombreUsuario, String pass)
-	{
-		boolean encontrado = false;
-		
-		encontrado = buscarEmpleadoUserPass(nombreUsuario, pass);
-					
-		return encontrado;
-	}
 	
 	
-	public Empleado devolverEmpleadoUser(String nombreUsuario)
-	{
-		Empleado empleado = null;
-		
-		empleado = listaEmpleados.devolverEmpleado(nombreUsuario);
-					
-		return empleado;
-	}
+	
 	
 	public void guardarDatosLocal()
 	{

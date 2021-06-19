@@ -850,7 +850,15 @@ public class Menu
 				
 				switch (secondSelect) {
 				case 1:
-					registarSneaker();
+					
+					try
+					{
+						registarSneaker();
+					}
+					catch(SneakerException e)
+					{
+						System.out.println(e.getMensaje());
+					}
 					
 					break;
 				case 2:

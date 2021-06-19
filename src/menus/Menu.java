@@ -43,15 +43,24 @@ public class Menu
 			Double sueldo;
 			int horas;
 			
-			String registro = "REGISTRO DE USUARIO\n\n";
-			String puestoEmpleado = "\n\n=> PUESTO DEL EMPLEADO \n 1. VENDEDOR \n 2. CAJERO \n 3. GERENTE \n 0. SALIR";
+			String registro = "REGISTRO DE USUARIO\n\n 1. CONTINUAR\n 0. SALIR";
+			String puestoEmpleado = "\n\n=> PUESTO DEL EMPLEADO \n 1. VENDEDOR \n 2. CAJERO \n 3. GERENTE";
 			
-			int secondSelect = 0;
+			int secondSelect = -1;
+			int continuarSalir = -1;
 			
 			
 			System.out.println(registro);
 		
+			do
+			{
+				
+				continuarSalir = scanner.nextInt();
+				
+			}while(continuarSalir != 1 && continuarSalir != 2);
 			
+			if(continuarSalir == 1)
+			{
 			do
 			{
 				System.out.println("Ingrese el nombre del empleado:");
@@ -214,7 +223,11 @@ public class Menu
 					registrarEmpleado();
 					break;
 				}
-						
+			}
+			else if(continuarSalir == 0)
+			{
+				menuABMempleado();
+			}
 		} 
 		catch (Exception e) 
 		{
@@ -251,7 +264,7 @@ public class Menu
 						System.out.println("Presione N para volver");
 						opcion = scanner.nextLine();
 						
-					}while(opcion.equalsIgnoreCase("N"));
+					}while(!opcion.equalsIgnoreCase("N"));
 					
 					menuABMempleado();
 					break;
@@ -266,7 +279,7 @@ public class Menu
 						System.out.println("Presione N para volver");
 						opcion = scanner.nextLine();
 						
-					}while(opcion.equalsIgnoreCase("N"));
+					}while(!opcion.equalsIgnoreCase("N"));
 					
 					menuABMempleado();
 					break;
@@ -280,7 +293,7 @@ public class Menu
 					System.out.println("Presione N para volver");
 					opcion = scanner.nextLine();
 					
-					}while(opcion.equalsIgnoreCase("N"));
+					}while(!opcion.equalsIgnoreCase("N"));
 					
 					menuABMempleado();	
 					break;
@@ -358,9 +371,6 @@ public class Menu
 	}
 	
 
-	
-	
-	
 	public void menuModificarEmpleado(int v_indice)
 	{
 		try {
@@ -540,64 +550,82 @@ public class Menu
 			double talle;
 			double precio;
 			
-			String principalMenu = "\n\n=> MENU AGREGAR SNEAKER\n1.AGREGAR HIGH TOP\n2.AGREGAR LOW TOP \n3.AGREGAR MID CUP \n0.SALIR,	VOLVER AL MENU ANTERIOR";
-			int secondSelect=0;
-			System.out.println(principalMenu);
-			System.out.print("Seleccione: ");
+			String principalMenu = "\n\n=> MENU AGREGAR SNEAKER\n 1. CONTINUAR\n 0.SALIR, VOLVER AL MENU ANTERIOR";
+			int secondSelect = -1;
+			int continuarSalir = -1;
+			
+			String SeleccionModelo = "\\n\\n=> MODELO\n 1.HIGH TOP\n 2.LOW TOP\n 3.MID TOP";
 			
 			
+			do
+			{
+				System.out.println(principalMenu);
+				continuarSalir = scanner.nextInt();	
+				
+			}while(continuarSalir != 1 && continuarSalir != 0);
 			
-				secondSelect= scanner.nextInt();
+			if(continuarSalir == 1)
+			{
+				
+			
+			do
+			{
+				System.out.println("ingrese numero de serie:");
+				numeroSerie = scanner.next();
+				
+			}while(numeroSerie.equalsIgnoreCase(""));
+			
+			do
+			{
+				System.out.println("ingrese marca:");
+				marca = scanner.next();
+				
+			}while(marca.equalsIgnoreCase(""));
+			
+			do
+			{
+				System.out.println("ingrese modelo");
+				modelo = scanner.next();
+				
+			}while(modelo.equalsIgnoreCase(""));
+			
+			
+				System.out.println("ingrese talle:");
+				talle= scanner.nextDouble();
+				
+				System.err.println("ingrese precio:");
+				precio= scanner.nextDouble();	
+			
+				
+				do
+				{
+					System.out.println(SeleccionModelo);
+					secondSelect = scanner.nextInt();
+					
+				}while(secondSelect != 1 && secondSelect != 2 && secondSelect != 3);
+				
 				
 				switch (secondSelect) {
 				case 1:
-					/*
-					System.out.println("ingrese numero de serie:");
-					numeroSerie = scanner.next();
-					System.out.println("ingrese marca:");
-					marca = scanner.next();
-					System.out.println("ingrese modelo");
-					modelo = scanner.next();
-					System.out.println("ingrese talle:");
-					talle= scanner.nextDouble();
-					System.err.println("ingrese precio:");
-					precio= scanner.nextDouble();	
-					*/
 					
+					//Sneaker s1 = new High_top("1111", "nike" ,"force", 32, 600);
 					
-					Sneaker s1 = new High_top("1111", "nike" ,"force", 32, 600);
-					//Sneaker s1 = new High_top(numeroSerie, marca, modelo, talle, precio);
+					Sneaker s1 = new High_top(numeroSerie, marca, modelo, talle, precio);
 					boolean rta = local.agregarSneaker(s1);
 					verificacionAgregar(rta);
 					menuABMstock();
-					break;
+					break;			
+					
 				case 2:
-					System.out.println("ingrese numero de serie:");
-					numeroSerie = scanner.next();
-					System.out.println("ingrese marca:");
-					marca = scanner.next();
-					System.out.println("ingrese modelo");
-					modelo = scanner.next();
-					System.out.println("ingrese talle:");
-					talle= scanner.nextDouble();
-					System.err.println("ingrese precio:");
-					precio= scanner.nextDouble();	
+					
 					Sneaker s2 = new Low_top(numeroSerie, marca, modelo, talle, precio);
 					boolean rta2 = local.agregarSneaker(s2);
 					verificacionAgregar(rta2);
 					menuABMstock();			
 					break;
+					
 				case 3:
-					System.out.println("ingrese numero de serie:");
-					numeroSerie = scanner.next();
-					System.out.println("ingrese marca:");
-					marca = scanner.next();
-					System.out.println("ingrese modelo");
-					modelo = scanner.next();
-					System.out.println("ingrese talle:");
-					talle= scanner.nextDouble();
-					System.err.println("ingrese precio:");
-					precio= scanner.nextDouble();	
+
 					Sneaker s3 = new Mid_cup(numeroSerie, marca, modelo, talle, precio);
 					boolean rta3 = local.agregarSneaker(s3);
 					verificacionAgregar(rta3);
@@ -617,6 +645,12 @@ public class Menu
 	                
 					break;
 				}
+			}
+			
+			else if(continuarSalir == 0)
+			{
+				menuABMstock();
+			}
 			
 					
 		} catch (Exception e) {
@@ -627,6 +661,7 @@ public class Menu
 	
 	public void listarSneakers()
 	{
+		String opcion = "";
 		try {
 			
 			String principalMenu = "\n\n=> MENU LISTAR SNEAKER\n1.LISTAR HIGH TOP\n2.LISTAR LOW TOP \n3.LISTAR MID CUP \n0.SALIR, VOLVER AL MENU ANTERIOR";
@@ -640,20 +675,46 @@ public class Menu
 				
 				switch (secondSelect) {
 				case 1:
-					System.out.println("\nLISTA DE HIGH TOPS\n");
-					System.out.println(local.listarHightop());
+					
+					do
+					{
+						
+						System.out.println("\nLISTA DE HIGH TOPS\n");
+						System.out.println(local.listarHightop());
+						System.out.println("Presione N para salir");
+						
+					}while(!opcion.equalsIgnoreCase("N"));
+					
 					menuABMstock();
 					break;
+					
 				case 2:
-					System.out.println("\nLISTA DE LOW TOPS\n");
-					System.out.println(local.listarLowTop());
+					
+					do
+					{
+						System.out.println("\nLISTA DE LOW TOPS\n");
+						System.out.println(local.listarLowTop());
+						System.out.println("Presione N para salir");
+						
+					}while(!opcion.equalsIgnoreCase("N"));
+					
 					menuABMstock();
 					break;
+					
 				case 3:
-					System.out.println("\nLISTA DE MID CUPS\n");
-					System.out.println(local.listarMidCup());
+					
+					do
+					{
+						System.out.println("\nLISTA DE MID CUPS\n");
+						System.out.println(local.listarMidCup());
+						System.out.println("Presione N para salir");
+						
+					}while(!opcion.equalsIgnoreCase("N"));
+					
 					menuABMstock();	
 					break;
+					
+					
 				case(0):
 					System.out.println("Volviendo al menu anterior");
 					
@@ -760,10 +821,12 @@ public class Menu
 			secondSelect= scanner.nextInt();
 				
 				switch (secondSelect) {
-				case 1:registarSneaker();
+				case 1:
+					registarSneaker();
 					
 					break;
-				case 2:listarSneakers();;
+				case 2:
+					listarSneakers();
 										
 					break;
 				case 3:
@@ -900,17 +963,17 @@ public class Menu
 			secondSelect= scanner.nextInt();
 			
 			switch (secondSelect) {
-			case 1: System.out.println("registrar cliente");
+			case 1: System.out.println("Registrar cliente");
 					agregarClienteGerente();
 					
 				break;
 			case 2:
-					System.out.println("listar");
+					System.out.println("Listar");
 					System.out.println(local.listarClientes());
 					menuABMCliente();
 				break;
 			case 3:
-				System.out.println("Ingrese dni:");
+				System.out.println("Ingrese DNI:");
 				String dni=scanner.next();
 				int indice = local.existeDniCliente(dni);
 				if(indice>=0)

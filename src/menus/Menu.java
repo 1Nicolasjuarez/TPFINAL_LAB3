@@ -290,7 +290,106 @@ public class Menu
 	
 	
 	
-	
+	public void menuModificarEmpleado(int v_indice)
+	{
+		try {
+			
+			String nombre;
+			String apellido;
+			String dni;
+			int telefono;
+			String domicilio;
+			String user;
+			String pass;
+			double sueldo;
+			int horas;
+			
+			String principalMenu = "\n\n=> MENU MODIFICACION DE EMPLEADO\n1.MODIFICAR NOMBRE\n2.MODIFICAR APELLIDO \n3.MODIFICAR DNI \n4.MODIFICAR TELEFONO \n5.MODIFICAR DOMICILIO \n6.MODIFICAR USUARIO \n7.MODIFICAR PASS \n8.MODIFICAR SUELDO \n9.MODIFICAR HORAS DE TRABAJO \n0.SALIR, VOLVER AL MENU ANTERIOR";
+			int secondSelect=0;
+			System.out.println(principalMenu);
+			System.out.print("Seleccione: ");
+			secondSelect= scanner.nextInt();
+			
+			switch (secondSelect) {
+			case 1:	
+				
+				System.out.println("\nIngrese nuevo nombre:");
+				nombre = scanner.next();
+				boolean rta=local.modificarEmpleadoNombre(v_indice, nombre);
+				verificacionModidicar(rta);
+				menuABMempleado();	
+				break;
+			case 2:
+				System.out.println("\nIngrese nuevo apellido :");
+				apellido = scanner.next();	
+				boolean rta2=local.modificarEmpleadoApellido(v_indice, apellido);
+				verificacionModidicar(rta2);
+				menuABMempleado();	
+				break;
+			case 3:
+				System.out.println("\nIngrese nuevo dni:");
+				dni = scanner.next();
+				boolean rta3=local.modificarEmpleadoDni(v_indice, dni);
+				verificacionModidicar(rta3);
+				menuABMempleado();
+				break;
+			case 4:
+				System.out.println("\nIngrese nuevo telefono:");
+				telefono = scanner.nextInt();
+				boolean rta4=local.modificarEmpleadoTelefono(v_indice, telefono);
+				verificacionModidicar(rta4);
+				menuABMempleado();
+				break;
+			case 5:
+				System.out.println("\nIngrese nuevo domicilio:");
+				domicilio = scanner.next();
+				boolean rta5=local.modificarEmpleadoDomicilio(v_indice, domicilio);
+				verificacionModidicar(rta5);
+				menuABMempleado();
+				break;
+			case 6:
+				System.out.println("\nIngrese nuevo usuario:");
+				user = scanner.next();
+				boolean rta6=local.modificarEmpleadoUser(v_indice, user);
+				verificacionModidicar(rta6);
+				menuABMempleado();
+				break;
+			case 7:
+				System.out.println("\nIngrese nuevo pass:");
+				pass = scanner.next();
+				boolean rta7=local.modificarEmpleadoPass(v_indice, pass);
+				verificacionModidicar(rta7);
+				menuABMempleado();
+				break;
+			case 8:
+				System.out.println("\nIngrese nuevo sueldo:");
+				sueldo = scanner.nextDouble();
+				boolean rta8=local.modificarEmpleadoSueldo(v_indice, sueldo);
+				verificacionModidicar(rta8);
+				menuABMempleado();
+				break;
+			case 9:
+				System.out.println("\nIngrese nuevas horas de trabajo:");
+				horas= scanner.nextInt();
+				boolean rta9=local.modificarEmpleadoHorasDeTrabajo(v_indice, horas);
+				verificacionModidicar(rta9);
+				menuABMempleado();
+				break;
+			case(0):
+				System.out.println("Volviendo al menu anterior");
+				
+				menuABMempleado();
+				break;
+			default:
+				System.out.println("Opcion incorrecta!");
+				menuABMempleado();  
+				break;
+			}
+						
+		} catch (Exception e) {
+			System.out.println("Hubo un error \n"+e.getMessage());	
+		}
+	}
 	
 	
 	
@@ -324,7 +423,7 @@ public class Menu
 						{	
 							//System.out.println(indice);
 							
-							//menuModificarEmpleado(indice);
+							menuModificarEmpleado(indice);
 						}
 						else
 						{

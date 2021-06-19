@@ -1,7 +1,6 @@
 package modelos;
 
 import archivos.archivoEmpleados;
-import colecciones.ListaEmpleados;
 import excepciones.UserException;
 import listas.ListadoEmpleados;
 

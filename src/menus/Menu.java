@@ -7,8 +7,7 @@ import java.util.Scanner;
 
 import caja.Venta;
 import colecciones.CarritoCompra;
-
-
+import excepciones.UserException;
 import local.Local;
 import modelos.Cajero;
 import modelos.Cliente;
@@ -27,11 +26,11 @@ public class Menu
 	
 	Local local = new Local();
 	
-
-
-	public void registrarEmpleado() 
+	
+	
+	public void registrarEmpleado() throws UserException
 	{
-		
+		Empleado emp = new Empleado();
 		try {
 			
 			String nombre;
@@ -43,123 +42,134 @@ public class Menu
 			String pass;
 			double sueldo;
 			int horas;
-					
-			String principalMenu = "\n\n=> MENU REGISTRO\n1.REGISTRO VENDEDOR\n2.REGISTRO CAJERO \n3.REGISTRO GERENTE \n0.SALIR,VOLVER AL MENU ANTERIOR";
 			
-			int secondSelect=0;
-			System.out.println(principalMenu);
+			String registro = "REGISTRO DE USUARIO\n\n";
+			String puestoEmpleado = "\n\n=> PUESTO DEL EMPLEADO \n 1. VENDEDOR \n 2. CAJERO \n 3. GERENTE \n 0. SALIR";
+			String cont= "s";
+			
+			int secondSelect = 0;
+			
+			
+			System.out.println(registro);
+			
+			System.out.println("Ingrese el nombre del empleado:");
+			nombre = scanner.next();	
+			
+			if(nombre.equalsIgnoreCase(""))
+			{
+				throw new UserException("El nombre está vacio ");
+			}
+			
+			System.out.println("Ingrese el apellido del empleado:");
+			apellido = scanner.next();		
+			
+			if(apellido.equalsIgnoreCase(""))
+			{
+				throw new UserException("El apellido está vacio ");
+			}
+			
+			System.out.println("Ingrese DNI:");
+			dni = scanner.next();
+			
+			System.out.println("Ingrese número de teléfono:");
+			telefono=scanner.nextInt();
+			
+			System.out.println("Ingrese domicilio:");
+			domicilio = scanner.next();
+			
+			System.out.println("Ingrese nombre de usuario:");
+			user = scanner.next();
+			
+			if(user.equalsIgnoreCase(""))
+			{
+				throw new UserException("El nombre de usuario está vacio ");
+			}
+			else if(user.length() < 5)
+			{
+				throw new UserException("El nombre de usuario debe tener al menos cinco caracteres");
+			}
+			
+			System.out.println("Ingrese contraseña:");
+			pass = scanner.next();
+			
+			if(pass.equalsIgnoreCase(""))
+			{
+				throw new UserException("La contraseña está vacía ");
+			}
+			
+			if(pass.length() < 8)
+			{
+				throw new UserException("La contraseña debe tener al menos ocho caracteres");
+			}
+			
+			
+			System.out.println("Ingrese sueldo:");
+			sueldo = scanner.nextDouble();
+			
+			System.out.println("Ingrese horas de trabajo:");
+			horas = scanner.nextInt();
+			
+			System.out.println(puestoEmpleado);
+			
 			System.out.print("Seleccione: ");
+			secondSelect = scanner.nextInt();
 			
-				secondSelect= scanner.nextInt();
-
-				
 				switch (secondSelect)
 				{
 				case 1: 
 					
-					System.out.println("\nIngrese nombre:");
-					nombre = scanner.next();
-					System.out.println("\nIngrese apellido :");
-					apellido = scanner.next();
-					System.out.println("\nIngrese dni:");
-					dni = scanner.next();
-					System.out.println("\nIngrese telefono:");
-					telefono= scanner.nextInt();
-					System.out.println("\nIngrese domicilio:");
-					domicilio = scanner.next();
-					System.out.println("\nIngrese usuario:");
-					user = scanner.next();
-					System.out.println("\nIngrese pass:");
-					pass = scanner.next();
-					System.out.println("\nIngrese sueldo:");
-					sueldo = scanner.nextDouble();
-					System.out.println("\nIngrese horas de trabajo:");
-					horas= scanner.nextInt();
+					emp = new Vendedor(nombre, apellido, dni, telefono, domicilio, user, pass, sueldo, horas);
 					
-					Empleado vendedor = new Vendedor(nombre, apellido, dni, telefono, domicilio, user, pass, sueldo, horas);
 					
-					boolean rta = local.agregarEmpleado(vendedor);
+					//Empleado emp3 = new Vendedor("sergio","jua","123",124123,"luro123","nick","asda",32,5);
+					boolean rta = local.agregarEmpleado(emp);
+					local.guardarDatosLocal();
+					
 					verificacionAgregar(rta);
 					menuABMempleado();
 					
 					break;
 					
 				case 2:
-					System.out.println("\nIngrese nombre:");
-					nombre = scanner.next();
-					System.out.println("\nIngrese apellido :");
-					apellido = scanner.next();
-					System.out.println("\nIngrese dni:");
-					dni = scanner.next();
-					System.out.println("\nIngrese telefono:");
-					telefono= scanner.nextInt();
-					System.out.println("\nIngrese domicilio:");
-					domicilio = scanner.next();
-					System.out.println("\nIngrese usuario:");
-					user = scanner.next();
-					System.out.println("\nIngrese pass:");
-					pass = scanner.next();
-					System.out.println("\nIngrese sueldo:");
-					sueldo = scanner.nextDouble();
-					System.out.println("\nIngrese horas de trabajo:");
-					horas= scanner.nextInt();
 					
-					Empleado cajero = new Cajero(nombre, apellido, dni, telefono, domicilio, user, pass, sueldo, horas);
+					 
+					emp = new Cajero(nombre, apellido, dni, telefono, domicilio, user, pass, sueldo, horas);
 					
-					boolean rta2 = local.agregarEmpleado(cajero);
+					boolean rta2 = local.agregarEmpleado(emp);
+					local.guardarDatosLocal();
+					
 					verificacionAgregar(rta2);
 					menuABMempleado();
 					
 					break;
 				
 				case 3:
-					System.out.println("\nIngrese nombre:");
-					nombre = scanner.next();
-					System.out.println("\nIngrese apellido :");
-					apellido = scanner.next();
-					System.out.println("\nIngrese dni:");
-					dni = scanner.next();
-					System.out.println("\nIngrese telefono:");
-					telefono= scanner.nextInt();
-					System.out.println("\nIngrese domicilio:");
-					domicilio = scanner.next();
-					System.out.println("\nIngrese usuario:");
-					user = scanner.next();
-					System.out.println("\nIngrese pass:");
-					pass = scanner.next();
-					System.out.println("\nIngrese sueldo:");
-					sueldo = scanner.nextDouble();
-					System.out.println("\nIngrese horas de trabajo:");
-					horas= scanner.nextInt();
+					 
+					emp = new Gerente(nombre, apellido, dni, telefono, domicilio, user, pass, sueldo, horas);
+					boolean rta3 = local.agregarEmpleado(emp);
+					local.guardarDatosLocal();
 					
-					Empleado gerente = new Gerente(nombre, apellido, dni, telefono, domicilio, user, pass, sueldo, horas);
-					
-					boolean rta3 = local.agregarEmpleado(gerente);
 					verificacionAgregar(rta3);
 					menuABMempleado();
-
+					
 					break;
 					
 				case(0):
-
-					System.out.println("Volviendo al menu anterior");
 					
+					System.out.println("Lo veré en el futuro... o en el pasado...");	
+				
 					menuABMempleado();
-
 					break;
 					
 				default:
-					System.out.println("Opcion incorrecta!");
+					System.out.println("Apretaste cualquiera, reidirigido al menu anterior!");
 					registrarEmpleado();
-	                
 					break;
 				}
-				
-
-				
-
-			
-		} catch (Exception e) {
+						
+		} 
+		catch (Exception e) 
+		{
 			System.out.println("Hubo un error \n"+e.getMessage());	
 		}
 	}
@@ -167,49 +177,64 @@ public class Menu
 	public void listarEmpleados()
 	{
 		
+		String opcion = null;
 		try {
 			
-
 			String principalMenu = "\n\n=> MENU LISTAR EMPLEADOS \n 1.LISTAR VENDEDORES \n 2. LISTAR CAJERO \n 3. LISTAR GERENTE \n 0. SALIR, VOLVER AL MENU ANTERIOR";
-	
+			String cont = "s";
+			
 			int secondSelect = 0;
+			
 			System.out.println(principalMenu);
 			System.out.print("Seleccione: ");
-			secondSelect= scanner.nextInt();
-
+			
+			while(cont.equalsIgnoreCase("s"))
+			{
+				secondSelect= scanner.nextInt();
 				
 				switch (secondSelect) {
 				case 1:
 					
 					System.out.println("\nLISTA DE VENDEDORES\n");
+					
+					do
+					{
 						System.out.println(local.listarVendedores());	
+						System.out.println("Presione N para volver");
+						opcion = scanner.nextLine();
 						
-						
-					//menuGerente();
-
-				
+					}while(opcion.equalsIgnoreCase("N"));
+					
 					menuABMempleado();
-
 					break;
 					
 				case 2:
 					
 					System.out.println("\nLISTA DE CAJEROS\n");
-					System.out.println(local.listarCajeros());
+					
+					do
+					{
+						System.out.println(local.listarCajeros());
+						System.out.println("Presione N para volver");
+						opcion = scanner.nextLine();
+						
+					}while(opcion.equalsIgnoreCase("N"));
+					
 					menuABMempleado();
-
 					break;
 					
 				case 3:
 					System.out.println("\nLISTA DE GERENTES\n");
 					
-					
+					do
+					{
 					System.out.println(local.listarGerentes());
-
-		
-
+					System.out.println("Presione N para volver");
+					opcion = scanner.nextLine();
+					
+					}while(opcion.equalsIgnoreCase("N"));
+					
 					menuABMempleado();	
-
 					break;
 					
 				case(0):	
@@ -226,10 +251,11 @@ public class Menu
 	                
 					break;
 				}
+			}
+		}	
 			
-				
-			
-		} catch (Exception e) {
+		
+			catch (Exception e) {
 			System.out.println("Hubo un error \n"+e.getMessage());	
 		}
 	}
@@ -302,7 +328,9 @@ public class Menu
 			int horas;
 			
 			String principalMenu = "\n\n=> MENU MODIFICACION DE EMPLEADO\n1.MODIFICAR NOMBRE\n2.MODIFICAR APELLIDO \n3.MODIFICAR DNI \n4.MODIFICAR TELEFONO \n5.MODIFICAR DOMICILIO \n6.MODIFICAR USUARIO \n7.MODIFICAR PASS \n8.MODIFICAR SUELDO \n9.MODIFICAR HORAS DE TRABAJO \n0.SALIR, VOLVER AL MENU ANTERIOR";
-			int secondSelect=0;
+			
+			int secondSelect = -1;
+			
 			System.out.println(principalMenu);
 			System.out.print("Seleccione: ");
 			secondSelect= scanner.nextInt();

@@ -783,8 +783,8 @@ public class Menu
 			double precio;
 			double talle;
 			
-			String principalMenu = "\n\n=> MENU MODIFICACION DE SNEAKER\n1.MODIFICAR NUM DE SERIE\n2.MODIFICAR MARCA \n3.MODIFICAR PRECIO  \n0.SALIR, VOLVER AL MENU ANTERIOR";
-			
+			String principalMenu = "\n\n=> MENU MODIFICACION DE SNEAKER\n1.MODIFICAR MARCA \n2.MODIFICAR PRECIO  \n3.MODIFICAR TALLE \n0.SALIR, VOLVER AL MENU ANTERIOR";
+
 			int secondSelect=0;
 			System.out.println(principalMenu);
 			System.out.print("Seleccione: ");
@@ -1442,6 +1442,11 @@ public class Menu
 					// VER EL JSON DE VENTAS
 				
 						//local.guardarVentasJson();
+			break;
+			
+			case 8 : 
+				local.LEER();
+			
 			break;
 			
 			case (0): 

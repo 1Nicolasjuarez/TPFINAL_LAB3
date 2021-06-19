@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import caja.Venta;
 import colecciones.CarritoCompra;
+import excepciones.SneakerException;
 import excepciones.UserException;
 import local.Local;
 import modelos.Cajero;
@@ -490,10 +491,22 @@ public class Menu
 				secondSelect= scanner.nextInt();
 				
 				switch (secondSelect) {
-				case 1:registrarEmpleado();
+				case 1:
+					
+					try
+					{
+						registrarEmpleado();
+						
+					}
+					catch(UserException e)
+					{
+						System.out.println(e.getMensaje());
+					}
 					
 					break;
-				case 2:listarEmpleados();
+					
+				case 2:
+					listarEmpleados();
 										
 					break;
 				case 3:
@@ -540,7 +553,7 @@ public class Menu
 	
 	
 	
-	public void registarSneaker()
+	public void registarSneaker() throws SneakerException
 	{
 		try {
 			
@@ -554,7 +567,7 @@ public class Menu
 			int secondSelect = -1;
 			int continuarSalir = -1;
 			
-			String SeleccionModelo = "\\n\\n=> MODELO\n 1.HIGH TOP\n 2.LOW TOP\n 3.MID TOP";
+			String SeleccionTipo = "\\n\\n=> MODELO\n 1.HIGH TOP\n 2.LOW TOP\n 3.MID TOP";
 			
 			
 			do
@@ -573,6 +586,11 @@ public class Menu
 				System.out.println("ingrese numero de serie:");
 				numeroSerie = scanner.next();
 				
+				if(numeroSerie.equalsIgnoreCase(""))
+				{
+					throw new SneakerException("El número de serie está vacío. Intente nuevamente");
+				}
+				
 			}while(numeroSerie.equalsIgnoreCase(""));
 			
 			do
@@ -580,12 +598,22 @@ public class Menu
 				System.out.println("ingrese marca:");
 				marca = scanner.next();
 				
+				if(marca.equalsIgnoreCase(""))
+				{
+					throw new SneakerException("El nombre de la marca está vacío. Intente nuevamente");
+				}
+				
 			}while(marca.equalsIgnoreCase(""));
 			
 			do
 			{
 				System.out.println("ingrese modelo");
 				modelo = scanner.next();
+				
+				if(modelo.equalsIgnoreCase(""))
+				{
+					throw new SneakerException("El modelo está vacío. Intente nuevamente");
+				}
 				
 			}while(modelo.equalsIgnoreCase(""));
 			
@@ -599,7 +627,7 @@ public class Menu
 				
 				do
 				{
-					System.out.println(SeleccionModelo);
+					System.out.println(SeleccionTipo);
 					secondSelect = scanner.nextInt();
 					
 				}while(secondSelect != 1 && secondSelect != 2 && secondSelect != 3);

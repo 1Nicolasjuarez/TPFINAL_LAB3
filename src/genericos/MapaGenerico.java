@@ -67,12 +67,8 @@ public class MapaGenerico <K,V> implements Serializable{
 		return builder.toString();
 	}
 	
-	
-	
-	
-	
-	
-	
+
+
 	public V buscarElemento(K clave) {
 
 		if (existeClave(clave)) {

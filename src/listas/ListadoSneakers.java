@@ -114,6 +114,12 @@ public class ListadoSneakers implements Serializable{
 		return listSneakers.listarElementos("CODIGO", "SNEAKER");
 	}
 	
+	public String listarSnk()
+	{
+		return listSneakers.listarElementos("clave","valor");
+	}
+	
+	
 	
 	
 	public boolean existeSneaker(String codigo)throws ErrorDeBusquedaExcepcion

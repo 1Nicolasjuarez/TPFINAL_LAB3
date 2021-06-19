@@ -475,7 +475,7 @@ public class Menu
 				
 				switch (secondSelect) {
 				case 1:
-					/*
+					
 					System.out.println("ingrese numero de serie:");
 					numeroSerie = scanner.next();
 					System.out.println("ingrese marca:");
@@ -486,11 +486,8 @@ public class Menu
 					talle= scanner.nextDouble();
 					System.err.println("ingrese precio:");
 					precio= scanner.nextDouble();	
-					*/
-					
-					
-					Sneaker s1 = new High_top("1111", "nike" ,"force", 32, 600);
-					//Sneaker s1 = new High_top(numeroSerie, marca, modelo, talle, precio);
+											
+					Sneaker s1 = new High_top(numeroSerie, marca, modelo, talle, precio);
 					boolean rta = local.agregarSneaker(s1);
 					verificacionAgregar(rta);
 					menuABMstock();
@@ -618,7 +615,7 @@ public class Menu
 			double precio;
 			double talle;
 			
-			String principalMenu = "\n\n=> MENU MODIFICACION DE SNEAKER\n1.MODIFICAR NUM DE SERIE\n2.MODIFICAR MARCA \n3.MODIFICAR PRECIO  \n0.SALIR, VOLVER AL MENU ANTERIOR";
+			String principalMenu = "\n\n=> MENU MODIFICACION DE SNEAKER\n1.MODIFICAR MARCA \n2.MODIFICAR PRECIO  \n3.MODIFICAR TALLE \n0.SALIR, VOLVER AL MENU ANTERIOR";
 			
 			int secondSelect=0;
 			System.out.println(principalMenu);
@@ -1268,6 +1265,10 @@ public class Menu
 				
 						//local.guardarVentasJson();
 			break;
+			
+			case 8 : local.LEER();
+				
+				break;
 			
 			case (0): 
 				System.out.println("SALIENDO DEL SISTEMA, VUELVA PRONTOS");

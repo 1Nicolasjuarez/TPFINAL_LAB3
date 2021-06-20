@@ -21,7 +21,8 @@ public abstract class Sneaker implements Serializable{
 	private double precio;
 	private boolean isDisponible;
 
-	public Sneaker() {
+	public Sneaker() 
+	{
 		// TODO Auto-generated constructor stub
 	}
 

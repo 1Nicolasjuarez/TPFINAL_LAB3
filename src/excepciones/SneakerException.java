@@ -1,28 +1,15 @@
 package excepciones;
 
+/**
+ * @author Damián Andrés Barros
+ * 
+ * Excepción que ocurrirá al registrar unas Sneaker
+ */
+
 public class SneakerException extends Exception
 {
-	private String mensaje;
-	
 	public SneakerException(String mensaje)
 	{
 		super(mensaje);	
-		this.mensaje = mensaje;
-	}
-	
-	
-	
-	public void setMensaje(String msg) {
-		this.mensaje = mensaje;
-	}
-	
-	public String getMensaje() {
-		return mensaje;
-	}
-	
-	@Override
-	public String getMessage() {
-		
-		return getMensaje();
 	}
 }

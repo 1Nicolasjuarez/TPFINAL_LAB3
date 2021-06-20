@@ -1,12 +1,16 @@
 package producto;
 
 
+/**
+ * @author Nicolas Juarez
+ * 
+ * Esta clase contiene los constructores para manejar a unas Sneakers de tipo High Top y un valor estático
+ * que lo califica en ese puesto. Extiende de Sneaker
+ */
 
 public class High_top extends Sneaker {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	private static String TIPO_SNEAKER = "high top";

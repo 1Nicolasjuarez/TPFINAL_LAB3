@@ -213,7 +213,7 @@ public class Main {
 		//Local.iniciarSistemaArchivos();
 			Menu menu = new Menu();
 			
-			//menu.registrarEmpleado();
+			menu.menuPrincipal();
 		
 		//Local local = new Local();
 			
@@ -222,12 +222,7 @@ public class Main {
 		//System.out.println(lista.devolverSneakersConSuCodigo());
 		
 		
-		try {
-			menu.registarSneaker();
-		} catch (SneakerException e) {
-			// TODO Auto-generated catch block
-			System.out.println(e.getMessage());
-		}
+
 			
 		
 		

@@ -1,10 +1,18 @@
 package modelos;
 
+/**
+ * 
+ * @author Damián Andrés Barros
+ * 
+ * Esta clase contiene los constructores para manejar a un cliente.
+ *  Extiende de Persona.
+ */
+
+
 public class Cliente extends Persona {
 
-	/**
-	 * 
-	 */
+	
+	
 	private static final long serialVersionUID = 1L;
 
 	public Cliente() {

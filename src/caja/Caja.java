@@ -5,6 +5,13 @@ import java.util.Date;
 import listas.ListadoVentas;
 import modelos.Empleado;
 
+
+/**
+ * @author Nicolás Juarez
+ * 
+ * 
+ */
+
 public class Caja {
 	
 	

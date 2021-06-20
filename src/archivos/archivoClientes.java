@@ -11,11 +11,16 @@ import java.io.Serializable;
 
 import listas.ListadoClientes;
 
-public class archivoClientes {
-	
-	
-	
 
+/**
+ * @author Nicolás Juarez
+ * 
+ * Esta clase posee los métodos para poder almacenar y leer datos de un archivo de Clientes.
+ * Esta serializada.
+ */
+
+public class archivoClientes 
+{
 	private static String archivoDeClientes = "clientes.dat";
 
 	public static void grabarClientes(ListadoClientes clientes) {

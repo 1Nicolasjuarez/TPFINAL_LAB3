@@ -20,12 +20,23 @@ import modelos.Vendedor;
 import producto.Sneaker;
 import utilidades.JsonUtiles;
 
-public class Local  {
+
+/**
+ * 
+ * @author Nicolas Juarez
+ * 
+ * Esta es la clase contenedora.
+ * Posee métodos para realizar el ABM de Clientes, Empleados y Sneakers.
+ *
+ */
+
+public class Local  
+{
 
 	
 	private ListadoClientes listaClientes;
 	private  ListadoEmpleados listaEmpleados;
-	private ListadoSneakers listaSneakers=new ListadoSneakers();
+	private ListadoSneakers listaSneakers;
 	private ListadoVentas listaVentas;
 	
 	public static void iniciarSistemaArchivos()
@@ -152,13 +163,6 @@ public class Local  {
 			
 			return rta;	
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 	public int existeDniCliente(String dni)
 	{	

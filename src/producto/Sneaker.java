@@ -2,11 +2,17 @@ package producto;
 
 import java.io.Serializable;
 
+
+/**
+ * @author Nicolas Juarez
+ * 
+ * Esta clase contiene los constructores para manejar a las Sneakers
+ * Está serializada.
+ */
+
 public abstract class Sneaker implements Serializable{
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private String numeroSerie;
 	private String marca;

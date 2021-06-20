@@ -12,7 +12,12 @@ import java.io.Serializable;
 
 import listas.ListadoSneakers;
 
-
+/**
+ * @author Nicolás Juarez
+ * 
+ * Esta clase posee los métodos para poder almacenar y leer datos de un archivo de Productos.
+ * Esta serializada.
+ */
 
 public class archivoProductos implements Serializable {
 	

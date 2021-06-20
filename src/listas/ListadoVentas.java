@@ -11,6 +11,12 @@ import caja.Venta;
 import excepciones.ErrorDeBusquedaExcepcion;
 import genericos.Listado;
 
+/**
+ * @author Nicolas Juarez
+ * 
+ * Esta clase posee métodos para controlar una Lista de Sneakers
+ */
+
 public class ListadoVentas implements Serializable{
 
 	/**

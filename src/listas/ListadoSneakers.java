@@ -10,6 +10,12 @@ import producto.Low_top;
 import producto.Mid_cup;
 import producto.Sneaker;
 
+/**
+ * @author Nicolas Juarez
+ * 
+ * Esta clase posee métodos para controlar una Lista de Sneakers
+ */
+
 public class ListadoSneakers implements Serializable{
 	
 	/**

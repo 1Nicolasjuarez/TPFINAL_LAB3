@@ -1,5 +1,12 @@
 package excepciones;
 
+
+/**
+ * @author Damián Andrés Barros
+ * 
+ * Excepción que ocurrirá cuando se esté registrando un Empleado
+ */
+
 public class UserException extends Exception
 {
 	private String mensaje;
@@ -7,22 +14,5 @@ public class UserException extends Exception
 	public UserException(String mensaje)
 	{
 		super(mensaje);	
-		this.mensaje = mensaje;
-	}
-	
-	
-	
-	public void setMensaje(String msg) {
-		this.mensaje = mensaje;
-	}
-	
-	public String getMensaje() {
-		return mensaje;
-	}
-	
-	@Override
-	public String getMessage() {
-		
-		return getMensaje();
 	}
 }

@@ -4,11 +4,14 @@ import java.io.Serializable;
 
 import java.util.ArrayList;
 
+import interfaces.iColecciones;
 
 
-/*
+
+/**
+ * @author Nicolás Juarez
  * 
- * CLASE GENERICA
+ * Clase genérica que permitirá agregar, eliminar, buscar, o contar elementos en un ArrayList
  */
 
 public class Listado<P> implements Serializable {
@@ -23,7 +26,6 @@ public class Listado<P> implements Serializable {
 		contenedor = new ArrayList<P>();
 	}
 
-	
 	
 	public boolean agregarElemento(P x) {
 

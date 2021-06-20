@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import genericos.Listado;
 import modelos.Proveedor;
 
+/**
+ * @author Nicolas Juarez
+ * 
+ * Esta clase posee métodos para controlar una Lista de Proveedores
+ */
+
 public class ListadoProveedores implements Serializable{
 
 	

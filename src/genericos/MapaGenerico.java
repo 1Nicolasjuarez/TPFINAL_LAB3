@@ -7,11 +7,13 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.Map.Entry;
 
+/**
+ * @author Nicolas Juarez
+ * 
+ * Clase genérica que permitirá agregar, eliminar, buscar, o contar elementos en un HashMap
+ */
 public class MapaGenerico <K,V> implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private HashMap<K, V> mapa;

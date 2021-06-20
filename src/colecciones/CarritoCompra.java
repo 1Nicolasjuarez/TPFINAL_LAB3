@@ -4,6 +4,14 @@ import java.util.ArrayList;
 
 import producto.Sneaker;
 
+
+/**
+ * @author Nicolás Juarez
+ * 
+ * Esta clase posee los métodos para almacenar los productos en un carrito de compras, mostrar su contenido y calcular el total de su contenido.
+ * 
+ */
+
 public class CarritoCompra {
 
 	private ArrayList<Sneaker> carrito;

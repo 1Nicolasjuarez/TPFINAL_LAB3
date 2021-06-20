@@ -3,8 +3,12 @@ package modelos;
 public class Cajero extends Empleado {
 
 	/**
+	 * @author Damián Andrés Barros
 	 * 
+	 * Esta clase contiene los constructores para manejar a un cajero y un valor estático
+	 * que lo califica en ese puesto. Extiende de Empleado
 	 */
+	
 	private static final long serialVersionUID = 1L;
 	private static String PUESTO="cajero";
 	

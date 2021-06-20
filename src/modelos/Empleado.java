@@ -4,11 +4,15 @@ import archivos.archivoEmpleados;
 import excepciones.UserException;
 import listas.ListadoEmpleados;
 
+/**
+ * @author Damián Andrés Barros
+ * 
+ * Esta es la clase que permitirá manejar a los empleados.
+ * Extiende de Persona.
+ */
+
 public class Empleado extends Persona {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private String nombreUsuario;
@@ -75,12 +79,6 @@ public class Empleado extends Persona {
 	public void setHorasDeTrabajo(int horasDeTrabajo) {
 		this.horasDeTrabajo = horasDeTrabajo;
 	}
-	
-	
-	
-
-	// TODO
-	// revisarStock()
 	
 	
 	@Override

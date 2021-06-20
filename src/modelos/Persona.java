@@ -3,6 +3,14 @@ package modelos;
 import java.io.Serializable;
 
 
+/**
+ * 
+ * @author Nicolas Juarez
+ * 
+ * Esta clase es abstracta ya que en el sistema se encuentran Clientes y Empleados
+ * Esta serializada para poder almacenar datos en un archivo.
+ *
+ */
 
 public abstract class Persona implements Serializable{
 

@@ -11,11 +11,15 @@ import colecciones.CarritoCompra;
 import modelos.Cliente;
 import modelos.Vendedor;
 
+/**
+ * @author Nicolas Juarez
+ * 
+ * 
+ */
+
+
 public class Venta implements Serializable, Comparable<Venta>{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private int id=0;
 	private Date fechaVenta;

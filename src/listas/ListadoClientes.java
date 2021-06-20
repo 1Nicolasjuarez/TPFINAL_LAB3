@@ -9,6 +9,12 @@ import modelos.Cliente;
 import modelos.Empleado;
 import modelos.Gerente;
 
+/**
+ * @author Nicolas Juarez
+ * 
+ * Esta clase posee métodos para controlar una Lista de Clientes
+ */
+
 public class ListadoClientes implements Serializable{
 	
 	private static final long serialVersionUID = 1L;

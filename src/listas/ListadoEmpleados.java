@@ -10,6 +10,12 @@ import modelos.Empleado;
 import modelos.Gerente;
 import modelos.Vendedor;
 
+/**
+ * @author Nicolas Juarez
+ * 
+ * Esta clase posee métodos para controlar una Lista de Empleados
+ */
+
 public class ListadoEmpleados implements Serializable{
 
 

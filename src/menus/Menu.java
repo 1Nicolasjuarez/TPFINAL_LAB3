@@ -20,6 +20,15 @@ import producto.Low_top;
 import producto.Mid_cup;
 import producto.Sneaker;
 
+
+/**
+ * 
+ * @author Nicolas Juarez (Principalmente)
+ * @author Damián Andrés Barros (Correcciones mínimas)
+ * 
+ * Esta clase es la que contiene los menús que se mostrarán al ejecutar el programa
+ */
+
 public class Menu 
 {
 	
@@ -565,7 +574,7 @@ public class Menu
 					}
 					catch(UserException e)
 					{
-						System.out.println(e.getMensaje());
+						System.out.println(e.getMessage());
 					}
 					
 					break;
@@ -988,7 +997,7 @@ public class Menu
 					
 					catch(SneakerException e)
 					{
-						System.out.println(e.getMensaje());
+						System.out.println(e.getMessage());
 					}
 					
 					break;

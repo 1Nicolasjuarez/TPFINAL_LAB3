@@ -10,7 +10,8 @@ import archivos.archivoClientes;
 import archivos.archivoProductos;
 import caja.Venta;
 import colecciones.CarritoCompra;
-
+import excepciones.SneakerException;
+import excepciones.UserException;
 import listas.ListadoClientes;
 import listas.ListadoEmpleados;
 import listas.ListadoSneakers;
@@ -221,7 +222,12 @@ public class Main {
 		//System.out.println(lista.devolverSneakersConSuCodigo());
 		
 		
-		menu.menuPrincipal();
+		try {
+			menu.registarSneaker();
+		} catch (SneakerException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
 			
 		
 		

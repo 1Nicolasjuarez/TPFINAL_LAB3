@@ -7,7 +7,9 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.Map.Entry;
 
-public class MapaGenerico <K,V> implements Serializable{
+import interfaces.iMapa;
+
+public class MapaGenerico <K,V> implements iMapa<K, V>,Serializable{
 	
 	/**
 	 * 
@@ -20,11 +22,13 @@ public class MapaGenerico <K,V> implements Serializable{
 		
 		mapa = new HashMap<K, V>();
 	}
-	
+
+	@Override
 	public boolean existeClave(K clave) {
 		return mapa.containsKey(clave);
 	}
-	
+
+	@Override
 	public boolean agregarElemento(K clave, V valor) {
 		boolean agregado = false;
 		if (!existeClave(clave)) {
@@ -33,7 +37,8 @@ public class MapaGenerico <K,V> implements Serializable{
 		}
 		return agregado;
 	}
-	
+
+	@Override
 	public boolean eliminarElemento(K clave) {
 		boolean eliminado = false;
 		if (existeClave(clave)) {
@@ -42,8 +47,8 @@ public class MapaGenerico <K,V> implements Serializable{
 		}
 		return eliminado;
 	}
-	
-	
+
+	@Override
 	public boolean modificarElemento(K clave, V valor) {
 		boolean modificado = false;
 		if (existeClave(clave)) {
@@ -52,7 +57,8 @@ public class MapaGenerico <K,V> implements Serializable{
 		}
 		return modificado;
 	}
-	
+
+	@Override
 	public String listarElementos(String claves, String valores) {
 		StringBuilder builder = new StringBuilder();
 
@@ -66,19 +72,17 @@ public class MapaGenerico <K,V> implements Serializable{
 
 		return builder.toString();
 	}
-	
 
-
+	@Override
 	public V buscarElemento(K clave) {
-
 		if (existeClave(clave)) {
 			return mapa.get(clave);
 		} else {
 			return null;
 		}
-
 	}
-	
+
+	@Override
 	public ArrayList<V> devolverElementos() {
 		ArrayList <V> elementos = new ArrayList<V>();
 		
@@ -91,5 +95,7 @@ public class MapaGenerico <K,V> implements Serializable{
 		}
 		return elementos;
 	}
+	
+	
 
 }

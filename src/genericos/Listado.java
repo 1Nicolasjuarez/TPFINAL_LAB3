@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import java.util.ArrayList;
 
+import interfaces.iLista;
+
 
 
 /*
@@ -11,7 +13,7 @@ import java.util.ArrayList;
  * CLASE GENERICA
  */
 
-public class Listado<P> implements Serializable {
+public class Listado<P> implements iLista<P>, Serializable {
 
 	
 
@@ -23,30 +25,27 @@ public class Listado<P> implements Serializable {
 		contenedor = new ArrayList<P>();
 	}
 
-	
-	
+	@Override
 	public boolean agregarElemento(P x) {
-
 		return contenedor.add( x);
 	}
-	
+
+	@Override
 	public P eliminarElementoIndice(int indice) {
 		 return contenedor.remove(indice);
-		
 	}
-	
-	public boolean eliminarElementoObj(P p) {
-			return contenedor.remove(p);
-	}
-	
-	
-	public int contarElementos() {
 
+	@Override
+	public boolean eliminarElementoObj(P p) {
+		return contenedor.remove(p);
+	}
+
+	@Override
+	public int contarElementos() {
 		return contenedor.size();
 	}
-	
 
-	
+	@Override
 	public String listarElementos() {
 		StringBuilder sb = new StringBuilder();
 
@@ -55,125 +54,23 @@ public class Listado<P> implements Serializable {
 		}
 		if(sb.isEmpty())
 		{
-			sb.append("vacio");
+			sb.append("La lista se encuentra vacia");
 		}
 		return sb.toString();
 	}
-	
+
+	@Override
 	public P buscarElemento(int index) {
 		return contenedor.get(index);
 	}
-	
-	public boolean existeElemento(P elemento) {
-		return contenedor.contains(elemento);
-	}
-	
-	/*
-	private boolean buscarElementoPorDni(String dni) {
 
-		boolean rta = false;
-
-		for (int i = 0; i < contenedor.size(); i++) {
-			if (contenedor.get(i).getDni() == dni) {
-
-				rta = true;
-			}
-
-		}
-
-		return rta;
-	}
-	
-	public String eliminarElementoPorDni(int dni) {
-		String msj = "El elemento no se ha borrado, ya que no se encuentra en la lista";
-
-		boolean rta = buscarElementoPorDni(dni);
-
-		if (rta) {
-			for (int i = 0; i < contenedor.size(); i++) {
-				if (contenedor.get(i).getDni() == dni) {
-
-					contenedor.remove(i);
-					msj = "elemento eliminado correctamente";
-				}
-
-			}
-
-		}
-
-		return msj;
-	}
-	
-	*/
-	
-	/*
-	
-
-	private boolean buscarElementoPorDni(int dni) {
-
-		boolean rta = false;
-
-		for (int i = 0; i < contenedor.size(); i++) {
-			if (contenedor.get(i).getDni() == dni) {
-
-				rta = true;
-			}
-
-		}
-
-		return rta;
+	@Override
+	public boolean existeElemento(P e) {
+		return contenedor.contains(e);
 	}
 
 	
-	/*
-	 * 
-	 * TODO tendria que devolver un objeto asi cuando el cliente ya compro antes, use su objeto.
-	 
 	
 	
-	public String buscarYmostrarElementoPorDni(int dni) {
-		
-		
-		
-		
-		StringBuilder sb = new StringBuilder();
-
-		for (int i = 0; i < contenedor.size(); i++) {
-			if (contenedor.get(i).getDni() == dni) {
-
-				sb.append(contenedor.get(i).toString());
-			}
-		}
-
-		if (sb.isEmpty()) {
-			sb.append("Elemento no encontrado");
-		}
-
-		return sb.toString();
-		
-		
-	}
-
-	public String eliminarElementoPorDni(int dni) {
-		String msj = "El elemento no se ha borrado, ya que no se encuentra en la lista";
-
-		boolean rta = buscarElementoPorDni(dni);
-
-		if (rta) {
-			for (int i = 0; i < contenedor.size(); i++) {
-				if (contenedor.get(i).getDni() == dni) {
-
-					contenedor.remove(i);
-					msj = "elemento eliminado correctamente";
-				}
-
-			}
-
-		}
-
-		return msj;
-	}
-	
-	*/
 
 }

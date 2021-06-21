@@ -67,8 +67,8 @@ public class Local  {
 	
 	public  void LEER()
 	{
-		//ListadoSneakers lista = archivoProductos.leerProductos();
-		System.out.println(listaSneakers.devolverSneakersConSuCodigo());
+		ListadoVentas lista = archivoVentas.leerVentas();
+		System.out.println(lista.listarVentas());
 	}
 	
 	public boolean agregarCliente(Cliente cliente)
@@ -98,7 +98,7 @@ public class Local  {
 			Cliente cliente=null;
 			boolean rta = false;
 			
-			if(indice<=0)
+			if(indice>=0)
 			{
 				cliente=listaClientes.buscarClienteIndex(indice);
 				cliente.setDni(n_dni);
@@ -113,7 +113,7 @@ public class Local  {
 			Cliente cliente=null;
 			boolean rta = false;
 			
-			if(indice<=0)
+			if(indice>=0)
 			{
 				cliente=listaClientes.buscarClienteIndex(indice);
 				cliente.setNombre(n_nombre);
@@ -128,7 +128,7 @@ public class Local  {
 			Cliente cliente=null;
 			boolean rta = false;
 			
-			if(indice<=0)
+			if(indice>=0)
 			{
 				cliente=listaClientes.buscarClienteIndex(indice);
 				cliente.setApellido(n_apellido);
@@ -143,7 +143,7 @@ public class Local  {
 			Cliente cliente=null;
 			boolean rta = false;
 			
-			if(indice<=0)
+			if(indice>=0)
 			{
 				cliente=listaClientes.buscarClienteIndex(indice);
 				cliente.setTelefono(n_tel);
@@ -239,7 +239,7 @@ public class Local  {
 			Empleado empleado=null;
 			boolean rta = false;
 			
-			if(indice<=0)
+			if(indice>=0)
 			{
 				empleado=listaEmpleados.buscarEmpleadoIndex(indice);
 				empleado.setNombre(n_nombre);
@@ -253,7 +253,7 @@ public class Local  {
 	{	
 		boolean rta = false;
 		Empleado empleado=null;
-		if(indice<=0)
+		if(indice>=0)
 		{
 			empleado=listaEmpleados.buscarEmpleadoIndex(indice);
 			empleado.setApellido(n_apellido);
@@ -266,7 +266,7 @@ public class Local  {
 	{
 		boolean rta = false;
 		Empleado empleado=null;
-		if(indice<=0)
+		if(indice>=0)
 		{
 			empleado=listaEmpleados.buscarEmpleadoIndex(indice);
 			empleado.setDni(n_dni);
@@ -279,7 +279,7 @@ public class Local  {
 	{
 		boolean rta = false;
 		Empleado empleado=null;
-		if(indice<=0)
+		if(indice>=0)
 		{
 			empleado=listaEmpleados.buscarEmpleadoIndex(indice);
 			empleado.setNombreUsuario(n_user);
@@ -292,7 +292,7 @@ public class Local  {
 	{
 		boolean rta = false;
 		Empleado empleado=null;
-		if(indice<=0)
+		if(indice>=0)
 		{
 			empleado=listaEmpleados.buscarEmpleadoIndex(indice);
 			empleado.setPass(n_pass);
@@ -305,7 +305,7 @@ public class Local  {
 	{
 		boolean rta = false;
 		Empleado empleado=null;
-		if(indice<=0)
+		if(indice>=0)
 		{
 			empleado=listaEmpleados.buscarEmpleadoIndex(indice);
 			empleado.setDomicilio(n_domi);
@@ -319,7 +319,7 @@ public class Local  {
 	{	
 		boolean rta = false;
 		Empleado empleado=null;
-		if(indice<=0)
+		if(indice>=0)
 		{
 			empleado=listaEmpleados.buscarEmpleadoIndex(indice);
 			empleado.setSueldo(n_sueldo);
@@ -332,7 +332,7 @@ public class Local  {
 	{
 		boolean rta = false;
 		Empleado empleado=null;
-		if(indice<=0)
+		if(indice>=0)
 		{
 			empleado=listaEmpleados.buscarEmpleadoIndex(indice);
 			empleado.setHorasDeTrabajo(n_horas);
@@ -345,7 +345,7 @@ public class Local  {
 	{
 		boolean rta = false;
 		Empleado empleado=null;
-		if(indice<=0)
+		if(indice>=0)
 		{
 			empleado=listaEmpleados.buscarEmpleadoIndex(indice);
 			empleado.setTelefono(n_tel);

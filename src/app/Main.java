@@ -10,7 +10,6 @@ import archivos.archivoClientes;
 import archivos.archivoProductos;
 import caja.Venta;
 import colecciones.CarritoCompra;
-
 import listas.ListadoClientes;
 import listas.ListadoEmpleados;
 import listas.ListadoSneakers;
@@ -209,20 +208,22 @@ public class Main {
 		//Local local = new Local(listacliente,listaempleados);
 		//local.guardarDatosLocal();
 		
+		
 		//Local.iniciarSistemaArchivos();
 			Menu menu = new Menu();
 			
 			//menu.registrarEmpleado();
 		
 		//Local local = new Local();
-			
+		
+		//local.LEER();
+		
 		//ListadoSneakers lista = archivoProductos.leerProductos();
 			
 		//System.out.println(lista.devolverSneakersConSuCodigo());
 		
 		
 		menu.menuPrincipal();
-			
 		
 		
 		

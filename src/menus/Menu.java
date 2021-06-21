@@ -3,12 +3,8 @@ package menus;
 import java.util.Date;
 import java.util.Scanner;
 
-
-
 import caja.Venta;
 import colecciones.CarritoCompra;
-
-
 import local.Local;
 import modelos.Cajero;
 import modelos.Cliente;
@@ -244,7 +240,7 @@ public class Menu
 		}
 		else
 		{
-			System.out.println("\nHa ocurrido un error");
+			System.out.println("\nHa ocurrido un error, elemento ya se encuntra guardado");
 		}
 	}
 	
@@ -257,6 +253,7 @@ public class Menu
 			System.out.println("\nEliminado correctamente");
 		}
 		
+		
 	}
 	
 	private void verificacionModidicar(boolean rta)
@@ -265,6 +262,10 @@ public class Menu
 		if(rta==true)
 		{
 			System.out.println("\nModificado correctamente");
+		}
+		else 
+		{
+			System.out.println(" ------- error");
 		}
 		
 	}
@@ -834,6 +835,8 @@ public class Menu
 				System.out.println("Ingrese dni:");
 				String dni=scanner.next();
 				int indice = local.existeDniCliente(dni);
+				
+				System.out.println("\n --------------"+indice);
 				if(indice>=0)
 				{	
 					//System.out.println(indice);
@@ -1251,7 +1254,7 @@ public class Menu
 					String dni = scanner.next();
 					
 					System.out.println(local.listarVentasDeVendedorDni(dni));
-				
+					menuPrincipal();
 				break;
 			case 4:// guardar datos
 					local.guardarDatosLocal();

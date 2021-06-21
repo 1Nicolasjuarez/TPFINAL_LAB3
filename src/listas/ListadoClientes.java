@@ -1,13 +1,13 @@
 package listas;
 
 import java.io.Serializable;
+
 import java.util.ArrayList;
 
 import excepciones.ErrorDeBusquedaExcepcion;
 import genericos.Listado;
 import modelos.Cliente;
-import modelos.Empleado;
-import modelos.Gerente;
+
 
 public class ListadoClientes implements Serializable{
 	

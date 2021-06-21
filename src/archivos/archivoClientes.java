@@ -2,6 +2,7 @@ package archivos;
 
 import java.io.EOFException;
 
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -11,11 +12,15 @@ import java.io.Serializable;
 
 import listas.ListadoClientes;
 
-public class archivoClientes {
+public class archivoClientes implements Serializable{
 	
 	
 	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static String archivoDeClientes = "clientes.dat";
 
 	public static void grabarClientes(ListadoClientes clientes) {

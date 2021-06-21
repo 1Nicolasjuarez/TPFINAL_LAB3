@@ -115,9 +115,6 @@ public class ListadoEmpleados implements Serializable{
 	{
 		int borrar = -1;
 		
-		boolean rta=false;
-		//Empleado empleado = null;
-		
 		for (int i = 0; i < empleados.contarElementos(); i++) 
 		{
 			if(empleados.buscarElemento(i).getDni().equals(dni))

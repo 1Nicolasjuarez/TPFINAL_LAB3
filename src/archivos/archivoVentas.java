@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+
 import listas.ListadoVentas;
 
 /*
@@ -22,10 +23,14 @@ import listas.ListadoVentas;
  */
 
 
-public class archivoVentas {
+public class archivoVentas implements Serializable{
 
+	
+
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
-
 	private static String archivoDeVentas = "ventas.dat";
 
 	public static void grabarVentas(ListadoVentas ventas) {

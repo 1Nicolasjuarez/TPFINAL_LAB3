@@ -3,12 +3,8 @@ package menus;
 import java.util.Date;
 import java.util.Scanner;
 
-
-
 import caja.Venta;
 import colecciones.CarritoCompra;
-import excepciones.SneakerException;
-import excepciones.UserException;
 import local.Local;
 import modelos.Cajero;
 import modelos.Cliente;
@@ -20,15 +16,13 @@ import producto.Low_top;
 import producto.Mid_cup;
 import producto.Sneaker;
 
-
 /**
- * 
- * @author Nicolas Juarez (Principalmente)
- * @author Damián Andrés Barros (Correcciones mínimas)
- * 
- * Esta clase es la que contiene los menús que se mostrarán al ejecutar el programa
+ * <p><b><i>Menu</i></b></p>
+ * <pre>public class Menu </pre>
+ * <p>Super clase Menu.</p>
+ * @author Nicolas
+ *
  */
-
 public class Menu 
 {
 	
@@ -36,284 +30,203 @@ public class Menu
 	
 	Local local = new Local();
 	
-	public void registrarEmpleado() throws UserException
+	/**
+	 * <p><b><i>registrarEmpleado </i></b></p>
+	 * <pre> public void registrarEmpleado() </pre>
+	 *<p> Menu  para registrar un empleado </p>
+	 * @author Nicolas
+	 */
+	
+	
+	public void registrarEmpleado() 
 	{
-		Empleado emp = null;
 		
-		String nombre;
-		String apellido;
-		String dni;
-		int telefono;
-		String domicilio;
-		String user;
-		String pass;
-		Double sueldo;
-		int horas;
-		
-		String registro = "REGISTRO DE USUARIO\n\n 1. CONTINUAR\n 0. SALIR";
-		String puestoEmpleado = "\n\n=> PUESTO DEL EMPLEADO \n 1. VENDEDOR \n 2. CAJERO \n 3. GERENTE";
-		
-		int secondSelect = -1;
-		int continuarSalir = -1;
-		
-		boolean rta = false;
-		boolean rta2 = false;
-		
-		try 
-		{
-			System.out.println(registro);
-		
-			do
-			{
-				continuarSalir = scanner.nextInt();
-				
-			}while(continuarSalir != 1 && continuarSalir != 0);
+		try {
 			
-		if(continuarSalir == 1)
-		{
-			do
-			{
-				System.out.println("Ingrese el nombre del empleado:");
-				nombre = scanner.next();	
-				
-				if(nombre.equalsIgnoreCase(""))
-				{
-					throw new UserException("El nombre está vacio. Intente nuevamente");
-				}
-				
-			}while(nombre.equalsIgnoreCase(""));
+			String nombre;
+			String apellido;
+			String dni;
+			int telefono;
+			String domicilio;
+			String user;
+			String pass;
+			double sueldo;
+			int horas;
+					
+			String principalMenu = "\n\n=> MENU REGISTRO\n1.REGISTRO VENDEDOR\n2.REGISTRO CAJERO \n3.REGISTRO GERENTE \n0.SALIR,VOLVER AL MENU ANTERIOR";
 			
-			
-			do
-			{
-				System.out.println("Ingrese el apellido del empleado:");
-				apellido = scanner.next();		
-				
-				if(apellido.equalsIgnoreCase(""))
-				{
-					throw new UserException("El apellido está vacio. Intente nuevamente");
-				}	
-				
-			}while(apellido.equalsIgnoreCase(""));
-			
-			
-			do
-			{
-				System.out.println("Ingrese DNI:");
-				dni = scanner.next();
-				
-				if(dni.equalsIgnoreCase(""))
-				{
-					throw new UserException("El DNI está vacío. Intente nuevamente");
-				}
-				else if(dni.length() < 8)
-				{
-					throw new UserException("La cantidad de digitos del DNI es menor a 8. Intente nuevamente");
-				}
-				
-			}while(dni.equalsIgnoreCase("") && dni.length() < 8);
-			
-			
-				System.out.println("Ingrese número de teléfono:");
-				telefono=scanner.nextInt();		
-			
-			do
-			{
-				System.out.println("Ingrese domicilio:");
-				domicilio = scanner.next();
-				
-				if(domicilio.equalsIgnoreCase(""))
-				{
-					throw new UserException("El domicilio está vacío. Intente nuevamente");
-				}
-				
-			}while(domicilio.equalsIgnoreCase(""));
-			
-			do
-			{
-				
-				System.out.println("Ingrese nombre de usuario:");
-				user = scanner.next();
-				
-				if(user.equalsIgnoreCase(""))
-				{
-					throw new UserException("El nombre de usuario está vacio. Intente nuevamente ");
-				}
-				else if(user.length() < 5)
-				{
-					throw new UserException("El nombre de usuario debe tener al menos cinco caracteres. Intente nuevamente");
-				}
-				
-			}while(user.equalsIgnoreCase("") && user.length() < 5);
-			
-			
-			do
-			{
-				System.out.println("Ingrese contraseña:");
-				pass = scanner.next();
-				
-				if(pass.equalsIgnoreCase(""))
-				{
-					throw new UserException("La contraseña está vacía. Intente nuevamente ");
-				}
-				
-				if(pass.length() < 8)
-				{
-					throw new UserException("La contraseña debe tener al menos ocho caracteres. Intente nuevamente");
-				}
-				
-			}while(pass.equalsIgnoreCase("") && pass.length() < 8);
-			
-				
-				System.out.println("Ingrese sueldo:");
-				sueldo = scanner.nextDouble();
-				
-			
-			System.out.println("Ingrese horas de trabajo:");
-			horas = scanner.nextInt();
-			
-			System.out.println(puestoEmpleado);
-			
-			do
-			{
+			int secondSelect=0;
+			System.out.println(principalMenu);
 			System.out.print("Seleccione: ");
-			secondSelect = scanner.nextInt();
 			
-			}while(secondSelect != 1 && secondSelect != 2 && secondSelect != 3);
-			
+				secondSelect= scanner.nextInt();
+
+				
 				switch (secondSelect)
 				{
 				case 1: 
 					
-					emp = new Vendedor(nombre, apellido, dni, telefono, domicilio, user, pass, sueldo, horas);
+					System.out.println("\nIngrese nombre:");
+					nombre = scanner.next();
+					System.out.println("\nIngrese apellido :");
+					apellido = scanner.next();
+					System.out.println("\nIngrese dni:");
+					dni = scanner.next();
+					System.out.println("\nIngrese telefono:");
+					telefono= scanner.nextInt();
+					System.out.println("\nIngrese domicilio:");
+					domicilio = scanner.next();
+					System.out.println("\nIngrese usuario:");
+					user = scanner.next();
+					System.out.println("\nIngrese pass:");
+					pass = scanner.next();
+					System.out.println("\nIngrese sueldo:");
+					sueldo = scanner.nextDouble();
+					System.out.println("\nIngrese horas de trabajo:");
+					horas= scanner.nextInt();
 					
+					Empleado vendedor = new Vendedor(nombre, apellido, dni, telefono, domicilio, user, pass, sueldo, horas);
 					
-					//Empleado emp3 = new Vendedor("sergio","jua","123",124123,"luro123","nick","asda",32,5);
-					rta = local.agregarEmpleado(emp);
-					local.guardarDatosLocal();
-					
+					boolean rta = local.agregarEmpleado(vendedor);
 					verificacionAgregar(rta);
 					menuABMempleado();
 					
 					break;
 					
 				case 2:
+					System.out.println("\nIngrese nombre:");
+					nombre = scanner.next();
+					System.out.println("\nIngrese apellido :");
+					apellido = scanner.next();
+					System.out.println("\nIngrese dni:");
+					dni = scanner.next();
+					System.out.println("\nIngrese telefono:");
+					telefono= scanner.nextInt();
+					System.out.println("\nIngrese domicilio:");
+					domicilio = scanner.next();
+					System.out.println("\nIngrese usuario:");
+					user = scanner.next();
+					System.out.println("\nIngrese pass:");
+					pass = scanner.next();
+					System.out.println("\nIngrese sueldo:");
+					sueldo = scanner.nextDouble();
+					System.out.println("\nIngrese horas de trabajo:");
+					horas= scanner.nextInt();
 					
-					 
-					emp = new Cajero(nombre, apellido, dni, telefono, domicilio, user, pass, sueldo, horas);
+					Empleado cajero = new Cajero(nombre, apellido, dni, telefono, domicilio, user, pass, sueldo, horas);
 					
-					rta2 = local.agregarEmpleado(emp);
-					local.guardarDatosLocal();
-					
+					boolean rta2 = local.agregarEmpleado(cajero);
 					verificacionAgregar(rta2);
 					menuABMempleado();
 					
 					break;
 				
 				case 3:
-					 
-					emp = new Gerente(nombre, apellido, dni, telefono, domicilio, user, pass, sueldo, horas);
-					boolean rta3 = local.agregarEmpleado(emp);
-					local.guardarDatosLocal();
+					System.out.println("\nIngrese nombre:");
+					nombre = scanner.next();
+					System.out.println("\nIngrese apellido :");
+					apellido = scanner.next();
+					System.out.println("\nIngrese dni:");
+					dni = scanner.next();
+					System.out.println("\nIngrese telefono:");
+					telefono= scanner.nextInt();
+					System.out.println("\nIngrese domicilio:");
+					domicilio = scanner.next();
+					System.out.println("\nIngrese usuario:");
+					user = scanner.next();
+					System.out.println("\nIngrese pass:");
+					pass = scanner.next();
+					System.out.println("\nIngrese sueldo:");
+					sueldo = scanner.nextDouble();
+					System.out.println("\nIngrese horas de trabajo:");
+					horas= scanner.nextInt();
 					
+					Empleado gerente = new Gerente(nombre, apellido, dni, telefono, domicilio, user, pass, sueldo, horas);
+					
+					boolean rta3 = local.agregarEmpleado(gerente);
 					verificacionAgregar(rta3);
 					menuABMempleado();
-					
+
 					break;
 					
 				case(0):
+
+					System.out.println("Volviendo al menu anterior");
 					
-					System.out.println("Lo veré en el futuro... o en el pasado...");	
-				
 					menuABMempleado();
+
 					break;
 					
 				default:
-					
-					System.out.println("Apretaste cualquiera, reidirigido al menu anterior!");
+					System.out.println("Opcion incorrecta!");
 					registrarEmpleado();
-					
+	                
 					break;
 				}
+				
+
+				
+
+			
+		} catch (Exception e) {
+			System.out.println("Hubo un error \n"+e.getMessage());	
 		}
-		else if(continuarSalir == 0)
-		{
-			menuABMempleado();
-		}
-	} 
-		
-		catch(Exception e) 
-		{
-			System.out.println("Hubo un error \n" + e.getMessage());	
-		}
-}
+	}
+	
+	
+	/**
+	 * <p><b><i>listarEmpleados </i></b></p>
+	 * <pre> public void listarEmpleados() </pre>
+	 *<p> Menu para mostrar los empleados </p>
+	 * @author Nicolas
+	 */
 	
 	public void listarEmpleados()
 	{
 		
-		String opcion = null;
 		try {
 			
-			String principalMenu = "\n\n=> MENÚ LISTAR EMPLEADOS \n 1.LISTAR VENDEDORES \n 2. LISTAR CAJERO \n 3. LISTAR GERENTE \n 0. SALIR, VOLVER AL MENÚ ANTERIOR";
-			String cont = "s";
-			
+
+			String principalMenu = "\n\n=> MENU LISTAR EMPLEADOS \n 1.LISTAR VENDEDORES \n 2. LISTAR CAJERO \n 3. LISTAR GERENTE \n 0. SALIR, VOLVER AL MENU ANTERIOR";
+	
 			int secondSelect = 0;
-			
 			System.out.println(principalMenu);
 			System.out.print("Seleccione: ");
-			
-			while(cont.equalsIgnoreCase("s"))
-			{
-				secondSelect= scanner.nextInt();
+			secondSelect= scanner.nextInt();
+
 				
-				switch (secondSelect)
-				{
+				switch (secondSelect) {
 				case 1:
 					
 					System.out.println("\nLISTA DE VENDEDORES\n");
-					
-					do
-					{
 						System.out.println(local.listarVendedores());	
-						System.out.println("Presione N para volver");
-						opcion = scanner.nextLine();
 						
-					}while(!opcion.equalsIgnoreCase("N"));
-					
+						
+					//menuGerente();
+
+				
 					menuABMempleado();
-					
+
 					break;
 					
 				case 2:
 					
 					System.out.println("\nLISTA DE CAJEROS\n");
-					
-					do
-					{
-						System.out.println(local.listarCajeros());
-						System.out.println("Presione N para volver");
-						opcion = scanner.nextLine();
-						
-					}while(!opcion.equalsIgnoreCase("N"));
-					
+					System.out.println(local.listarCajeros());
 					menuABMempleado();
-					
+
 					break;
 					
 				case 3:
-					
 					System.out.println("\nLISTA DE GERENTES\n");
 					
-					do
-					{
+					
 					System.out.println(local.listarGerentes());
-					System.out.println("Presione N para volver");
-					opcion = scanner.nextLine();
-					
-					}while(!opcion.equalsIgnoreCase("N"));
-					
+
+		
+
 					menuABMempleado();	
-					
+
 					break;
 					
 				case(0):	
@@ -325,239 +238,222 @@ public class Menu
 					break;
 					
 				default:
-					
-					System.out.println("¡Opción incorrecta!");
+					System.out.println("Opcion incorrecta!");
 					listarEmpleados();
 	                
 					break;
 				}
-			}
-		}	
 			
-			catch (Exception e) 
-		{
-			System.out.println("Hubo un error \n" + e.getMessage());	
+				
+			
+		} catch (Exception e) {
+			System.out.println("Hubo un error \n"+e.getMessage());	
 		}
 	}
+	
+	/**
+	 * <p><b><i>verificacionAgregar </i></b></p>
+	 * <pre> private void verificacionAgregar(boolean rta)</pre>
+	 *<p> Metodo verificar si un elemento se agrego correctamente </p>
+	 * @author Nicolas
+	 */
+	
 	
 	private void verificacionAgregar(boolean rta)
 	{
-		if(rta == true)
+		
+		
+		if(rta==true)
 		{
 			System.out.println("\nAgregado correctamente");
 		}
-		
 		else
 		{
-			System.out.println("\nHa ocurrido un error");
+			System.out.println("\nHa ocurrido un error, elemento ya se encuntra guardado");
 		}
 	}
 	
+	
+	/**
+	 * <p><b><i>verificacionBorrar </i></b></p>
+	 * <pre> private void verificacionBorrar(boolean rta)</pre>
+	 *<p> Metodo verificar si un elemento se elimino correctamente </p>
+	 * @author Nicolas
+	 */
+	
 	private void verificacionBorrar(boolean rta)
 	{
-		if(rta == true)
+		
+		
+		if(rta==true)
 		{
 			System.out.println("\nEliminado correctamente");
 		}
 		
+		
 	}
+	
+	/**
+	 * <p><b><i>verificacionModidicar </i></b></p>
+	 * <pre>private void verificacionModidicar(boolean rta)</pre>
+	 *<p> Metodo verificar si un elemento se modifico correctamente </p>
+	 * @author Nicolas
+	 */
 	
 	private void verificacionModidicar(boolean rta)
 	{
 			
-		if(rta == true)
+		if(rta==true)
 		{
 			System.out.println("\nModificado correctamente");
+		}
+		else 
+		{
+			System.out.println(" ------- error");
 		}
 		
 	}
 	
-
+	/**
+	 * <p><b><i>eliminarEmpleado</i></b></p>
+	 *  <pre>public void eliminarEmpleado()</pre>
+	 *<p> Metodo para eliminar un empleado</p>
+	 * @author Nicolas
+	 */
 	public void eliminarEmpleado()
 	{
-		System.out.println("\nIngrese el DNI del empleado a eliminar:");
+		System.out.println("\nIngrese DNI:");
 		String dni = scanner.next();
-		
-
 		boolean res = local.eliminarEmpleado(dni);
-	
-	
 		verificacionBorrar(res);
 		menuABMempleado();
 	}
 	
 
+	
+	
+	/**
+	 * <p><b><i>menuModificarEmpleado</i></b></p>
+	 *  <pre>public void menuModificarEmpleado(int v_indice)</pre>
+	 *<p> Metodo para modificar un empleado </p>
+	 *@param int v_indice
+	 * @author Nicolas
+	 */
 	public void menuModificarEmpleado(int v_indice)
 	{
-		
-		String nombre;
-		String apellido;
-		String dni;
-		int telefono;
-		String domicilio;
-		String user;
-		String pass;
-		double sueldo;
-		int horas;
-		
-		int secondSelect = -1;
-		
-		boolean rta = false;
-		boolean rta2 = false;
-		boolean rta3 = false;
-		boolean rta4 = false;
-		boolean rta5 = false;
-		boolean rta6 = false;
-		boolean rta7 = false;
-		boolean rta8 = false;
-		boolean rta9 = false;
-		
-		try 
-		{
-			String principalMenu = "\n\n=> MENÚ MODIFICACIÓN DE EMPLEADO\n 1. MODIFICAR NOMBRE\n 2. MODIFICAR APELLIDO \n 3.MODIFICAR DNI \n4.MODIFICAR TELEFONO \n 5. MODIFICAR DOMICILIO \n 6. MODIFICAR USUARIO \n 7. MODIFICAR CONTRASEÑA \n 8. MODIFICAR SUELDO \n 9. MODIFICAR HORAS DE TRABAJO \n 0. SALIR, VOLVER AL MENÚ ANTERIOR";
+		try {
 			
+			String nombre;
+			String apellido;
+			String dni;
+			int telefono;
+			String domicilio;
+			String user;
+			String pass;
+			double sueldo;
+			int horas;
+			
+			String principalMenu = "\n\n=> MENU MODIFICACION DE EMPLEADO\n1.MODIFICAR NOMBRE\n2.MODIFICAR APELLIDO \n3.MODIFICAR DNI \n4.MODIFICAR TELEFONO \n5.MODIFICAR DOMICILIO \n6.MODIFICAR USUARIO \n7.MODIFICAR PASS \n8.MODIFICAR SUELDO \n9.MODIFICAR HORAS DE TRABAJO \n0.SALIR, VOLVER AL MENU ANTERIOR";
+			int secondSelect=0;
 			System.out.println(principalMenu);
 			System.out.print("Seleccione: ");
 			secondSelect= scanner.nextInt();
 			
-			switch (secondSelect) 
-			{
+			switch (secondSelect) {
 			case 1:	
 				
-				System.out.println("\nIngrese el nuevo nombre:");
+				System.out.println("\nIngrese nuevo nombre:");
 				nombre = scanner.next();
-				rta = local.modificarEmpleadoNombre(v_indice, nombre);
+				boolean rta=local.modificarEmpleadoNombre(v_indice, nombre);
 				verificacionModidicar(rta);
-				
 				menuABMempleado();	
-				
 				break;
-				
 			case 2:
-				
-				System.out.println("\nIngrese el nuevo apellido :");
+				System.out.println("\nIngrese nuevo apellido :");
 				apellido = scanner.next();	
-				rta2 = local.modificarEmpleadoApellido(v_indice, apellido);
+				boolean rta2=local.modificarEmpleadoApellido(v_indice, apellido);
 				verificacionModidicar(rta2);
-				
 				menuABMempleado();	
-				
 				break;
-				
 			case 3:
-				
-				System.out.println("\nIngrese el nuevo DNI:");
+				System.out.println("\nIngrese nuevo dni:");
 				dni = scanner.next();
-				rta3 = local.modificarEmpleadoDni(v_indice, dni);
+				boolean rta3=local.modificarEmpleadoDni(v_indice, dni);
 				verificacionModidicar(rta3);
-				
 				menuABMempleado();
-				
 				break;
-				
 			case 4:
-				
-				System.out.println("\nIngrese nuevo teléfono:");
+				System.out.println("\nIngrese nuevo telefono:");
 				telefono = scanner.nextInt();
-				rta4 = local.modificarEmpleadoTelefono(v_indice, telefono);
+				boolean rta4=local.modificarEmpleadoTelefono(v_indice, telefono);
 				verificacionModidicar(rta4);
-				
 				menuABMempleado();
-				
 				break;
-				
 			case 5:
-				
-				System.out.println("\nIngrese el nuevo domicilio:");
+				System.out.println("\nIngrese nuevo domicilio:");
 				domicilio = scanner.next();
-				rta5=local.modificarEmpleadoDomicilio(v_indice, domicilio);
+				boolean rta5=local.modificarEmpleadoDomicilio(v_indice, domicilio);
 				verificacionModidicar(rta5);
-				
 				menuABMempleado();
-				
 				break;
-				
 			case 6:
-				
-				System.out.println("\nIngrese el nuevo nombre de usuario:");
+				System.out.println("\nIngrese nuevo usuario:");
 				user = scanner.next();
-				rta6 = local.modificarEmpleadoUser(v_indice, user);
+				boolean rta6=local.modificarEmpleadoUser(v_indice, user);
 				verificacionModidicar(rta6);
-				
 				menuABMempleado();
-				
 				break;
-				
 			case 7:
-				
-				System.out.println("\nIngrese la nueva contraseña:");
+				System.out.println("\nIngrese nuevo pass:");
 				pass = scanner.next();
-				rta7 = local.modificarEmpleadoPass(v_indice, pass);
+				boolean rta7=local.modificarEmpleadoPass(v_indice, pass);
 				verificacionModidicar(rta7);
-				
 				menuABMempleado();
-				
 				break;
-				
 			case 8:
-				
-				System.out.println("\nIngrese el nuevo sueldo:");
+				System.out.println("\nIngrese nuevo sueldo:");
 				sueldo = scanner.nextDouble();
-				rta8 = local.modificarEmpleadoSueldo(v_indice, sueldo);
+				boolean rta8=local.modificarEmpleadoSueldo(v_indice, sueldo);
 				verificacionModidicar(rta8);
-				
 				menuABMempleado();
-				
 				break;
-				
 			case 9:
-				
-				System.out.println("\nIngrese la nueva cantidad de horas de trabajo:");
-				horas = scanner.nextInt();
-				
-				rta9 = local.modificarEmpleadoHorasDeTrabajo(v_indice, horas);
+				System.out.println("\nIngrese nuevas horas de trabajo:");
+				horas= scanner.nextInt();
+				boolean rta9=local.modificarEmpleadoHorasDeTrabajo(v_indice, horas);
 				verificacionModidicar(rta9);
-				
 				menuABMempleado();
-				
 				break;
-				
 			case(0):
-				
-				System.out.println("Volviendo al menú anterior...");
+				System.out.println("Volviendo al menu anterior");
 				
 				menuABMempleado();
-				
 				break;
-				
 			default:
-				
-				System.out.println("¡Opción incorrecta!");
+				System.out.println("Opcion incorrecta!");
 				menuABMempleado();  
-				
 				break;
 			}
 						
-		} 
-		catch (Exception e) 
-		{
-			System.out.println("Hubo un error \n" + e.getMessage());	
+		} catch (Exception e) {
+			System.out.println("Hubo un error \n"+e.getMessage());	
 		}
 	}
 	
 	
-	
+	/**
+	 * <p><b><i>menuABMempleado</i></b></p>
+	 *  <pre>public void menuABMempleado()</pre>
+	 *<p> Menu  de alta baja y modificacion de empleados </p>
+	 * @author Nicolas
+	 */
 	public void menuABMempleado() 
+
 	{
-		String principalMenu = "\n\n=> MENU GERENTE\n1.AGREGAR EMPLEADO\n2.LISTAR EMPLEADOS \n3.MODIFICAR EMPLEADO \n4.ELIMINAR EMPLEADO \n0.SALIR, VOLVER AL MENU ANTERIOR";
-		int secondSelect = 0;
-		
-		String dni = "";
-		int indice = 0;
-		
-		try 
-		{
+		try {
 			
+			String principalMenu = "\n\n=> MENU GERENTE\n1.AGREGAR EMPLEADO\n2.LISTAR EMPLEADOS \n3.MODIFICAR EMPLEADO \n4.ELIMINAR EMPLEADO \n0.SALIR, VOLVER AL MENU ANTERIOR";
+			int secondSelect=0;
 			System.out.println(principalMenu);
 			System.out.print("Seleccione: ");
 			
@@ -565,696 +461,539 @@ public class Menu
 				secondSelect= scanner.nextInt();
 				
 				switch (secondSelect) {
-				case 1:
-					
-					try
-					{
-						registrarEmpleado();
-						
-					}
-					catch(UserException e)
-					{
-						System.out.println(e.getMessage());
-					}
+				case 1:registrarEmpleado();
 					
 					break;
-					
-				case 2:
-					
-					listarEmpleados();
+				case 2:listarEmpleados();
 										
 					break;
-					
 				case 3:
 						System.out.println("Ingrese dni:");
-						dni = scanner.nextLine();
+						String dni=scanner.next();
 						
-						indice = local.exixteDniEmpleado(dni);
+						int indice = local.exixteDniEmpleado(dni);
 						
-						if(indice >= 0)
+						if(indice>=0)
 						{	
 							//System.out.println(indice);
 							
 							menuModificarEmpleado(indice);
 						}
-						
 						else
 						{
 							menuABMempleado();
 						}
 						
 					break;
-					
-				case 4: 
-					
-					eliminarEmpleado();
+				case 4: eliminarEmpleado();
 						
 					break;
-					
 				case(0):
-					
-					System.out.println("Volviendo al menú anterior...");
+					System.out.println("Volviendo al menu anterior");
 					menuGenerte();
-					
 					break;
-					
 				default:
-					
-					System.out.println("¡Opción incorrecta!");
+					System.out.println("Opcion incorrecta!");
 					menuABMempleado();
+					break;
+				}
+			
+			
+			
+		} 
+		catch (Exception e) {
+			System.out.println("Hubo un error \n"+e.getMessage());	
+			
+		}
+		
+	}
+	
+	
+	
+	/**
+	 * <p><b><i>registarSneaker</i></b></p>
+	 *  <pre>public void registarSneaker()</pre>
+	 *<p> Memu para registrar un sneaker </p>
+	 * @author Nicolas
+	 */
+	public void registarSneaker()
+	{
+		try {
+			
+			String numeroSerie;
+			String marca;
+			String modelo;
+			double talle;
+			double precio;
+			
+			String principalMenu = "\n\n=> MENU AGREGAR SNEAKER\n1.AGREGAR HIGH TOP\n2.AGREGAR LOW TOP \n3.AGREGAR MID CUP \n0.SALIR,	VOLVER AL MENU ANTERIOR";
+			int secondSelect=0;
+			System.out.println(principalMenu);
+			System.out.print("Seleccione: ");
+			
+			
+			
+				secondSelect= scanner.nextInt();
+				
+				switch (secondSelect) {
+				case 1:
+					
+					System.out.println("ingrese numero de serie:");
+					numeroSerie = scanner.next();
+					System.out.println("ingrese marca:");
+					marca = scanner.next();
+					System.out.println("ingrese modelo");
+					modelo = scanner.next();
+					System.out.println("ingrese talle:");
+					talle= scanner.nextDouble();
+					System.err.println("ingrese precio:");
+					precio= scanner.nextDouble();	
+											
+					Sneaker s1 = new High_top(numeroSerie, marca, modelo, talle, precio);
+					boolean rta = local.agregarSneaker(s1);
+					verificacionAgregar(rta);
+					menuABMstock();
+					break;
+				case 2:
+					System.out.println("ingrese numero de serie:");
+					numeroSerie = scanner.next();
+					System.out.println("ingrese marca:");
+					marca = scanner.next();
+					System.out.println("ingrese modelo");
+					modelo = scanner.next();
+					System.out.println("ingrese talle:");
+					talle= scanner.nextDouble();
+					System.err.println("ingrese precio:");
+					precio= scanner.nextDouble();	
+					Sneaker s2 = new Low_top(numeroSerie, marca, modelo, talle, precio);
+					boolean rta2 = local.agregarSneaker(s2);
+					verificacionAgregar(rta2);
+					menuABMstock();			
+					break;
+				case 3:
+					System.out.println("ingrese numero de serie:");
+					numeroSerie = scanner.next();
+					System.out.println("ingrese marca:");
+					marca = scanner.next();
+					System.out.println("ingrese modelo");
+					modelo = scanner.next();
+					System.out.println("ingrese talle:");
+					talle= scanner.nextDouble();
+					System.err.println("ingrese precio:");
+					precio= scanner.nextDouble();	
+					Sneaker s3 = new Mid_cup(numeroSerie, marca, modelo, talle, precio);
+					boolean rta3 = local.agregarSneaker(s3);
+					verificacionAgregar(rta3);
+					menuABMstock();	
+					break;
+				
+				case(0):
+					System.out.println("Volviendo al menu anterior");
+					
+					menuABMstock();
 					
 					break;
-				}		
-		} 
-		
-		catch (Exception e)
-		{
+
+				default:
+					System.out.println("Opcion incorrecta!");
+					registarSneaker();
+	                
+					break;
+				}
+			
+					
+		} catch (Exception e) {
 			System.out.println("Hubo un error \n"+e.getMessage());	
 		}
 	}
 	
 	
 	
-	
-	public void registarSneaker() throws SneakerException
-	{
-		String numeroSerie;
-		String marca;
-		String modelo;
-		double talle;
-		double precio;
-		
-		String principalMenu = "\n\n=> MENU AGREGAR SNEAKER\n 1. CONTINUAR\n 0.SALIR, VOLVER AL MENU ANTERIOR";
-		int secondSelect = -1;
-		int continuarSalir = -1;
-		String SeleccionTipo = "\\n\\n=> MODELO\n 1.HIGH TOP\n 2.LOW TOP\n 3.MID TOP";
-		
-		boolean rta = false;
-		boolean rta2 = false;
-		boolean rta3 = false;
-		
-		try 
-		{
-			do
-			{
-				System.out.println(principalMenu);
-				continuarSalir = scanner.nextInt();	
-				
-			}while(continuarSalir != 1 && continuarSalir != 0);
-			
-			if(continuarSalir == 1)
-			{
-	
-			do
-			{
-				System.out.println("Ingrese el número de serie: ");
-				numeroSerie = scanner.next();
-				
-				if(numeroSerie.equalsIgnoreCase(""))
-				{
-					throw new SneakerException("El número de serie está vacío. Intente nuevamente");
-				}
-				
-			}while(numeroSerie.equalsIgnoreCase(""));
-			
-			do
-			{
-				System.out.println("Ingrese el nombre de la marca:");
-				marca = scanner.next();
-				
-				if(marca.equalsIgnoreCase(""))
-				{
-					throw new SneakerException("El nombre de la marca está vacío. Intente nuevamente");
-				}
-				
-			}while(marca.equalsIgnoreCase(""));
-			
-			do
-			{
-				System.out.println("Ingrese el modelo");
-				modelo = scanner.next();
-				
-				if(modelo.equalsIgnoreCase(""))
-				{
-					throw new SneakerException("El modelo está vacío. Intente nuevamente");
-				}
-				
-			}while(modelo.equalsIgnoreCase(""));
-			
-			
-				System.out.println("Ingrese el talle:");
-				talle= scanner.nextDouble();
-				
-				System.err.println("Ingrese el precio:");
-				precio= scanner.nextDouble();	
-			
-				
-				do
-				{
-					System.out.println(SeleccionTipo);
-					secondSelect = scanner.nextInt();
-					
-				}while(secondSelect != 1 && secondSelect != 2 && secondSelect != 3);
-				
-				
-				switch (secondSelect) 
-				{
-				case 1:
-					
-					//Sneaker s1 = new High_top("1111", "nike" ,"force", 32, 600);
-					
-					Sneaker s1 = new High_top(numeroSerie, marca, modelo, talle, precio);
-					rta = local.agregarSneaker(s1);
-					verificacionAgregar(rta);
-					
-					menuABMstock();
-					
-					break;			
-					
-				case 2:
-					
-					Sneaker s2 = new Low_top(numeroSerie, marca, modelo, talle, precio);
-					rta2 = local.agregarSneaker(s2);
-					verificacionAgregar(rta2);
-					
-					menuABMstock();	
-					
-					break;
-					
-				case 3:
-
-					Sneaker s3 = new Mid_cup(numeroSerie, marca, modelo, talle, precio);
-					rta3 = local.agregarSneaker(s3);
-					verificacionAgregar(rta3);
-					
-					menuABMstock();	
-					
-					break;
-				
-				case(0):
-					
-					System.out.println("Volviendo al menú anterior...");
-					
-					menuABMstock();
-					
-					break;
-
-				default:
-					
-					System.out.println("¡Opción incorrecta!");
-					registarSneaker();
-	                
-					break;
-				}
-			}
-			
-			else if(continuarSalir == 0)
-			{
-				menuABMstock();
-			}
-			
-					
-		} 
-		catch (Exception e) 
-		{
-			System.out.println("Hubo un error \n" + e.getMessage());	
-		}
-	}
-	
-	
+	/**
+	 * <p><b><i>listarSneakers</i></b></p>
+	 *  <pre>public void listarSneakers()</pre>
+	 *<p> Menu para mostrar las distintas listas de sneakers </p>
+	 * @author Nicolas
+	 */
 	public void listarSneakers()
 	{
-		String opcion = "";
-		String principalMenu = "\n\n=> MENU LISTAR SNEAKER\n1.LISTAR HIGH TOP\n2.LISTAR LOW TOP \n3.LISTAR MID CUP \n0.SALIR, VOLVER AL MENU ANTERIOR";
-		
-		int secondSelect = 0;
-		
 		try {
 			
+			String principalMenu = "\n\n=> MENU LISTAR SNEAKER\n1.LISTAR HIGH TOP\n2.LISTAR LOW TOP \n3.LISTAR MID CUP \n0.SALIR, VOLVER AL MENU ANTERIOR";
+			
+			int secondSelect=0;
 			System.out.println(principalMenu);
 			System.out.print("Seleccione: ");	
 			
 			
-			secondSelect= scanner.nextInt();
+					secondSelect= scanner.nextInt();
 				
-			switch (secondSelect) 
-			{
+				switch (secondSelect) {
 				case 1:
-					
-					do
-					{
-						
-						System.out.println("\nLISTA DE HIGH TOPS\n");
-						System.out.println(local.listarHightop());
-						System.out.println("Presione N para salir");
-						
-					}while(!opcion.equalsIgnoreCase("N"));
-					
+					System.out.println("\nLISTA DE HIGH TOPS\n");
+					System.out.println(local.listarHightop());
 					menuABMstock();
-					
 					break;
-					
 				case 2:
-					
-					do
-					{
-						System.out.println("\nLISTA DE LOW TOPS\n");
-						System.out.println(local.listarLowTop());
-						System.out.println("Presione N para salir");
-						
-					}while(!opcion.equalsIgnoreCase("N"));
-					
+					System.out.println("\nLISTA DE LOW TOPS\n");
+					System.out.println(local.listarLowTop());
 					menuABMstock();
-					
 					break;
-					
 				case 3:
-					
-					do
-					{
-						System.out.println("\nLISTA DE MID CUPS\n");
-						System.out.println(local.listarMidCup());
-						System.out.println("Presione N para salir");
-						
-					}while(!opcion.equalsIgnoreCase("N"));
-					
+					System.out.println("\nLISTA DE MID CUPS\n");
+					System.out.println(local.listarMidCup());
 					menuABMstock();	
-					
 					break;
-					
-					
 				case(0):
-					
 					System.out.println("Volviendo al menu anterior");
 					
 					menuABMstock();
-					
 					break;
-					
 				default:
 
 					System.out.println("Opcion incorrecta!");
 					listarSneakers();
 	               
 					break;
-			}
+				}
 				
 			
-		}
-		
-		catch (Exception e) 
-		{
-			System.out.println("Hubo un error \n " + e.getMessage());	
+		} catch (Exception e) {
+			System.out.println("Hubo un error \n"+e.getMessage());	
 		}
 		
 	}
 	
 	
+	
+	/**
+	 * <p><b><i>eliminarSneaker</i></b></p>
+	 *  <pre>public void eliminarSneaker()</pre>
+	 *<p>Menu para eliminar una sneaker </p>
+	 * @author Nicolas
+	 */
 	public void eliminarSneaker()
 	{
 		System.out.println("\nIngrese numero de serie:");
 		String numSerie = scanner.next();
 		
-		boolean res = local.eliminarSneaker(numSerie);
+		boolean res=local.eliminarSneaker(numSerie);
 		verificacionBorrar(res);
-		
 		menuABMstock();
 	}
 	
-	
+	/**
+	 * <p><b><i>menuModificarSneaker</i></b></p>
+	 * <pre>public void menuModificarSneaker(String v_clave)</pre>
+	 *<p>Menu para modificar una sneaker </p>
+	 *@param String v_clave (clave de la sneaker)
+	 * @author Nicolas
+	 */
 	public void menuModificarSneaker(String v_clave)
 	{
-		String marca;
-		double precio;
-		double talle;
 		
-		String principalMenu = "\n\n=> MENÚ MODIFICACION DE SNEAKER \n 1. MODIFICAR MARCA \n 2. MODIFICAR PRECIO  \n 3. MODIFICAR TALLE \n 0. SALIR, VOLVER AL MENÚ ANTERIOR";
-		
-		int secondSelect = 0;
-		
-		boolean rta = false;
-		boolean rta2 = false;
-		boolean rta3 = false;
-		
-		try 
-		{
+		try {
+			String marca;
+			double precio;
+			double talle;
+			
+			String principalMenu = "\n\n=> MENU MODIFICACION DE SNEAKER\n1.MODIFICAR MARCA \n2.MODIFICAR PRECIO  \n3.MODIFICAR TALLE \n0.SALIR, VOLVER AL MENU ANTERIOR";
+			
+			int secondSelect=0;
 			System.out.println(principalMenu);
 			System.out.print("Seleccione: ");
 			
 				secondSelect= scanner.nextInt();
 				
-				switch (secondSelect) 
-				{
+				switch (secondSelect) {
 				case 1:
-					
-					System.out.println("\nIngrese nueva marca: ");
+					System.out.println("\nIngrese nueva marca:");
 					marca = scanner.next();
-					
-					rta = local.modificarSneakerMarca(v_clave, marca);
+					boolean rta=local.modificarSneakerMarca(v_clave, marca);
 					verificacionModidicar(rta);
-					
 					menuABMstock();
-					
 					break;
-					
 				case 2:
-					
-					System.out.println("\nIngrese nuevo precio: ");
+					System.out.println("\nIngrese nuevo precio:");
 					precio = scanner.nextDouble();
-					
-					rta2 = local.modificarSneakerPrecio(v_clave, precio);
+					boolean rta2=local.modificarSneakerPrecio(v_clave, precio);
 					verificacionModidicar(rta2);
-					
 					menuABMstock();
-					
 					break;
-					
 				case 3:
-					
-					System.out.println("\nIngrese nuevo talle: ");
+					System.out.println("\nIngrese nuevo talle:");
 					talle = scanner.nextDouble();
-					
-					rta3 = local.modificarSneakerTalle(v_clave, talle);
+					boolean rta3=local.modificarSneakerTalle(v_clave, talle);
 					verificacionModidicar(rta3);
-					
 					menuABMstock();
-					
 					break;
-					
 				case(0):
-					
-					System.out.println("Volviendo al menú anterior...");
+					System.out.println("Volviendo al menu anterior");
 					
 					menuABMstock();
 					break;
 
 				default:
-					
-					System.out.println("¡Opción incorrecta!");
+					System.out.println("Opcion incorrecta!");
 					menuABMstock();
 	                
 					break;
-				}		
-		} 
-		
-		catch (Exception e) 
-		{
-			System.out.println("Hubo un error \n" + e.getMessage());	
+				}
+				
+		} catch (Exception e) {
+			System.out.println("Hubo un error \n"+e.getMessage());	
 		}
 			
 	}
 	
 	
+	
+	
+	/**
+	 * <p><b><i>existeClaveSneaker</i></b></p>
+	 *  <pre>public boolean existeClaveSneaker(String clave)</pre>
+	 *<p> Metodo para saber si existe una sneaker mediante su clave</p>
+	 *@return true si se encuentra en el local.
+	 * @author Nicolas
+	 */
 	public boolean existeClaveSneaker(String clave)
 	{	
 		return local.exixteClaveSnk(clave);
 	}
 	
-	
+	/**
+	 * <p><b><i>menuABMstock</i></b></p>
+	 *  <pre>public void menuABMstock()</pre>
+	 *<p> Menu de alta , baja y modificacion del stock de sneakers </p>
+	 * @author Nicolas
+	 */
 	public void menuABMstock()
 	{
-		String principalMenu = "\n\n=> MENU STOCK\n1.AGREGAR SNEAKER\n2.LISTAR SNEAKER \n3.MODIFICAR SNEAKER \n4.ELIMINAR SNEAKER \n0.SALIR, VOLVER AL MENU ANTERIOR";
-		
-		int secondSelect = 0;
-		String clave = "";
-		
-		boolean rta = false;
-		
 		try {
 			
+			String principalMenu = "\n\n=> MENU STOCK\n1.AGREGAR SNEAKER\n2.LISTAR SNEAKER \n3.MODIFICAR SNEAKER \n4.ELIMINAR SNEAKER \n0.SALIR, VOLVER AL MENU ANTERIOR";
+			int secondSelect=0;
 			System.out.println(principalMenu);
 			System.out.print("Seleccione: ");
-			secondSelect = scanner.nextInt();
+			secondSelect= scanner.nextInt();
 				
-				switch (secondSelect) 
-				{
-				case 1:
-					
-					try
-					{
-						registarSneaker();
-					}
-					
-					catch(SneakerException e)
-					{
-						System.out.println(e.getMessage());
-					}
+				switch (secondSelect) {
+				case 1:registarSneaker();
 					
 					break;
-					
-				case 2:
-					
-					listarSneakers();
+				case 2:listarSneakers();;
 										
 					break;
-					
 				case 3:
 						
-					System.out.println("Ingrese clave");
-					clave = scanner.next();
+					System.out.println("ingrese clave");
+					String clave=scanner.next();
 					
-					rta = existeClaveSneaker(clave);
-					
-					if(rta == true)
+					boolean rta = existeClaveSneaker(clave);
+					if(rta==true)
 					{
 						menuModificarSneaker(clave);
 					}
-					
 					else
 					{
 						menuABMstock();
 					}
 				
-					break;
-					
-				case 4:
-					
-					eliminarSneaker();
 						
 					break;
-					
+				case 4:eliminarSneaker();;
+						
+					break;
 				case(0):
-					
-					System.out.println("Volviendo al menú anterior...");
+					System.out.println("Volviendo al menu anterior");
 
 					menuGenerte();
-					
 					break;
-					
 				default:
-					
-					System.out.println("¡Opción incorrecta!");
-					
+					System.out.println("Opcion incorrecta!");
 					menuABMstock();
 	               
 					break;
-				}	
+				}
+			
+				
+		} catch (Exception e) {
+			System.out.println("Hubo un error \n"+e.getMessage());	
 		}
 		
-		catch (Exception e) 
-		{
-			System.out.println("Hubo un error \n" + e.getMessage());	
-		}		
+		
 	}
 	
 	
+	/**
+	 * <p><b><i>menuModificarCliente</i></b></p>
+	 *  <pre>public void menuModificarCliente(int v_indice)</pre>
+	 *<p> Menu para modificar un cliente</p>
+	 *@param int v_indice (pos del cliente en la lista)
+	 * @author Nicolas
+	 */
 	
 	public void menuModificarCliente(int v_indice)
 	{
-		String nombre;
-		String apellido;
-		String dni;
-		int telefono;
-		
-		String principalMenu = "\n\n=> MENU MODIFICACION DE CLIENTE\n1.MODIFICAR NOMBRE\n2.MODIFICAR APELLIDO \n3.MODIFICAR DNI \n4.MODIFICAR TELEFONO  \n0.SALIR, VOLVER AL MENU ANTERIOR";
-		int secondSelect = 0;
-		
-		boolean rta = false;
-		boolean rta2 = false;
-		boolean rta3 = false;
-		boolean rta4 = false;
-		
-		try 
-		{
+		try {
+			
+			String nombre;
+			String apellido;
+			String dni;
+			int telefono;
+			
+			String principalMenu = "\n\n=> MENU MODIFICACION DE CLIENTE\n1.MODIFICAR NOMBRE\n2.MODIFICAR APELLIDO \n3.MODIFICAR DNI \n4.MODIFICAR TELEFONO  \n0.SALIR, VOLVER AL MENU ANTERIOR";
+			int secondSelect=0;
 			System.out.println(principalMenu);
 			System.out.print("Seleccione: ");
 			
-			secondSelect= scanner.nextInt();
+				secondSelect= scanner.nextInt();
 				
-				switch (secondSelect)
-				{
+				switch (secondSelect) {
 				case 1:
-					
-					System.out.println("\nIngrese el nuevo nombre:");
+					System.out.println("\nIngrese nuevo nombre:");
 					nombre = scanner.next();
-					
-					rta = local.modificarClienteNombre(v_indice, nombre);
+					boolean rta=local.modificarClienteNombre(v_indice, nombre);
 					verificacionModidicar(rta);
-					
 					menuABMCliente();
-					
 					break;
-					
 				case 2:
-					
-					System.out.println("\nIngrese el nuevo apellido :");
+					System.out.println("\nIngrese nuevo apellido :");
 					apellido = scanner.next();	
-					
-					rta2 = local.modificarClienteApellido(v_indice, apellido);
+					boolean rta2=local.modificarClienteApellido(v_indice, apellido);
 					verificacionModidicar(rta2);
-					
 					menuABMCliente();
-					
 					break;
-					
 				case 3:
-					
 					System.out.println("\nIngrese nuevo dni:");
 					dni = scanner.next();
-					
-					rta3 = local.modificarClienteDNI(v_indice, dni);
+					boolean rta3=local.modificarClienteDNI(v_indice, dni);
 					verificacionModidicar(rta3);
-					
 					menuABMCliente();
 					
-					break;
 					
+					break;
 				case 4:
-					
-					System.out.println("\nIngrese el nuevo número de teléfono: ");
+					System.out.println("\nIngrese nuevo telefono:");
 					telefono = scanner.nextInt();
-					
-					rta4 = local.modificarClienteTel(v_indice, telefono);
+					boolean rta4=local.modificarClienteTel(v_indice, telefono);
 					verificacionModidicar(rta4);
-					
 					menuABMCliente();
-					
 					break;
-					
 				case(0):
-					
-					System.out.println("Volviendo al menú anterior...");
+					System.out.println("Volviendo al menu anterior");
 					
 					menuABMCliente();
-					
 					break;
-					
 				default:
-					
-					System.out.println("¡Opción incorrecta!");
-					
+					System.out.println("Opcion incorrecta!");
 					menuABMCliente();
 	                
 					break;
-				}		
-		} 
-		
-		catch (Exception e) 
-		{
-			System.out.println("Hubo un error \n" + e.getMessage());
+				}
+				
+		} catch (Exception e) {
+
+			System.out.println("Hubo un error \n"+e.getMessage());
 		}
 	}
 	
 	
+	
+	/**
+	 * <p><b><i>eliminarCliente</i></b></p>
+	 *  <pre>public void eliminarCliente()</pre>
+	 *<p> Menu para eliminar un cliente </p>
+	 * @author Nicolas
+	 */
+	
 	public void eliminarCliente()
 	{
-		System.out.println("\nIngrese el DNI del cliente a eliminar:");
+		System.out.println("\nIngrese dni:");
 		String dni = scanner.next();
 		
-		boolean res = local.eliminarCliente(dni);
+		boolean res=local.eliminarCliente(dni);
 		verificacionBorrar(res);
-		
 		menuABMCliente();
 	}
 	
 	
+	
+	
+	/**
+	 * <p><b><i>menuABMCliente</i></b></p>
+	 *  <pre>public void menuABMCliente()</pre>
+	 *<p> Menu de alta, baja y modificacion de los clientes </p>
+	 * @author Nicolas
+	 */
+	
 	public void menuABMCliente()
 	{
-		String principalMenu = "\n\n=> MENÚ ABM CLIENTE\n 1. AGREGAR CLIENTE\n 2. LISTAR CLIENTE \n 3.MODIFICAR CLIENTE \n 4. ELIMINAR CLIENTE \n 0.SALIR, VOLVER AL MENÚ ANTERIOR";
-		
-		int secondSelect = 0;
-		
-		String opcion = "";
-		
-		try 
-		{	
+		try {
+			
+			String principalMenu = "\n\n=> MENU ABM CLIENTE\n1.AGREGAR CLIENTE\n2.LISTAR CLIENTE \n3.MODIFICAR CLIENTE \n4.ELIMINAR CLIENTE \n0.SALIR, VOLVER AL MENU ANTERIOR";
+			int secondSelect=0;
 			System.out.println(principalMenu);
-			
 			System.out.print("Seleccione: ");
-			secondSelect = scanner.nextInt();
+			secondSelect= scanner.nextInt();
 			
-			switch (secondSelect) 
-			{
-			case 1: 
-				
-				System.out.println("Registrar cliente");
-					
-				agregarClienteGerente();
+			switch (secondSelect) {
+			case 1: System.out.println("registrar cliente");
+					agregarClienteGerente();
 					
 				break;
-				
 			case 2:
-				
-				do
-				{
-					System.out.println("LISTADO DE CLIENTES");
+					System.out.println("listar");
 					System.out.println(local.listarClientes());
-					System.out.println("Presione N para salir");
-					
-				}while(!opcion.equalsIgnoreCase("N"));
-					
 					menuABMCliente();
-					
 				break;
-				
 			case 3:
-				
-				System.out.println("Ingrese DNI:");
-				String dni = scanner.next();
-				
+				System.out.println("Ingrese dni:");
+				String dni=scanner.next();
 				int indice = local.existeDniCliente(dni);
 				
-				if(indice >= 0)
+				System.out.println("\n --------------"+indice);
+				if(indice>=0)
 				{	
 					//System.out.println(indice);
 					
 					menuModificarCliente(indice);
 				}
-				
 				else
 				{
+					
 					menuABMCliente();
 				}
 				break;
-				
 			case 4:
-				
 				eliminarCliente();
-				
 				break;
-				
 			case (0):
-				
-				System.out.println("Volviendo al menú anterior...");
+				System.out.println("Volviendo al menu anterior");
 				menuGenerte();
 				
 				break;
 
 			default:
-				
-				System.out.println("¡Opción incorrecta!");
+				System.out.println("Opcion incorrecta!");
 				menuABMCliente();
-				
 				break;
 			}	
-		} 
-		
-		catch (Exception e) 
-		{
-			System.out.println("Hubo un error \n" + e.getMessage());	
+			
+		} catch (Exception e) {
+			System.out.println("Hubo un error \n"+e.getMessage());	
 		}
+		
+		
 	}
 	
+	
+	/**
+	 * <p><b><i>agregarClienteCajero</i></b></p>
+	 *  <pre>public void agregarClienteCajero()</pre>
+	 *<p> Metodo que agrega un cliente desde el menu del cajero </p>
+	 * @author Nicolas
+	 */
 	
 	public void agregarClienteCajero()
 	{
@@ -1265,38 +1004,41 @@ public class Menu
 			int telefono;
 			String domicilio;
 			
-			System.out.println("Ingrese el nombre del cliente: ");
-			nombre = scanner.next();
-			
-			System.out.println("Ingrese el apellido del cliente: ");
-			apellido = scanner.next();
-			
-			System.out.println("Ingrese el DNI del cliente: ");
-			dni = scanner.next();
-			
-			System.out.println("Ingrese el número de teléfono: ");
-			telefono = scanner.nextInt();
-			
+			System.out.println("ingrese nombre:");
+			nombre=scanner.next();
+			System.out.println("ingrese apellido:");
+			apellido=scanner.next();
+			System.out.println("ingrese dni:");
+			dni=scanner.next();
+			System.out.println("ingrese telefono:");
+			telefono=scanner.nextInt();
 			System.out.println("domicilio:");
-			domicilio = scanner.next();
+			domicilio=scanner.next();
 			
 			Cliente cliente = new Cliente(nombre, apellido, dni, telefono, domicilio);		
 			boolean resp =local.agregarCliente(cliente);		
-			
-			if(resp == true)
+			if(resp==true)
 			{
-				System.out.println("El cliente se ha agregado correctamente");
+				System.out.println("cliente agregado correctamente");
 			}
-			
 			else
 			{
-				System.out.println("El cliente no se ha podido agregar");
+				System.out.println("cliente no se ha agregado correctamente");
 			}
 			
 			menuABMCajero();
+		
+		
+		
 	}
 	
 	
+	/**
+	 * <p><b><i>agregarClienteGerente</i></b></p>
+	 *  <pre>public void agregarClienteGerente()</pre>
+	 *<p> Metodo que agrega un cliente desde el menu del gerente </p>
+	 * @author Nicolas
+	 */
 	public void agregarClienteGerente()
 	{
 		
@@ -1306,445 +1048,435 @@ public class Menu
 			int telefono;
 			String domicilio;
 			
-			System.out.println("Ingrese el nombre del cliente: ");
-			nombre = scanner.next();
+			System.out.println("ingrese nombre:");
+			nombre=scanner.next();
+			System.out.println("ingrese apellido:");
+			apellido=scanner.next();
+			System.out.println("ingrese dni:");
+			dni=scanner.next();
+			System.out.println("ingrese telefono:");
+			telefono=scanner.nextInt();
+			System.out.println("domicilio:");
+			domicilio=scanner.next();
 			
-			System.out.println("Ingrese el apellido del cliente: ");
-			apellido = scanner.next();
-			
-			System.out.println("Ingrese el DNI del cliente: ");
-			dni = scanner.next();
-			
-			System.out.println("Ingrese el número de teléfono del cliente: ");
-			telefono = scanner.nextInt();
-			
-			System.out.println("Ingrese el domicilio del cliente:");
-			domicilio = scanner.next();
-			
-			Cliente cliente = new Cliente(nombre, apellido, dni, telefono, domicilio);	
-			
-			boolean resp = local.agregarCliente(cliente);		
-			
-			if(resp == true)
+			Cliente cliente = new Cliente(nombre, apellido, dni, telefono, domicilio);		
+			boolean resp =local.agregarCliente(cliente);		
+			if(resp==true)
 			{
-				System.out.println("El cliente se ha agregado correctamente");
+				System.out.println("cliente agregado correctamente");
 			}
-			
 			else
 			{
-				System.out.println("El cliente no se ha podido agregar");
+				System.out.println("cliente no se ha agregado correctamente");
 			}
 			
 			menuABMCliente();
+		
+		
+		
 	}
 	
+	
+	
+	
+	/**
+	 * <p><b><i>menu_retornarCliente</i></b></p>
+	 *  <pre>public Cliente menu_retornarCliente(String dni)</pre>
+	 *<p> Metodo que retorna un cliente mediante su dni</p>
+	 *@param String dni
+	 *@return Cliente
+	 * @author Nicolas
+	 */
 	
 	public Cliente menu_retornarCliente(String dni)
 	{	
 		
-		Cliente cliente = null;
-		int i = local.existeDniCliente(dni);
+		Cliente cliente=null;
+		int i=local.existeDniCliente(dni);
 		
-		if(i >= 0)
+		if(i>=0)
 		{
 			cliente = local.retornarCliente(i);
 		}
 		
+		
+		 
+		 
+		 
 		return cliente;
 	}
 	
 	
-	//TODO CONSULTAR ---------------------
+
+	/**
+	 * <p><b><i>menu_retornarVendedor</i></b></p>
+	 *  <pre>public Cliente menu_retornarVendedor(String dni)</pre>
+	 *<p> Metodo que retorna un vendedor mediante su dni</p>
+	 *@param String dni
+	 *@return Vendedor
+	 * @author Nicolas
+	 */
 	
 	public Vendedor menu_retornarVendedor(String dni)
 	{
 		
-		Vendedor vende = null;
+		Vendedor vende=null;
 		
 		int i=local.exixteDniEmpleado(dni);
 		
-		if(i >= 0)
+		if(i>=0)
 		{
-			vende = local.retornarVendedor(i);
+			vende= local.retornarVendedor(i);
 		}
 		
-		return  vende;	
+		return  vende;
+		
 	}
 	
-	
+	/**
+	 * <p><b><i>menu_retornarSneaker</i></b></p>
+	 *  <pre>public Sneaker menu_retornarSneaker(String numero)</pre>
+	 *<p> Metodo que retorna una sneaker mediante su clave</p>
+	 *@param String numero
+	 *@return Sneaker
+	 * @author Nicolas
+	 */
 	public Sneaker menu_retornarSneaker(String numero)
 	{
 		Sneaker sn = local.devolverSneaker(numero);
 		
 		return sn;
+		
 	}
 	
+	
+	/**
+	 * <p><b><i>CarritoCompra</i></b></p>
+	 *  <pre>public CarritoCompra menuCarrito()</pre>
+	 *<p> Menu del carrito de compras de sneakers </p>
+	 *@return CarritoCompra
+	 * @author Nicolas
+	 */
 	
 	public CarritoCompra menuCarrito()
 	{
 		CarritoCompra carrito = new CarritoCompra();
-		Sneaker snk = null;
+		Sneaker snk =null;
 		
 		char mander = 's';
+		int op=1;
 	
-		while(mander == 's')
-		{		
-				System.out.println("Ingrese el número de serie:");
-				String numero = scanner.next();
+		while(mander=='s')
+		{
+		
+			switch (op) {
+			case 1:	System.out.println("ingrese numero de serie:");
+					String numero = scanner.next();
 			
-				snk = menu_retornarSneaker(numero);		
-				carrito.agregarAlCarrito(snk);
-						
-			System.out.println("¿Desea seguir comprando sneakers? Presione S si desea seguir comprando");
+					snk= menu_retornarSneaker(numero);		
+					carrito.agregarAlCarrito(snk);
+					
+				break;	
+			}
+				
+			System.out.println("deseas seguir agregando  sneakers ? s para si");
 			scanner.nextLine();
-			
 			mander = scanner.nextLine().charAt(0);
+			
 		}
 		
-		return carrito;	
+		return carrito;
+		
 	}
 	
 	
+	/**
+	 * <p><b><i>nuevaVenta</i></b></p>
+	 *  <pre>public void nuevaVenta()</pre>
+	 *<p> Menu para realizar una nueva venta </p>
+	 * @author Nicolas
+	 */
 	public void nuevaVenta()
 	{
-		Venta venta = null;
-		Cliente cliente = null;
-		Vendedor vendedor = null;
-		CarritoCompra carrito = null;
-		
-		String dni = "";
-		String dni2 = "";
-		
-		boolean agre = false;
-		
-		String principalMenu2 = "\n\n=> MENÚ VENTA \n 1. AGREGAR CLIENTE \n 2. AGREGAR VENDEDOR \n 3. AGREGAR AL CARRITO \n 4. FINALIZAR VENTA \n 0. SALIR, VOLVER AL MENÚ ANTERIOR";
-		
-		int secondSelect = 0;
-		char mander = 's';
-		
-		try 
-		{
-			while (mander == 's') 
+		try {
+			
+			Cliente cliente = null;
+			Vendedor vendedor =null;
+			CarritoCompra carrito= null;
+			int secondSelect=0;
+			
+			char mander='s';
+			
+			while (mander=='s') 
 			{	
+				
+				
+				String principalMenu2 = "\n\n=> MENU VENTA \n1.AGREGAR CLIENTE\n2.AGREGAR VENDEDOR \n3.AGREGAR AL CARRITO \n4.FINALIZAR VENTA \n0.SALIR, VOLVER AL MENU ANTERIOR";
 				System.out.println(principalMenu2);
-				
 				System.out.print("Seleccione: ");
-				secondSelect = scanner.nextInt();
+				secondSelect= scanner.nextInt();
 				
-				switch (secondSelect) 
-				{
-				
+				switch (secondSelect) {
 				case 1: 
-					
-					System.out.println("Ingrese el DNI del cliente");
-					dni = scanner.next();
+					System.out.println("ingrese dni del cliente");
+					String dni= scanner.next();
 					cliente = menu_retornarCliente(dni);
 					
 					
-					if(cliente != null)
+					if(cliente!=null)
 					{
-						System.out.println("El cliente se ha agregado correctamente");		
+						System.out.println("cliente agregado correctamente");
+						
 					}
 					
+					
 					break;
-					
 				case 2:
-					
-					System.out.println("Ingrese el DNI del vendedor");
-					dni2 = scanner.next();
-					
-					vendedor = (Vendedor) menu_retornarVendedor(dni2);	
-					
-					if(vendedor != null)
+					System.out.println("ingrese dni del vendedor");
+					String dni2= scanner.next();
+					vendedor = (Vendedor) menu_retornarVendedor(dni2);		
+					if(vendedor!=null)
 					{	
-						System.out.println("El vendedor se ha agregado correctamente");			
+						System.out.println("vendedor agregado correctamente");
+						
 					}
 									
 					break;
-					
-				case 3:
-					
-					carrito = menuCarrito();
+				case 3:carrito=menuCarrito();
 						
 					break;
-					
 				case 4: 
 						
-						if(cliente == null && vendedor == null && carrito == null)
+						if(cliente==null && vendedor==null && carrito ==null)
 						{
-							System.out.println("No se puedo registrar la venta");
+							System.out.println("no se puedo registrar la venta");
 						}
 						else
 						{
-							venta = new Venta(new Date(), cliente, vendedor, carrito);	
-							
-							agre = local.agregarVenta(venta);
-							
+				
+							Venta  venta = new Venta(new Date(), cliente, vendedor, carrito);		
+							boolean agre =local.agregarVenta(venta);
 							System.out.println(agre);
-							System.out.println("TOTAL A PAGAR:" + venta.getTotalVenta());	
+							System.out.println("TOTAL A PAGAR:"+venta.getTotalVenta());
+							
 						}
 					
+					
 						menuABMCajero();
-						
 					break;
-					
 				case (0):
-					
-					System.out.println("Volviendo al menú anterior...");
+					System.out.println("Volviendo al menu anterior");
 					menuABMCajero();
 					
 					break;
-					
 				default:
-					
-					System.out.println("¡Opción incorrecta!");
+					System.out.println("Opcion incorrecta!");
 					nuevaVenta();
-					
 					break;
 				}
 				
-				mander = 's';	
-			}	
-		} 
-		
-		catch (Exception e) 
-		{
-			System.out.println("Hubo un error \n" + e.getMessage());	
+					
+				mander = 's';
+				
+				
+			}
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println("Hubo un error \n"+e.getMessage());	
 		}
 	}
 	
+	
+	/**
+	 * <p><b><i>menuABMCajero</i></b></p>
+	 *  <pre>public void menuABMCajero()</pre>
+	 *<p> Menu del cajero,  alta , baja , modificacion de ventas </p>
+	 * @author Nicolas
+	 */
 	public void menuABMCajero()
-	{	
-		String dni = "";
-		String opcion = "";
+	{
 		
-		String principalMenu = "\n\n=> MENÚ CAJERO \n 1. NUEVA VENTA \n 2. LISTAR VENTAS \n 3. ELIMINAR VENTA \n 4. AGREGAR CLIENTE \n 5. LISTAR HISTORIAL DE COMPRAS DE UN CLIENTE \n 0. SALIR, VOLVER AL MENÚ ANTERIOR";
 		
-		int secondSelect = 0;
-		
-		try 
-		{
+		try {
+			
+			String principalMenu = "\n\n=> MENU CAJERO\n1.NUEVA VENTA \n2.LISTAR VENTAS \n3.ELIMINAR VENTA \n4.AGREGAR CLIENTE \n5.LISTAR HISTORIAL DE COMPRAS DE UN CLIENTE\n0.SALIR, VOLVER AL MENU ANTERIOR";
+
+			int secondSelect=0;
 			System.out.println(principalMenu);
 			System.out.print("Seleccione: ");
 			
 			secondSelect= scanner.nextInt();
 				
-				switch (secondSelect) 
-				{
-				case 1:
-					
-					nuevaVenta();
-					menuABMCajero();	
-					
+				switch (secondSelect) {
+				case 1: nuevaVenta();
+						menuABMCajero();	
 					break;
-					
 				case 2:
+					System.out.println("LISTA DE VENTAS:");
 					
-					do
-					{
-						System.out.println("LISTA DE VENTAS:");
-						System.out.println(local.listarVentas());
-						System.out.println("Presione N para volver");
-						
-					}while(!opcion.equalsIgnoreCase("N"));
-					
+					System.out.println(local.listarVentas());
 					menuABMCajero();
-					
 					break;
-					
 				case 3:
-					
-					System.out.println("Ingrese ID de venta");
+					System.out.println("ingrese id de venta");
 					int b = scanner.nextInt();
 					
 					boolean rta4 = local.eliminarVenta(b);
 					
-					if(rta4 == true)
+					if(rta4==true)
 					{	
-						System.out.println("Eliminado con éxito");
+						System.out.println("eliminado con exito");
+						
 					}
 					
 					menuABMCajero();
-					
 					break;
-					
 				case 4:
-					
 						agregarClienteCajero();
-						
 					break;
-					
 				case 5:
-						System.out.println("Ingrese DNI del cliente: ");
-						dni = scanner.next();
-						
+						System.out.println("ingrese dni del cliente");
+						String dni=scanner.next();
 						System.out.println(local.listarComprasDeClienteDni(dni));
 				break;
-				
 				case (0): 
-					
-					System.out.println("Volviendo al menú anterior...");
+					System.out.println("Volviendo al menu anterior");
 					menuPrincipal();
-					
 					break;
-					
 				default:
-					
-					System.out.println("¡Opción incorrecta!");
-					
+					System.out.println("Opcion incorrecta!");
 					menuABMCajero();
-					
 					break;
-				}	
-		} 
+				}
+			
+			
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage()+"ocurrio un error");
+		}
 		
-		catch (Exception e) 
-		{
-			System.out.println(e.getMessage() + "Ocurrió un error");
-		}		
+		
 	}
 	
 	
-	
+	/**
+	 * <p><b><i>menuGenerte</i></b></p>
+	 *  <pre>public void menuGenerte()</pre>
+	 *<p> Menu  del gerente </p>
+	 * @author Nicolas
+	 */
 	public void menuGenerte()
 	{
-		String principalMenu = "\n\n=> MENÚ GERENTE\n 1. ABM STOCK\n 2. ABM EMPLEADOS \n 3. ABM CLIENTES \n 0. SALIR, VOLVER AL MENÚ ANTERIOR";
-		int secondSelect = 0;
-		
-		try 
-		{
+		try {
+			
+			String principalMenu = "\n\n=> MENU GERENTE\n1.ABM STOCK\n2.ABM EMPLEADOS \n3.ABM CLIENTES \n0.SALIR,VOLVER AL MENU ANTERIOR";
+			int secondSelect=0;
 			System.out.println(principalMenu);
 			System.out.print("Seleccione: ");
+			secondSelect= scanner.nextInt();
 			
-			secondSelect = scanner.nextInt();
-			
-			switch (secondSelect) 
-			{
-			case 1:	
-				
-				menuABMstock();
+			switch (secondSelect) {
+			case 1:	menuABMstock();
 				
 				break;
-				
 			case 2:
-				
-					menuABMempleado();	
-					
+					menuABMempleado();		
 				break;
-				
 			case 3:
-				
 					menuABMCliente();
-					
 				break;
-				
 			case (0):
-				
-				System.out.println("Volviendo al menú anterior...");
-			
+				System.out.println("Volviendo al menu anterior");
 				menuPrincipal();
-				
 				break;
 
 			default:
-				
-				System.out.println("¡Opción incorrecta!");
+				System.out.println("Opcion incorrecta!");
 				menuGenerte();
 				
 				break;
-			}	
-		} 
-		
-		catch (Exception e)
-		{
-			System.out.println("Hubo un error \n" + e.getMessage());	
+			}
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println("Hubo un error \n"+e.getMessage());	
 		}
 	}
 	
 	
+	/**
+	 * <p><b><i>menuPrincipal</i></b></p>
+	 *  <pre>public void menuPrincipal()</pre>
+	 *<p> Menu principal </p>
+	 * @author Nicolas
+	 */
 	public void menuPrincipal()
 	{
-		String principalMenu = "\n\n=> MENÚ PRINCIPAL\n 1. MENÚ GERENTE\n 2. MENÚ CAJERO \n 3. MENÚ VENDEDOR \n 4. GUARDAR DATOS  \n 5. LEER DATOS JSON VENTAS \n 0. SALIR DEL SISTEMA";
-		int secondSelect = 0;
 		
-		try 
-		{
-			
+		try {
+			String principalMenu = "\n\n=> MENU PRINCIPAL\n1.MENU GERENTE\n2.MENU CAJERO \n3.MENU VENDEDOR \n4.GUARDAR DATOS  \n5.LEER DATOS JSON VENTAS \n0.SALIR DEL SISTEMA";
+			int secondSelect=0;
 			System.out.println(principalMenu);
 			System.out.print("Seleccione: ");
-			
 			secondSelect= scanner.nextInt();
 			
-			switch (secondSelect) 
-			{
+			switch (secondSelect) {
 			case 1:
-				
 					menuGenerte();
-					
 				break;
-				
-			case 2:
-				
-				menuABMCajero();
+			case 2:menuABMCajero();
 							
 				break;
-				
-			case 3: //Menú donde el Vendedor ve sus ventas
-				
-					System.out.println("Ingrese el DNI del vendedor");
+			case 3: //menuVendedor donde ve sus ventas
+					System.out.println("ingrese dni del vendedor");
 					String dni = scanner.next();
 					
 					System.out.println(local.listarVentasDeVendedorDni(dni));
-				
+					menuPrincipal();
 				break;
-				
-			case 4: // Guardar los datos a un archivo binario
-					
-				local.guardarDatosLocal();
-				menuPrincipal();
-					
+			case 4:// guardar datos
+					local.guardarDatosLocal();
+					menuPrincipal();
 				break;
-				
-			case 5:// Guardar el JSON con las ventas realizadas
+			case 5:// guardar datos GUARDAR EL JSON CON LAS VENTAS 
 					
 					local.mostrarJsonVentas();
 					menuPrincipal();
-					
 					// VER EL JSON DE VENTAS
 				
 						//local.guardarVentasJson();
 			break;
 			
-			case 8 : //Leer los datos almacenados en un archivo binario
+			/*
+			case 8 : local.LEER();
 				
-				local.LEER();
-			
-			break;
-			
+				break;
+			*/
 			case (0): 
-				
-				System.out.println("Saliendo del sistema. Gracias por utilizar. Vuelva prontos");
+				System.out.println("SALIENDO DEL SISTEMA, VUELVA PRONTOS");
 				System.exit(0);
 				
 				break;
 
 			default:
-				
-				System.out.println("¡Opción Incorrecta!");
+				System.out.println("Opcion incorrecta!");
 				menuPrincipal();
-				
 				break;
 			}	
 			
-		} 
-		
-		catch (Exception e) 
-		{
-			System.out.println("Hubo un error \n" + e.getMessage());	
+		} catch (Exception e) {
+			System.out.println("Hubo un error \n"+e.getMessage());	
 		}
 		
-	}		
-}
+	}
+		
+		
+	}
 	
 	
 

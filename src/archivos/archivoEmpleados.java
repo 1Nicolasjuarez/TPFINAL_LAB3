@@ -8,24 +8,17 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-import modelos.Empleado;
-
-/**
- * @author Nicolás Juarez
- * 
- * Esta clase posee los métodos para poder almacenar y leer datos de un archivo de Empleados.
- * Esta serializada.
- */
 
 import listas.ListadoEmpleados;
 
 public class archivoEmpleados implements Serializable{
 	
-	private static final long serialVersionUID = 1L;
+	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static String archivoDeEmpleados = "empleados.dat";
 
 	public static void grabarEmpleados(ListadoEmpleados empleados) {
@@ -74,5 +67,4 @@ public class archivoEmpleados implements Serializable{
 
 		return aux;
 	}
-	
 }

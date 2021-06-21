@@ -10,8 +10,6 @@ import archivos.archivoClientes;
 import archivos.archivoProductos;
 import caja.Venta;
 import colecciones.CarritoCompra;
-import excepciones.SneakerException;
-import excepciones.UserException;
 import listas.ListadoClientes;
 import listas.ListadoEmpleados;
 import listas.ListadoSneakers;
@@ -30,11 +28,15 @@ import utilidades.JsonUtiles;
 
 public class Main {
 
-	public static void main(String[] args) 
-	{
-			Menu menu = new Menu();
-			
-			menu.menuPrincipal();
+	public static void main(String[] args) {
 		
+		//Local local = new Local();
+		//Local.iniciarSistemaArchivos();
+		Menu menu = new Menu();
+	
+		menu.menuPrincipal();
+		
+		
+	
 	}
 }

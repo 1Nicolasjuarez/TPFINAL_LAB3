@@ -9,7 +9,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-
 import listas.ListadoSneakers;
 
 /**
@@ -22,8 +21,12 @@ import listas.ListadoSneakers;
 public class archivoProductos implements Serializable {
 	
 	
-	private static final long serialVersionUID = 1L;
 	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static String archivoDeProductos = "productos.dat";
 	
 	

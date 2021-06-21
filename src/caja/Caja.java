@@ -1,9 +1,5 @@
 package caja;
 
-import java.util.Date;
-
-import listas.ListadoVentas;
-import modelos.Empleado;
 
 
 /**
@@ -14,7 +10,7 @@ import modelos.Empleado;
 
 public class Caja {
 	
-	
+	/*
 	private boolean isAbierta;
 	private Date fechaActual;
 	private ListadoVentas listVentas;
@@ -34,5 +30,6 @@ public class Caja {
 	{
 		
 	}
+	*/
 	
 }

@@ -141,6 +141,7 @@ public class Local  {
 	 * @author Nicolas
 	 */
 	
+
 	public boolean eliminarCliente(String dni)
 	{
 		boolean rta=false;
@@ -234,6 +235,7 @@ public class Local  {
 	 * @param String n_tel
 	 * @author Nicolas
 	 */
+
 	public boolean modificarClienteTel(int indice ,int n_tel)
 	{
 			Cliente cliente=null;

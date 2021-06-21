@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"app"},{"l":"caja"},{"l":"colecciones"},{"l":"interfaces"},{"l":"modelos"},{"l":"producto"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"app"},{"l":"archivos"},{"l":"caja"},{"l":"colecciones"},{"l":"excepciones"},{"l":"genericos"},{"l":"interfaces"},{"l":"listas"},{"l":"local"},{"l":"menus"},{"l":"modelos"},{"l":"producto"},{"l":"utilidades"}];updateSearchResults();

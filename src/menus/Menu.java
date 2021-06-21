@@ -16,6 +16,13 @@ import producto.Low_top;
 import producto.Mid_cup;
 import producto.Sneaker;
 
+/**
+ * <p><b><i>Menu</i></b></p>
+ * <pre>public class Menu </pre>
+ * <p>Super clase Menu.</p>
+ * @author Nicolas
+ *
+ */
 public class Menu 
 {
 	
@@ -23,8 +30,14 @@ public class Menu
 	
 	Local local = new Local();
 	
-
-
+	/**
+	 * <p><b><i>registrarEmpleado </i></b></p>
+	 * <pre> public void registrarEmpleado() </pre>
+	 *<p> Menu  para registrar un empleado </p>
+	 * @author Nicolas
+	 */
+	
+	
 	public void registrarEmpleado() 
 	{
 		
@@ -160,6 +173,14 @@ public class Menu
 		}
 	}
 	
+	
+	/**
+	 * <p><b><i>listarEmpleados </i></b></p>
+	 * <pre> public void listarEmpleados() </pre>
+	 *<p> Menu para mostrar los empleados </p>
+	 * @author Nicolas
+	 */
+	
 	public void listarEmpleados()
 	{
 		
@@ -230,6 +251,14 @@ public class Menu
 		}
 	}
 	
+	/**
+	 * <p><b><i>verificacionAgregar </i></b></p>
+	 * <pre> private void verificacionAgregar(boolean rta)</pre>
+	 *<p> Metodo verificar si un elemento se agrego correctamente </p>
+	 * @author Nicolas
+	 */
+	
+	
 	private void verificacionAgregar(boolean rta)
 	{
 		
@@ -244,6 +273,14 @@ public class Menu
 		}
 	}
 	
+	
+	/**
+	 * <p><b><i>verificacionBorrar </i></b></p>
+	 * <pre> private void verificacionBorrar(boolean rta)</pre>
+	 *<p> Metodo verificar si un elemento se elimino correctamente </p>
+	 * @author Nicolas
+	 */
+	
 	private void verificacionBorrar(boolean rta)
 	{
 		
@@ -255,6 +292,13 @@ public class Menu
 		
 		
 	}
+	
+	/**
+	 * <p><b><i>verificacionModidicar </i></b></p>
+	 * <pre>private void verificacionModidicar(boolean rta)</pre>
+	 *<p> Metodo verificar si un elemento se modifico correctamente </p>
+	 * @author Nicolas
+	 */
 	
 	private void verificacionModidicar(boolean rta)
 	{
@@ -270,16 +314,17 @@ public class Menu
 		
 	}
 	
-
+	/**
+	 * <p><b><i>eliminarEmpleado</i></b></p>
+	 *  <pre>public void eliminarEmpleado()</pre>
+	 *<p> Metodo para eliminar un empleado</p>
+	 * @author Nicolas
+	 */
 	public void eliminarEmpleado()
 	{
 		System.out.println("\nIngrese DNI:");
 		String dni = scanner.next();
-		
-
 		boolean res = local.eliminarEmpleado(dni);
-	
-	
 		verificacionBorrar(res);
 		menuABMempleado();
 	}
@@ -287,7 +332,13 @@ public class Menu
 
 	
 	
-	
+	/**
+	 * <p><b><i>menuModificarEmpleado</i></b></p>
+	 *  <pre>public void menuModificarEmpleado(int v_indice)</pre>
+	 *<p> Metodo para modificar un empleado </p>
+	 *@param int v_indice
+	 * @author Nicolas
+	 */
 	public void menuModificarEmpleado(int v_indice)
 	{
 		try {
@@ -390,7 +441,12 @@ public class Menu
 	}
 	
 	
-	
+	/**
+	 * <p><b><i>menuABMempleado</i></b></p>
+	 *  <pre>public void menuABMempleado()</pre>
+	 *<p> Menu  de alta baja y modificacion de empleados </p>
+	 * @author Nicolas
+	 */
 	public void menuABMempleado() 
 
 	{
@@ -454,7 +510,12 @@ public class Menu
 	
 	
 	
-	
+	/**
+	 * <p><b><i>registarSneaker</i></b></p>
+	 *  <pre>public void registarSneaker()</pre>
+	 *<p> Memu para registrar un sneaker </p>
+	 * @author Nicolas
+	 */
 	public void registarSneaker()
 	{
 		try {
@@ -547,6 +608,13 @@ public class Menu
 	}
 	
 	
+	
+	/**
+	 * <p><b><i>listarSneakers</i></b></p>
+	 *  <pre>public void listarSneakers()</pre>
+	 *<p> Menu para mostrar las distintas listas de sneakers </p>
+	 * @author Nicolas
+	 */
 	public void listarSneakers()
 	{
 		try {
@@ -597,6 +665,13 @@ public class Menu
 	}
 	
 	
+	
+	/**
+	 * <p><b><i>eliminarSneaker</i></b></p>
+	 *  <pre>public void eliminarSneaker()</pre>
+	 *<p>Menu para eliminar una sneaker </p>
+	 * @author Nicolas
+	 */
 	public void eliminarSneaker()
 	{
 		System.out.println("\nIngrese numero de serie:");
@@ -607,7 +682,13 @@ public class Menu
 		menuABMstock();
 	}
 	
-	
+	/**
+	 * <p><b><i>menuModificarSneaker</i></b></p>
+	 * <pre>public void menuModificarSneaker(String v_clave)</pre>
+	 *<p>Menu para modificar una sneaker </p>
+	 *@param String v_clave (clave de la sneaker)
+	 * @author Nicolas
+	 */
 	public void menuModificarSneaker(String v_clave)
 	{
 		
@@ -665,12 +746,27 @@ public class Menu
 			
 	}
 	
+	
+	
+	
+	/**
+	 * <p><b><i>existeClaveSneaker</i></b></p>
+	 *  <pre>public boolean existeClaveSneaker(String clave)</pre>
+	 *<p> Metodo para saber si existe una sneaker mediante su clave</p>
+	 *@return true si se encuentra en el local.
+	 * @author Nicolas
+	 */
 	public boolean existeClaveSneaker(String clave)
 	{	
 		return local.exixteClaveSnk(clave);
 	}
 	
-	
+	/**
+	 * <p><b><i>menuABMstock</i></b></p>
+	 *  <pre>public void menuABMstock()</pre>
+	 *<p> Menu de alta , baja y modificacion del stock de sneakers </p>
+	 * @author Nicolas
+	 */
 	public void menuABMstock()
 	{
 		try {
@@ -729,6 +825,13 @@ public class Menu
 	}
 	
 	
+	/**
+	 * <p><b><i>menuModificarCliente</i></b></p>
+	 *  <pre>public void menuModificarCliente(int v_indice)</pre>
+	 *<p> Menu para modificar un cliente</p>
+	 *@param int v_indice (pos del cliente en la lista)
+	 * @author Nicolas
+	 */
 	
 	public void menuModificarCliente(int v_indice)
 	{
@@ -796,6 +899,14 @@ public class Menu
 	}
 	
 	
+	
+	/**
+	 * <p><b><i>eliminarCliente</i></b></p>
+	 *  <pre>public void eliminarCliente()</pre>
+	 *<p> Menu para eliminar un cliente </p>
+	 * @author Nicolas
+	 */
+	
 	public void eliminarCliente()
 	{
 		System.out.println("\nIngrese dni:");
@@ -809,7 +920,12 @@ public class Menu
 	
 	
 	
-	
+	/**
+	 * <p><b><i>menuABMCliente</i></b></p>
+	 *  <pre>public void menuABMCliente()</pre>
+	 *<p> Menu de alta, baja y modificacion de los clientes </p>
+	 * @author Nicolas
+	 */
 	
 	public void menuABMCliente()
 	{
@@ -872,6 +988,13 @@ public class Menu
 	}
 	
 	
+	/**
+	 * <p><b><i>agregarClienteCajero</i></b></p>
+	 *  <pre>public void agregarClienteCajero()</pre>
+	 *<p> Metodo que agrega un cliente desde el menu del cajero </p>
+	 * @author Nicolas
+	 */
+	
 	public void agregarClienteCajero()
 	{
 		
@@ -909,6 +1032,13 @@ public class Menu
 		
 	}
 	
+	
+	/**
+	 * <p><b><i>agregarClienteGerente</i></b></p>
+	 *  <pre>public void agregarClienteGerente()</pre>
+	 *<p> Metodo que agrega un cliente desde el menu del gerente </p>
+	 * @author Nicolas
+	 */
 	public void agregarClienteGerente()
 	{
 		
@@ -949,7 +1079,14 @@ public class Menu
 	
 	
 	
-	
+	/**
+	 * <p><b><i>menu_retornarCliente</i></b></p>
+	 *  <pre>public Cliente menu_retornarCliente(String dni)</pre>
+	 *<p> Metodo que retorna un cliente mediante su dni</p>
+	 *@param String dni
+	 *@return Cliente
+	 * @author Nicolas
+	 */
 	
 	public Cliente menu_retornarCliente(String dni)
 	{	
@@ -970,7 +1107,15 @@ public class Menu
 	}
 	
 	
-	//TODO CONSULTAR ---------------------
+
+	/**
+	 * <p><b><i>menu_retornarVendedor</i></b></p>
+	 *  <pre>public Cliente menu_retornarVendedor(String dni)</pre>
+	 *<p> Metodo que retorna un vendedor mediante su dni</p>
+	 *@param String dni
+	 *@return Vendedor
+	 * @author Nicolas
+	 */
 	
 	public Vendedor menu_retornarVendedor(String dni)
 	{
@@ -988,6 +1133,14 @@ public class Menu
 		
 	}
 	
+	/**
+	 * <p><b><i>menu_retornarSneaker</i></b></p>
+	 *  <pre>public Sneaker menu_retornarSneaker(String numero)</pre>
+	 *<p> Metodo que retorna una sneaker mediante su clave</p>
+	 *@param String numero
+	 *@return Sneaker
+	 * @author Nicolas
+	 */
 	public Sneaker menu_retornarSneaker(String numero)
 	{
 		Sneaker sn = local.devolverSneaker(numero);
@@ -996,6 +1149,14 @@ public class Menu
 		
 	}
 	
+	
+	/**
+	 * <p><b><i>CarritoCompra</i></b></p>
+	 *  <pre>public CarritoCompra menuCarrito()</pre>
+	 *<p> Menu del carrito de compras de sneakers </p>
+	 *@return CarritoCompra
+	 * @author Nicolas
+	 */
 	
 	public CarritoCompra menuCarrito()
 	{
@@ -1028,6 +1189,13 @@ public class Menu
 		
 	}
 	
+	
+	/**
+	 * <p><b><i>nuevaVenta</i></b></p>
+	 *  <pre>public void nuevaVenta()</pre>
+	 *<p> Menu para realizar una nueva venta </p>
+	 * @author Nicolas
+	 */
 	public void nuevaVenta()
 	{
 		try {
@@ -1121,7 +1289,12 @@ public class Menu
 	}
 	
 	
-	
+	/**
+	 * <p><b><i>menuABMCajero</i></b></p>
+	 *  <pre>public void menuABMCajero()</pre>
+	 *<p> Menu del cajero,  alta , baja , modificacion de ventas </p>
+	 * @author Nicolas
+	 */
 	public void menuABMCajero()
 	{
 		
@@ -1190,7 +1363,12 @@ public class Menu
 	}
 	
 	
-	
+	/**
+	 * <p><b><i>menuGenerte</i></b></p>
+	 *  <pre>public void menuGenerte()</pre>
+	 *<p> Menu  del gerente </p>
+	 * @author Nicolas
+	 */
 	public void menuGenerte()
 	{
 		try {
@@ -1231,7 +1409,12 @@ public class Menu
 	}
 	
 	
-	
+	/**
+	 * <p><b><i>menuPrincipal</i></b></p>
+	 *  <pre>public void menuPrincipal()</pre>
+	 *<p> Menu principal </p>
+	 * @author Nicolas
+	 */
 	public void menuPrincipal()
 	{
 		
@@ -1269,10 +1452,11 @@ public class Menu
 						//local.guardarVentasJson();
 			break;
 			
+			/*
 			case 8 : local.LEER();
 				
 				break;
-			
+			*/
 			case (0): 
 				System.out.println("SALIENDO DEL SISTEMA, VUELVA PRONTOS");
 				System.exit(0);

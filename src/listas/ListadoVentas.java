@@ -11,6 +11,14 @@ import caja.Venta;
 import excepciones.ErrorDeBusquedaExcepcion;
 import genericos.Listado;
 
+/**
+* <p><b><i>ListadoVentas</i></b></p>
+* <pre>public class ListadoVentas implements Serializable</pre>
+* <p>Super clase ListadoVentas.</p>
+* @author Nicolas
+*
+*/
+
 public class ListadoVentas implements Serializable{
 
 	/**
@@ -20,39 +28,76 @@ public class ListadoVentas implements Serializable{
 	public static int id=0;
 	
 	private Listado<Venta> ventas;
-
+	
+	/**
+	 * <p><b><i>ListadoVentas</i></b></p>
+	 * <pre>public ListadoVentas()</pre>
+	 * <p>Constructor de la clase <code>ListadoVentas</code>.</p>
+	 * @author Nicolas
+	 */
+	
 	public ListadoVentas() {
 
 		ventas = new Listado<Venta>();
 	}
 	
+	/**
+	 * <p><b><i>ListadoVentas</i></b></p>
+	 * <pre>public ListadoVentas(ListadoVentas listaVentas)</pre>
+	 * <p>Constructor de la clase <code>ListadoVentas</code>.</p>
+	 * @param LListadoVentas listaVentas
+	 * @author Nicolas
+	 */
 	public ListadoVentas(ListadoVentas listaVentas) {
 
 		ventas = new Listado<Venta>();
 		this.agregarListaDeVentas(listaVentas.devolverVentas());
 	}
 	
+	/**
+	 * <p><b><i>agregarVenta</i></b></p>
+	 *  <pre>public boolean agregarVenta(Venta venta)</pre>
+	 *<p> Metodo que agrega una venta  a la lista ventas</p>
+	 **@param Venta venta
+	 * @return true si se agrego.
+	 * @author Nicolas
+	 */
+	
 	public boolean agregarVenta(Venta venta) {
 		venta.setId(id++);
 		return ventas.agregarElemento(venta);
 	}
 	
-	public boolean eliminarVentaObj(Venta venta) {
-		return ventas.eliminarElementoObj(venta);
-	}
 	
-	public Venta eliminarVentaIndex(int index) {
-		return ventas.buscarElemento(index);
-	}
 	
+	/**
+	 * <p><b>listarVentas<i></i></b></p>
+	 * <pre>public String listarVentas()  </pre>
+	 * @return Retorna el listado de ventas en formato<code>String </code>.
+	 * @author Nicolas
+	 */
 	public String listarVentas() {
 		return ventas.listarElementos();
 	}
 	
+	
+	/**
+	 * <p><b>cantidadDeVentas<i></i></b></p>
+	 * <pre>public int cantidadDeVentas()</pre>
+	 * @return Retorna la cantidad de ventas que hay en el listado<code>int </code>.
+	 * @author Nicolas
+	 */
 	public int cantidadDeVentas() {
 		return ventas.contarElementos();
 	}
 	
+	/**
+	 * <p><b><i>agregarListaDeVentas</i></b></p>
+	 * <pre>public void agregarListaDeVentas(ArrayList<Venta> listaDeVentas)</pre>
+	 * <p>Agrega varias ventas a la lista de ventas</p>
+	 * @param ArrayList<Venta> listaDeVentas
+	 * @author Nicolas
+	 */
 	
 	public void agregarListaDeVentas(ArrayList<Venta> listaDeVentas) {
 		
@@ -61,6 +106,13 @@ public class ListadoVentas implements Serializable{
 		}
 	}
 	
+	
+	/**
+	 * <p><b>devolverVentas<i></i></b></p>
+	 * <pre>public ArrayList<Venta> devolverVentas() </pre>
+	 * @return Retorna todas las ventas en un<code>ArrayList </code>.
+	 * @author Nicolas
+	 */
 
 	public ArrayList<Venta> devolverVentas() {
 		ArrayList<Venta> listaDeVentas = new ArrayList<Venta>();
@@ -71,6 +123,14 @@ public class ListadoVentas implements Serializable{
 		
 		return listaDeVentas;
 	} 
+	
+	/**
+	 * <p><b><i>listarVentasDeUnVendedor</i></b></p>
+	 * <pre>public String listarVentasDeUnVendedor(String dni)</pre>
+	 * @param String dni
+	 * @return Retorna todas las ventas de un vendedor en formato <code>String</code>.
+	 * @author Nicolas
+	 */
 	
 	public String listarVentasDeUnVendedor(String dni) {
 		StringBuilder builder = new StringBuilder();
@@ -91,7 +151,13 @@ public class ListadoVentas implements Serializable{
 		return ventas;
 	}
 	
-
+	/**
+	 * <p><b><i>listarComprasDeUnCliente</i></b></p>
+	 * <pre>public String listarComprasDeUnCliente(String dni)</pre>
+	 * @param String dni
+	 * @return Retorna todas las compras de un cliente en formato <code>String</code>.
+	 * @author Nicolas
+	 */
 	
 	public String listarComprasDeUnCliente(String dni) {
 		
@@ -114,57 +180,19 @@ public class ListadoVentas implements Serializable{
 	}
 	
 	
-	public Venta buscarVentaPorID(int id) throws ErrorDeBusquedaExcepcion {
-		
-		Venta venta = null;
-		boolean existe = false;
-	
-		ArrayList<Venta> arrayVentas = devolverVentas();
-		
-		for(Venta v : arrayVentas) {
-			if(v.getId() == id) {
-				venta = v;
-				existe = true;
-				break;
-			}	
-		}
-		if(!existe) {
-			throw new ErrorDeBusquedaExcepcion("Venta no encontrada");
-		}
-		
-		return venta;
-	}
-	
-	
-	public String listarVentasConIdVendedorClineteYFecha() {
-		StringBuilder builder = new StringBuilder();
-		
-		ArrayList<Venta> arrayVentas = devolverVentas();
-		
-		for(Venta v : arrayVentas) {
-			builder.append("ID: "+v.getId()+" - Cliente: "+v.getCliente().getNombre()+" "+v.getCliente().getApellido()
-					+" - Vendedor: "+v.getVendedor().getNombre()+" "+v.getVendedor().getApellido()+" - Fecha: "+v.getFechaVenta()+"\n");
-			
-		}
-		if(builder.isEmpty())
-		{
-			builder.append("No se encontraron registros.");
-		}
-		
-		
-		return builder.toString();
-	}
-	
-	public boolean existeVenta(Venta venta) {
-		return ventas.existeElemento(venta);
-	}
+	/**
+	 * <p><b>eliminarVenta<i></i></b></p>
+	 * <pre>public boolean eliminarVenta(int idVenta) </pre>
+	 * @return Retorna true si se elimino <code>boolean </code>.
+	 * @param int idVenta
+	 * @author Nicolas
+	 * @throws ErrorDeBusquedaExcepcion
+	 */
 	
 	public boolean eliminarVenta(int idVenta)throws ErrorDeBusquedaExcepcion
 	{
 		boolean rta=false;
-		
-		//Integer num =indice;
-		
+
 		for (int i = 0; i < ventas.contarElementos(); i++) 
 		{
 			if(ventas.buscarElemento(i).getId()==idVenta)
@@ -181,7 +209,14 @@ public class ListadoVentas implements Serializable{
 		return rta;
 	}
 	
-	
+	/**
+	 * <p><b><i>toJSONarray</i></b></p>
+	 *  <pre>public JSONArray toJSONarray ()</pre>
+	 *<p> Metodo pasa una lista de ventas a un array de json. Cada venta es un obj json</p>
+	 * @return Retorna un <code>JSONArray</code> 
+	 * @throws JSONException
+	 * @author Nicolas
+	 */
 	
 	public JSONArray toJSONarray () throws JSONException
 	{
@@ -197,19 +232,14 @@ public class ListadoVentas implements Serializable{
 	}
 	
 	
-	public String toJSONarray2 () throws JSONException
-	{
-		JSONArray jsonArray = new JSONArray();
-		
-		for (int i = 0; i < ventas.contarElementos(); i++)
-		{
-			
-			jsonArray.put(ventas.buscarElemento(i).toJSONObject());
-			
-		}
-		return jsonArray.toString();
-	}
 	
+	/**
+	 * <p><b><i>JSONtoJava</i></b></p>
+	 * <pre>public void JSONtoJava(String json)</pre>
+	 *<p> Metodo que lee un String de json y lo pasa a un obj java</p>
+	 * @throws JSONException
+	 * @author Nicolas
+	 */
 	
 	public void JSONtoJava(String json) throws JSONException
 	{

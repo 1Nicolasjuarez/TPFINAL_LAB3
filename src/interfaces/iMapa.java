@@ -2,6 +2,13 @@ package interfaces;
 
 import java.util.ArrayList;
 
+/**
+ * <p><b><i>iMapa</i></b></p>
+ * <pre>public interface iMapa <K,V><P></pre>
+ * <p>La interfaz <code>iMapa</code> contiene una serie de metodos a redefinir en aquellas clases  que necesiten realizar estas operaciones basicas.</p>
+ * @author Nicolas
+ */
+
 public interface iMapa <K,V>{
 
 	public boolean existeClave(K clave);
